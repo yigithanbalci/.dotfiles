@@ -22,6 +22,7 @@ require("lazy").setup({
 
     --NOTE: Language specific plugins
     { import = "lazyvim.plugins.extras.lang.go" },
+    { import = "lazyvim.plugins.extras.lang.markdown" },
     { import = "plugins" },
   },
   defaults = {
