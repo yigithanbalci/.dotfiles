@@ -1,6 +1,8 @@
-
+# zsh profile configs
 export CC=clang
 export CXX=clang++
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/.local/bin
 
+# Some useful keybindings to use my custom scripts
+bindkey -s '^f' "tmux-sessionizer\n"
