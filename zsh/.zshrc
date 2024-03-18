@@ -119,7 +119,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Some settings like env
 source ~/.zsh_profile
-source ~/.zshenv
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
