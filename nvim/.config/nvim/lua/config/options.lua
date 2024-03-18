@@ -20,8 +20,7 @@ local opt = vim.opt
 
 opt.autowrite = true -- Enable auto write
 
-opt.clipboard = "unnamedplus" -- Sync with system clipboard
---TODO: if done as follows it does not work with a tmux session, solve this later.
+--NOTE: Install something like xclip
 if not vim.env.SSH_TTY then
   -- only set clipboard if not in ssh, to make sure the OSC 52
   -- integration works automatically. Requires Neovim >= 0.10.0
