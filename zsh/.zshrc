@@ -118,9 +118,8 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Some settings like env
-if [ -f ~/.zprofile ]; then 
-    . ~/.zprofile;
-fi
+source ~/.zsh_profile
+source ~/.zshenv
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
