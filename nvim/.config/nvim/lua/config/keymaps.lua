@@ -177,3 +177,7 @@ map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
 map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+-- better tricks navigation etc 
+map("n", "<C-u>", "<C-u>zz", { desc = "Navigate up half a page and center page"})
+map("n", "<C-d>", "<C-d>zz", { desc = "Navigate down half a page and center page"})
