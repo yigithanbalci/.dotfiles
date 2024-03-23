@@ -186,3 +186,5 @@ map("n", "<C-u>", "<C-u>zz", { desc = "Navigate up half a page and center page"}
 map("n", "<C-d>", "<C-d>zz", { desc = "Navigate down half a page and center page"})
 map("n", "n", "nzzzv", { desc = "Navigate next and center the page"})
 map("n", "N", "Nzzzv", { desc = "Navigate previous and center the page"})
+--map("n", "<S-h>", '<Cmd>execute "normal! H"<CR>', { desc = "Make default H movement"})
+--map("n", "<S-l>", '<Cmd>execute "normal! L"<CR>', { desc = "Make default H movement"})
