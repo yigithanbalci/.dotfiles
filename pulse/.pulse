@@ -1,0 +1,4 @@
+default-sample-format = s24le
+alternate-sample-format = s16le
+default-sample-rate = 192000
+alternate-sample-rate = 44100
