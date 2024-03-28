@@ -57,3 +57,7 @@ let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapJumpParent='h'
 " sometimes not working if :NerdTree isn't run before, solve this
 nmap <leader>e :NerdTreeToggle<CR>
+
+"nvim like searching mappings
+nnoremap <leader>ff :action SearchEverywhere<CR>
+nnoremap <leader>sg :action FindInPath<CR>
