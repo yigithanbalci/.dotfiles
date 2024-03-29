@@ -61,3 +61,4 @@ nmap <leader>e :NerdTreeToggle<CR>
 "nvim like searching mappings
 nnoremap <leader>ff :action SearchEverywhere<CR>
 nnoremap <leader>sg :action FindInPath<CR>
+imap jj <Esc>
