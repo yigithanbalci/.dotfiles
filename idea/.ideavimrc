@@ -62,3 +62,6 @@ nmap <leader>e :NerdTreeToggle<CR>
 nnoremap <leader>ff :action SearchEverywhere<CR>
 nnoremap <leader>sg :action FindInPath<CR>
 imap jj <Esc>
+
+vmap J :m '>+1<CR>gv=gv
+vmap K :m '>-2<CR>gv=gv
