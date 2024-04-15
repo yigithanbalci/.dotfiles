@@ -1,6 +1,7 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/jarvis/.dotfiles
+- /home/jarvis/personal/codecrafters-http-server-go
 - /home/jarvis/personal/gonfik
 startuppopupversion: 5
 customcommandshistory:
