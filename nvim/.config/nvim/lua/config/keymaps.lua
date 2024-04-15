@@ -194,3 +194,5 @@ map("i", "jj", "<esc>")
 -- keys to move selection up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection downwards" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection upwards" })
+
+-- NOTE: c-o and c-i are forward and backward that is so nice in other IDEs
