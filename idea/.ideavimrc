@@ -2,7 +2,7 @@
 "   the same commands as the original .vimrc configuration.
 " You can find a list of commands here: https://jb.gg/h38q75
 " Find more examples here: https://jb.gg/share-ideavimrc
-
+set ideajoin
 
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
@@ -21,6 +21,8 @@ map Q gq
 Plug 'machakann/vim-highlightedyank'
 " Commentary plugin
 Plug 'tpope/vim-commentary'
+" NerdTree plugin
+Plug 'preservim/nerdtree'
 
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
@@ -46,3 +48,20 @@ set smartindent
 set hlsearch
 set ignorecase
 set smartcase
+
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
+
+" NerdTree settings
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
+" sometimes not working if :NerdTree isn't run before, solve this
+nmap <leader>e :NerdTreeToggle<CR>
+
+"nvim like searching mappings
+nnoremap <leader>ff :action SearchEverywhere<CR>
+nnoremap <leader>sg :action FindInPath<CR>
+imap jj <Esc>
+
+vmap J :m '>+1<CR>gv=gv
+vmap K :m '>-2<CR>gv=gv

@@ -35,8 +35,10 @@ map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
 map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
 
 -- buffers
-map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+--map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+--map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+map("n", "<A-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+map("n", "<A-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
@@ -177,3 +179,18 @@ map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
 map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+-- better tricks navigation etc 
+map("x", "<leader>p", "\"_dP", { desc = "Paste without replacing the register with deleted"})
+map("n", "<C-u>", "<C-u>zz", { desc = "Navigate up half a page and center page"})
+map("n", "<C-d>", "<C-d>zz", { desc = "Navigate down half a page and center page"})
+map("n", "n", "nzzzv", { desc = "Navigate next and center the page"})
+map("n", "N", "Nzzzv", { desc = "Navigate previous and center the page"})
+--map("n", "<S-h>", '<Cmd>execute "normal! H"<CR>', { desc = "Make default H movement"})
+--map("n", "<S-l>", '<Cmd>execute "normal! L"<CR>', { desc = "Make default H movement"})
+map("i", "jj", "<esc>")
+
+
+-- keys to move selection up and down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection downwards" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection upwards" })
