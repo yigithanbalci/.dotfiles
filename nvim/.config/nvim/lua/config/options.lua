@@ -27,6 +27,7 @@ if not vim.env.SSH_TTY then
   -- NOTE: sync seems not practical anymore, just use "+ reg
   --opt.clipboard = "unnamedplus" -- Sync with system clipboard
 end
+--NOTE: there is another mapping for yc and pc in keymaps instead
 vim.o.clipboard = ""
 
 opt.completeopt = "menu,menuone,noselect"
