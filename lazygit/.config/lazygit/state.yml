@@ -1,6 +1,8 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/jarvis/.dotfiles
+- /home/jarvis/personal/go-http-server
+- /home/jarvis/personal/codecrafters-redis-go
 - /home/jarvis/personal/codecrafters-http-server-go
 - /home/jarvis/personal/gonfik
 startuppopupversion: 5
