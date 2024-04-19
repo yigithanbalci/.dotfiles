@@ -27,6 +27,7 @@ if not vim.env.SSH_TTY then
   -- NOTE: sync seems not practical anymore, just use "+ reg
   --opt.clipboard = "unnamedplus" -- Sync with system clipboard
 end
+vim.o.clipboard = ""
 
 opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
