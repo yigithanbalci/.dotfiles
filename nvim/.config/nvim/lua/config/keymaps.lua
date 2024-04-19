@@ -196,3 +196,15 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection downwards"
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection upwards" })
 
 -- NOTE: c-o and c-i are forward and backward that is so nice in other IDEs
+-- below is to yank and paste from system clipboard more convenient
+--
+--map("n", '"cy', '"+y', { desc = "Paste System Clipboard" })
+map("n", "cy", '"+y', { desc = "Yank System Clipboard" })
+map("v", "cy", '"+y', { desc = "Yank System Clipboard" })
+map("n", "cp", '"+p', { desc = "Paste System Clipboard" })
+map("v", "cp", '"+p', { desc = "Paste System Clipboard" })
+
+map("n", "cY", '"+Y', { desc = "Yank System Clipboard" })
+map("v", "cY", '"+Y', { desc = "Yank System Clipboard" })
+map("n", "cP", '"+P', { desc = "Paste System Clipboard" })
+map("v", "cP", '"+P', { desc = "Paste System Clipboard" })
