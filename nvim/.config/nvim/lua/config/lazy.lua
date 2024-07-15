@@ -21,9 +21,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.test.core" },
 
     --NOTE: Language specific plugins
-    { import = "lazyvim.plugins.extras.lang.go" },
-    { import = "lazyvim.plugins.extras.lang.markdown" },
-    { import = "lazyvim.plugins.extras.lang.java" },
+    { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.json" },
     { import = "lazyvim.plugins.extras.lang.yaml" },
     { import = "plugins" },
