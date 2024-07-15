@@ -24,8 +24,11 @@ opt.autowrite = true -- Enable auto write
 if not vim.env.SSH_TTY then
   -- only set clipboard if not in ssh, to make sure the OSC 52
   -- integration works automatically. Requires Neovim >= 0.10.0
-  opt.clipboard = "unnamedplus" -- Sync with system clipboard
+  -- NOTE: sync seems not practical anymore, just use "+ reg
+  --opt.clipboard = "unnamedplus" -- Sync with system clipboard
 end
+--NOTE: there is another mapping for yc and pc in keymaps instead
+vim.o.clipboard = ""
 
 opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
