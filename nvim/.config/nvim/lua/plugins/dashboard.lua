@@ -34,7 +34,7 @@ return {
     opts = function(_, opts)
       opts.config.center = {
         {
-          action = Util.telescope("files"),
+          action = LazyVim.pick("files"),
           desc = " Find file",
           icon = " ",
           key = "f",

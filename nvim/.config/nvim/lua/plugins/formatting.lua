@@ -17,6 +17,7 @@ return {
         fish = { "fish_indent" },
         sh = { "shfmt" },
         go = { "goimports", "gofmt" },
+        typescript = { "prettier" },
       },
     },
   },

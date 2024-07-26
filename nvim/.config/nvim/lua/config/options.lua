@@ -28,7 +28,8 @@ if not vim.env.SSH_TTY then
   --opt.clipboard = "unnamedplus" -- Sync with system clipboard
 end
 --NOTE: there is another mapping for yc and pc in keymaps instead
-vim.o.clipboard = ""
+--vim.o.clipboard = ""
+opt.clipboard = "unnamedplus" -- Sync with system clipboard
 
 opt.completeopt = "menu,menuone,noselect"
 opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
