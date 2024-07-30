@@ -27,6 +27,7 @@ return {
       linters_by_ft = {
         fish = { "fish" },
         go = { "golangcilint" },
+        typescript = { "eslint" },
       },
       linters = {},
     },

@@ -70,6 +70,9 @@ return {
               propertyDeclarationTypes = { enabled = true },
               variableTypes = { enabled = false },
             },
+            format = {
+              enable = true,
+            },
           },
         },
         keys = {
