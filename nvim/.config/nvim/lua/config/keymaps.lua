@@ -208,3 +208,15 @@ map("n", "cY", '"+Y', { desc = "Yank System Clipboard" })
 map("v", "cY", '"+Y', { desc = "Yank System Clipboard" })
 map("n", "cP", '"+P', { desc = "Paste System Clipboard" })
 map("v", "cP", '"+P', { desc = "Paste System Clipboard" })
+
+--keys to resize window 
+map("n", "<C-Left>", '<cmd>:vertical resize -5<CR>', { desc = "Vertical resize window(-)" })
+map("n", "<C-Right>", ':vertical resize +5<CR>', { desc = "Vertical resize window(+)" })
+map("n", "<C-Up>", ':horizontal resize +2<CR>', { desc = "Horizontal resize window(+)" })
+map("n", "<C-Down>", ':horizontal resize -2<CR>', { desc = "Horizontal resize window(-)" })
+--resize window options for mac and dvorak (somehow ctrl+navigation doesn't work)
+map("n", "=", ':vertical resize +5<CR>', { desc = "Vertical resize window(+)" })
+map("n", "-", '<cmd>:vertical resize -5<CR>', { desc = "Vertical resize window(-)" })
+map("n", "+", ':horizontal resize +2<CR>', { desc = "Horizontal resize window(+)" })
+map("n", "_", ':horizontal resize -2<CR>', { desc = "Horizontal resize window(-)" })
+
