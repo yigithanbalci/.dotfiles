@@ -1,16 +1,4 @@
 return {
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "tokyonight",
-    },
-    defaults = {
-      autocmds = true,
-      keymaps = true,
-    },
-    news = {
-      lazyvim = true,
-      neovim = false,
-    },
-  },
+  { "folke/lazy.nvim", version = false },
+  { "LazyVim/LazyVim", version = false },
 }
