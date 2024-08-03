@@ -1,3 +1,4 @@
+--NOTE: double tap diagnostic hover (K) to enter the opened popup
 return {
   {
     "neovim/nvim-lspconfig",
