@@ -9,8 +9,18 @@ return {
         table.insert(opts.ensure_installed, "js-debug-adapter")
       end,
     },
+    {
+      "rcarriga/nvim-dap-ui",
+      dependencies = { "nvim-neotest/nvim-nio" },
+  -- stylua: ignore
+  keys = {
+    { "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
+    { "<leader>de", function() require("dapui").eval(nil, {enter = true}) end, desc = "Eval", mode = {"n", "v"} },
   },
-  opts = function()
+      opts = {},
+    },
+  },
+  opts = function(_, opts)
     local dap = require("dap")
     if not dap.adapters["pwa-node"] then
       require("dap").adapters["pwa-node"] = {
@@ -106,6 +116,7 @@ return {
       }
       --end
     end
+    return opts
   end,
   keys = {
     {
@@ -143,15 +154,5 @@ return {
       end,
       desc = "Continue",
     },
-  },
-  {
-    "rcarriga/nvim-dap-ui",
-    dependencies = { "nvim-neotest/nvim-nio" },
-  -- stylua: ignore
-  keys = {
-    { "<leader>du", function() require("dapui").toggle({ }) end, desc = "Dap UI" },
-    { "<leader>de", function() require("dapui").eval(nil, {enter = true}) end, desc = "Eval", mode = {"n", "v"} },
-  },
-    opts = {},
   },
 }
