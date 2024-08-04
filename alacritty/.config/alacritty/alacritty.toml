@@ -1,0 +1,9 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator
+
+# Environment variables
+# env = { TERM = "xterm-256color-italic" }
+
+[font]
+normal = { family = "DroidSansM Nerd Font Mono", style = "Regular" }
+bold = { family = "DroidSansM Nerd Font Mono", style = "Regular" }
+italic = { family = "DroidSansM Nerd Font Mono", style = "Regular" }
