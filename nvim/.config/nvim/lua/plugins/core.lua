@@ -1,4 +1,13 @@
 return {
-  { "folke/lazy.nvim", version = false },
-  { "LazyVim/LazyVim", version = false },
+  { "folke/lazy.nvim" },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "tokyonight",
+    },
+    news = {
+      lazyvim = true,
+      neovim = true,
+    },
+  },
 }

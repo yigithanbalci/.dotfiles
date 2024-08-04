@@ -26,7 +26,8 @@ vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 --  * editorPreset to nvim-remote
 --  * enables nerd font icons
 -- Set to false to disable.
-vim.g.lazygit_config = true
+--TODO: theme breaks current line highlight fix later
+vim.g.lazygit_config = false
 
 -- Options for the LazyVim statuscolumn
 vim.g.lazyvim_statuscolumn = {
