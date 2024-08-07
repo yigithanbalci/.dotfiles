@@ -126,3 +126,17 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 
 export PATH=$PATH:$HOME/go/bin
+
+
+# Detect the operating system
+OS_NAME=$(uname -s)
+
+# Check if the OS is macOS
+if [ "$OS_NAME" = "Darwin" ]; then
+  echo "Running on macOS"
+  # Add the Homebrew setup command here
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+  echo "Not running on macOS"
+  # Add commands for other operating systems if needed
+fi
