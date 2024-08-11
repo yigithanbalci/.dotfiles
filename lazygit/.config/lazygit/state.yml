@@ -1,5 +1,6 @@
 lastupdatecheck: 0
 recentrepos:
+- /home/jarvis/.dotfiles/nvim/.config/nvim
 - /home/jarvis/.dotfiles
 - /home/jarvis/personal/go-http-server
 - /home/jarvis/personal/codecrafters-redis-go
