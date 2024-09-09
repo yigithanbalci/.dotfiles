@@ -25,5 +25,6 @@ osSpecificTasks() {
 osSpecificTasks
 
 # Some useful keybindings to use my custom scripts
+#bindkey -ar '^f' #unbinds 
 bindkey -s '^f' "tmux-sessionizer\n"
 

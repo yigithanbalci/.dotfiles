@@ -81,6 +81,7 @@ plugins=(
 	git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
+  #this breaks ^f bindkey
   zsh-vi-mode
 )
 
