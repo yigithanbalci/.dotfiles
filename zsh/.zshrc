@@ -82,12 +82,11 @@ plugins=(
 	zsh-autosuggestions
 	zsh-syntax-highlighting
   #this breaks ^f bindkey
-  zsh-vi-mode
+  #zsh-vi-mode
   fzf
 )
 
 source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"

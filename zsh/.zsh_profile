@@ -5,6 +5,7 @@ export CXX=clang++
 # env var path 
 addToPath /usr/local/go/bin
 addToPath $HOME/.local/bin
+addToPath $HOME/.local/scripts/
 addToPath ~/.cargo/bin
 addToPath $HOME/go/bin
 
@@ -24,7 +25,8 @@ osSpecificTasks() {
 
 osSpecificTasks
 
-# Some useful keybindings to use my custom scripts
+# Some useful keybindings to use my custom scripts or zsh features
+bindkey -v
 #bindkey -ar '^f' #unbinds 
 bindkey -s '^f' "tmux-sessionizer\n"
 

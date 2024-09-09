@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# Check if a directory argument was provided
+if [[ $# -eq 1 ]]; then
+  selected=$1
+else
+  # Find directories to select from using fzf
+  selected=$(find ~/work ~/personal ~/personal/yt -mindepth 1 -maxdepth 1 -type d | fzf)
+fi
+
+# Exit if no directory was selected
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+# Get the basename of the selected directory and replace periods with underscores
+selected_name=$(basename "$selected" | tr . _)
+
+# Check if tmux is running
+tmux_running=$(pgrep -x tmux)
+
+# If we're not inside a tmux session and tmux is not running, create a new session
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+  tmux new-session -s "$selected_name" -c "$selected" \; attach
+  exit 0
+fi
+
+# Check if the session already exists
+if ! tmux has-session -t="$selected_name" 2>/dev/null; then
+  tmux new-session -ds "$selected_name" -c "$selected"
+fi
+
+# Attach to the existing session or switch to it if already attached
+if [[ -n $TMUX ]]; then
+  # We are already inside a tmux session
+  tmux switch-client -t "$selected_name"
+else
+  # Attach to the tmux session from outside
+  tmux attach-session -t "$selected_name"
+fi
