@@ -83,6 +83,7 @@ plugins=(
 	zsh-syntax-highlighting
   #this breaks ^f bindkey
   zsh-vi-mode
+  fzf
 )
 
 source $ZSH/oh-my-zsh.sh
