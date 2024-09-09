@@ -1,9 +1,29 @@
-# zsh profile configs
+# c/c++ compiler settings
 export CC=clang
 export CXX=clang++
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:~/.cargo/bin
+
+# env var path 
+addToPath /usr/local/go/bin
+addToPath $HOME/.local/bin
+addToPath ~/.cargo/bin
+addToPath $HOME/go/bin
+
 
 # Some useful keybindings to use my custom scripts
 bindkey -s '^f' "tmux-sessionizer\n"
+
+# os specific tasks
+osSpecificTasks() {
+  # Detect the operating system
+  OS_NAME=$(uname -s)
+
+  # Check if the OS is macOS
+  if [ "$OS_NAME" = "Darwin" ]; then
+    echo "Running on macOS"
+    # Add the Homebrew setup command here
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  else
+    echo "Not running on macOS"
+    # Add commands for other operating systems if needed
+  fi
+}
