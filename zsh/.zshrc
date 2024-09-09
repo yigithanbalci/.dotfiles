@@ -9,15 +9,14 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-ZSH_THEME="powerlevel10k/powerlevel10k"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="powerlevel10k/powerlevel10k"
 export COLORTERM=truecolor
-
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -121,22 +120,22 @@ source $ZSH/oh-my-zsh.sh
 addToPath() {
   # Check if directory argument is provided
   if [ -z "$1" ]; then
-    echo "Usage: addToPath /path/to/directory"
+   #echo "Usage: addToPath /path/to/directory"
     return 1
   fi
 
   # Check if the directory exists
   if [ ! -d "$1" ]; then
-    echo "Directory $1 does not exist."
+    #echo "Directory $1 does not exist."
     return 1
   fi
 
   # Add directory to PATH if not already present
   if [[ ":$PATH:" != *":$1:"* ]]; then
     export PATH="$PATH:$1"
-    echo "Added $1 to PATH."
+    #echo "Added $1 to PATH."
   else
-    echo "$1 is already in PATH."
+    #echo "$1 is already in PATH."
   fi
 }
 
