@@ -7,7 +7,9 @@ addToPath /usr/local/bin
 addToPath /usr/local/go/bin
 addToPath $HOME/.local/bin
 addToPath $HOME/.local/scripts/
-addToPath ~/.cargo/bin
+#needed for some vars for rust
+#. "$HOME/.cargo/env"
+addToPath $HOME/.cargo/bin
 addToPath $HOME/go/bin
 
 # os specific tasks
