@@ -2,3 +2,6 @@
 	path = nvim/.config/nvim
 	url = https://github.com/yigithanbalci/nvim.git
   branch = lazyvim
+[submodule "emacs/.config/emacs"]
+	path = emacs/.config/emacs
+	url = https://github.com/yigithanbalci/emacs.git
