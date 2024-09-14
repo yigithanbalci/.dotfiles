@@ -13,6 +13,7 @@ addToPath $HOME/.local/scripts/
 #. "$HOME/.cargo/env"
 addToPath $HOME/.cargo/bin
 addToPath $HOME/go/bin
+addToPath $HOME/.config/emacs/bin
 addToPath /opt/homebrew/opt/llvm/bin
 
 # os specific tasks
@@ -45,4 +46,6 @@ bindkey -s '^f' "tmux-sessionizer\n"
 # This section can be safely removed at any time if needed.
 [[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
 # END opam configuration
+
+alias emacs='emacsclient -c -a ""'
 
