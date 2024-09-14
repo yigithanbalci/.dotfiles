@@ -5,3 +5,6 @@
 [submodule "emacs/.config/emacs"]
 	path = emacs/.config/emacs
 	url = https://github.com/yigithanbalci/emacs.git
+[submodule "doom/.config/doom"]
+	path = doom/.config/doom
+	url = https://github.com/yigithanbalci/doom.git
