@@ -48,4 +48,3 @@ bindkey -s '^f' "tmux-sessionizer\n"
 # END opam configuration
 
 alias emacs='emacsclient -c -a ""'
-
