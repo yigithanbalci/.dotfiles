@@ -11,3 +11,6 @@
 [submodule "hyprland/.config/hypr/hyprland"]
 	path = hyprland/.config/hypr/hyprland
 	url = https://github.com/yigithanbalci/hyprland.git
+[submodule "hyprland/.config/--force"]
+	path = hyprland/.config/--force
+	url = https://github.com/yigithanbalci/hypr.git
