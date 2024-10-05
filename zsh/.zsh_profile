@@ -51,3 +51,4 @@ bindkey -s '^f' "tmux-sessionizer\n"
 # END opam configuration
 
 alias emacs='emacsclient -c -a ""'
+alias jvim="nvim --cmd 'set runtimepath^=$HOME/.config/jvim'"
