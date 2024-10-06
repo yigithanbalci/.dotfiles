@@ -17,6 +17,3 @@
 [submodule "hyprland/.config/hypr"]
 	path = hyprland/.config/hypr
 	url = https://github.com/yigithanbalci/hypr.git
-[submodule "nvim/.config/jvim"]
-	path = nvim/.config/jvim
-	url = https://github.com/yigithanbalci/nvim.git
