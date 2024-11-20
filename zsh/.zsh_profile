@@ -3,6 +3,7 @@ export CC=clang
 export CXX=clang++
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+export JAVA_HOME=/opt/homebrew/Cellar/openjdk/23
 
 # env var path 
 addToPath /usr/local/bin
@@ -14,8 +15,9 @@ addToPath $HOME/.local/scripts/
 addToPath $HOME/.cargo/bin
 addToPath $HOME/go/bin
 addToPath $HOME/.config/emacs/bin
-addToPath /opt/homebrew/opt/llvm/bin
 addToPath /opt/nvim/bin
+addToPath /opt/homebrew/opt/llvm/bin
+addToPath /opt/homebrew/Cellar/openjdk/23/bin
 
 # os specific tasks
 osSpecificTasks() {
@@ -24,10 +26,18 @@ osSpecificTasks() {
   # Check if the OS is macOS
   if [ "$OS_NAME" = "Darwin" ]; then
     # Add the Homebrew setup command here
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
     addToPath /opt/homebrew/bin
     eval "$(/opt/homebrew/bin/brew shellenv)"
   else
     # Add commands for other operating systems if needed
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
   fi
 }
 
@@ -49,3 +59,4 @@ bindkey -s '^f' "tmux-sessionizer\n"
 # END opam configuration
 
 alias emacs='emacsclient -c -a ""'
+alias jvim="nvim --cmd 'set runtimepath^=$HOME/.config/jvim'"
