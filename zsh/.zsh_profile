@@ -26,10 +26,18 @@ osSpecificTasks() {
   # Check if the OS is macOS
   if [ "$OS_NAME" = "Darwin" ]; then
     # Add the Homebrew setup command here
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+    [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
     addToPath /opt/homebrew/bin
     eval "$(/opt/homebrew/bin/brew shellenv)"
   else
     # Add commands for other operating systems if needed
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
   fi
 }
 
