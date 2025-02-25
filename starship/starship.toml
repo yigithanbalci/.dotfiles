@@ -1,5 +1,6 @@
 add_newline = false
 format = """\
+[](bg:#030B16 fg:#7DF9AA)\
 [󰀵 ](bg:#7DF9AA fg:#090c0c)\
 $time\
 $directory\
@@ -43,8 +44,8 @@ error_symbol = '[ ✗](#E84D44) '
 
 [time]
 disabled = false
-time_format = "%R"                                      # Hour:Minute Format
-style = "bg:#1d2230"
+time_format = "%R" # Hour:Minute Format
+# style = "bg:#1d2230"
 format = '[[ 󱑍 $time ](bg:#1C3A5E fg:#8DFBD2)]($style)'
 # [directory.substitutions]
 # '~/tests/starship-custom' = 'work-project'
