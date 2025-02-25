@@ -1,0 +1,12 @@
+--target=~/.config
+--ignore=.stowrc
+--ignore=install
+--ignore=ubuntu
+--ignore=DS_Store
+--ignore=bin/*
+--ignore=idea/*
+--ignore=pulse/*
+--ignore=sway/*
+--ignore=tmux/*
+--ignore=vscode/*
+--ignore=zsh/*
