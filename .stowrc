@@ -6,7 +6,6 @@
 --ignore=bin/*
 --ignore=idea/*
 --ignore=pulse/*
---ignore=starship/*
 --ignore=sway/*
 --ignore=tmux/*
 --ignore=vscode/*
