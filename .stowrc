@@ -7,6 +7,5 @@
 --ignore=idea/*
 --ignore=pulse/*
 --ignore=sway/*
---ignore=tmux/*
 --ignore=vscode/*
 --ignore=zsh/*
