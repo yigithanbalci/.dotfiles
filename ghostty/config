@@ -1,5 +1,5 @@
 font-family = "JetBrains Nerd Font Propo"
-font-size = 15
+font-size = 16
 
 shell-integration = fish
 command = /opt/homebrew/bin/fish --login --interactive
