@@ -1,13 +1,14 @@
-add_newline = false
+add_newline = true
 format = """\
+[╭─](white)\
 [](bg:#030B16 fg:#7DF9AA)\
 [󰀵 ](bg:#7DF9AA fg:#090c0c)\
 $directory\
 $git_branch\
 $git_status\
 $git_metrics\
-$fill\
-$all$time
+$all
+[╰─](white)\
 $character
 """
 # right_format = """$all"""
@@ -51,14 +52,15 @@ format = "[ $symbol$branch ]($style)"
 symbol = " "
 
 [cmd_duration]
-format = "[  $duration ]($style)"
-style = "fg:bright-white bg:18"
+format = "[ $duration]($style)"
+# style = "fg:bright-white bg:18"
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
 # style = "bg:#1d2230"
-format = '[[ 󱑍 $time ](bg:#1C3A5E fg:#8DFBD2)]($style)'
+# format = '[[ 󱑍 $time ](bg:#1C3A5E fg:#8DFBD2)]($style)'
+format = '[ 󱑍 $time ]($style)'
 # [directory.substitutions]
 # '~/tests/starship-custom' = 'work-project'
 

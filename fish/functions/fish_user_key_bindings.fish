@@ -12,5 +12,8 @@ function fish_user_key_bindings
     bind -M insert \cf tmux-sessionizer 'commandline -f repaint'
 
     #bind -M insert \cr history-pager repaint-mode
-
+    bind \cc __fish_cancel_commandline
+    bind -M insert \cc __fish_cancel_commandline
+    bind -M normal \cc __fish_cancel_commandline
+    bind -M visual \cc __fish_cancel_commandline
 end
