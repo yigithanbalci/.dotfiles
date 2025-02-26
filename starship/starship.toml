@@ -1,15 +1,16 @@
-add_newline = true
+add_newline = false
 format = """\
 [](bg:#030B16 fg:#7DF9AA)\
 [󰀵 ](bg:#7DF9AA fg:#090c0c)\
-$time\
 $directory\
 $git_branch\
 $git_status\
 $git_metrics\
-$character\
+$fill\
+$all$time
+$character
 """
-right_format = """$all"""
+# right_format = """$all"""
 continuation_prompt = '▶▶ '
 
 [line_break]
@@ -18,6 +19,15 @@ disabled = true
 [directory]
 format = "[ 󰝰 $path ]($style)"
 # style = "fg:#E4E4E4 bg:#3B76F0"
+
+# Define `fill` to add dots (change '.' to any character you like)
+[fill]
+symbol = "·"
+style = "bold white"
+
+[character]
+success_symbol = '[ ➜](bold green) '
+error_symbol = '[ ✗](#E84D44) '
 
 [git_branch]
 format = '[ $symbol$branch(:$remote_branch) ]($style)'
@@ -41,10 +51,6 @@ symbol = " "
 [cmd_duration]
 format = "[  $duration ]($style)"
 style = "fg:bright-white bg:18"
-
-[character]
-success_symbol = '[ ➜](bold green) '
-error_symbol = '[ ✗](#E84D44) '
 
 [time]
 disabled = false
