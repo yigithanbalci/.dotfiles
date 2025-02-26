@@ -18,6 +18,8 @@ disabled = true
 
 [directory]
 format = "[ 󰝰 $path ]($style)"
+truncation_length = 10
+truncate_to_repo = false
 # style = "fg:#E4E4E4 bg:#3B76F0"
 
 # Define `fill` to add dots (change '.' to any character you like)
