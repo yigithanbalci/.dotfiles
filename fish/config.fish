@@ -59,9 +59,22 @@ addToPath /opt/homebrew/Cellar/openjdk/23/bin
 # Source Rust environment variables if needed
 # source $HOME/.cargo/env
 
+# set cursor shape to block for everything
+fish_vi_cursor
+set fish_cursor_default block
+set fish_cursor_insert block
+set fish_cursor_visual block
+# Set cursor to block on Fish startup
+echo -ne "\e[2 q"
+
 function fish_user_key_bindings
     # Enable Vi mode (equivalent to bindkey -v)
     fish_vi_key_bindings
+
+    # Force block cursor in all Vi modes
+    function fish_mode_prompt
+        echo -ne "\e[2 q"
+    end
 
     # Bind Ctrl+F to run tmux-sessionizer (equivalent to bindkey -s '^f' "tmux-sessionizer\n")
     bind \cf tmux-sessionizer

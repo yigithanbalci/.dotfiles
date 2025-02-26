@@ -1,4 +1,4 @@
-add_newline = false
+add_newline = true
 format = """\
 [](bg:#030B16 fg:#7DF9AA)\
 [󰀵 ](bg:#7DF9AA fg:#090c0c)\
@@ -11,6 +11,9 @@ $character\
 """
 right_format = """$all"""
 continuation_prompt = '▶▶ '
+
+[line_break]
+disabled = true
 
 [directory]
 format = "[ 󰝰 $path ]($style)"

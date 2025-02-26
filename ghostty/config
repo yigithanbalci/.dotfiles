@@ -3,3 +3,6 @@ font-size = 15
 
 shell-integration = fish
 command = /opt/homebrew/bin/fish --login --interactive
+
+cursor-style = block
+cursor-style-blink = false
