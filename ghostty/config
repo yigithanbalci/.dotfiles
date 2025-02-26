@@ -2,7 +2,8 @@ font-family = "JetBrains Nerd Font Propo"
 font-size = 16
 
 shell-integration = fish
-command = /opt/homebrew/bin/fish --login --interactive
 
 cursor-style = block
 cursor-style-blink = false
+
+command = /opt/homebrew/bin/fish --login --interactive

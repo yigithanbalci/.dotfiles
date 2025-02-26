@@ -3,6 +3,9 @@ if status is-interactive
 end
 
 source $HOME/.config/fish/settings.fish
+source $HOME/.config/fish/env.vars.fish
+fish_set_user_paths
+fish_user_key_bindings
 
 fzf --fish | source
 
