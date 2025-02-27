@@ -1,9 +1,11 @@
-font-family = "JetBrains Nerd Font Propo"
+font-family = "FiraCode Nerd Font Mono"
 font-size = 16
 
 shell-integration = fish
 
 cursor-style = block
 cursor-style-blink = false
+adjust-cell-height = 15%
+adjust-cell-width = 5%
 
 command = /opt/homebrew/bin/fish --login --interactive
