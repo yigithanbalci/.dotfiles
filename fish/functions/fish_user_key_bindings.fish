@@ -9,7 +9,7 @@ function fish_user_key_bindings
 
     # Bind Ctrl+F to run tmux-sessionizer (equivalent to bindkey -s '^f' "tmux-sessionizer\n")
     bind \cf tmux-sessionizer
-    bind -M insert \cf tmux-sessionizer
+    bind -M insert \cf tmux-sessionizer 'commandline -f repaint'
 
     #bind -M insert \cr history-pager repaint-mode
 
