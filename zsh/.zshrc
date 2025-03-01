@@ -157,4 +157,13 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
+# Use Bat-extras for man pages in zsh/bash:
+eval "$(batman --export-env)"
+
+# Use Bat (by itself) for man pages:
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# Use less for man syntax highlighting:
+# export MANPAGER="less -R --use-color -Dd+r -Du+b"
+
 eval "$(starship init zsh)"
