@@ -1,4 +1,4 @@
-add_newline = true
+add_newline = false
 format = """\
 [╭─](white)\
 [](bg:#030B16 fg:#7DF9AA)\
