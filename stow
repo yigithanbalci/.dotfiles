@@ -2,3 +2,4 @@
 
 stow .
 stow bin --target=$HOME
+stow zsh --target=$HOME
