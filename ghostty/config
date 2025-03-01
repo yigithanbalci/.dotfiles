@@ -1,11 +1,10 @@
 font-family = "FiraCode Nerd Font Mono"
 font-size = 16
 
-shell-integration = fish
+shell-integration = zsh
 
 cursor-style = block
 cursor-style-blink = false
 adjust-cell-height = 15%
 adjust-cell-width = 5%
 
-command = /opt/homebrew/bin/fish --login --interactive
