@@ -3,7 +3,6 @@
 My dotfiles
 
 TODO: a proper settings for vscode including neovim bindings
-
 TODO: emacs and doom config
 
 TODO: fish error: paste from clipboard throws error
