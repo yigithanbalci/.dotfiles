@@ -5,6 +5,3 @@ set fish_cursor_default block
 set fish_cursor_insert block
 set fish_cursor_replace_one underscore
 set fish_cursor_visual block
-
-fish_set_user_paths
-fish_user_key_bindings
