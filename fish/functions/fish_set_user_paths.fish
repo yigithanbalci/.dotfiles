@@ -33,7 +33,6 @@ function fish_set_user_paths
     # Run the function
     osSpecificTasks
 
-
     # Add directories to PATH
     addToPath /usr/local/bin
     addToPath /usr/local/go/bin
