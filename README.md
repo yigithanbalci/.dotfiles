@@ -2,6 +2,8 @@
 
 My dotfiles
 
+TODO: stow double stows local to .config and .local for some reason
+
 TODO: a proper settings for vscode including neovim bindings
 
 TODO: emacs and doom config
