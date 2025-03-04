@@ -5,7 +5,9 @@
 --ignore=DS_Store
 --ignore=bin/*
 --ignore=idea/*
+--ignore=local/*
 --ignore=pulse/*
+--ignore=stow
 --ignore=sway/*
 --ignore=vscode/*
 --ignore=zsh/*

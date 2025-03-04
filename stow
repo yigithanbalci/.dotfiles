@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
 stow .
-stow bin --target=$HOME
+stow local --target=$HOME/.local
+stow zsh --target=$HOME
