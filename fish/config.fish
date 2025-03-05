@@ -4,6 +4,8 @@ if status is-interactive
     fish_user_key_bindings
 end
 
+batman --export-env | source
+
 source $HOME/.config/fish/settings.fish
 source $HOME/.config/fish/env.vars.fish
 

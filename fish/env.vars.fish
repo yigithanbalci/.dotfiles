@@ -2,6 +2,7 @@
 set -x CC clang
 set -x CXX clang++
 set -x STARSHIP_CONFIG ~/.config/starship/starship.toml
+set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 # Detect the operating system
 set OS_NAME (uname -s)
