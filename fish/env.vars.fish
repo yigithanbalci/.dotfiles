@@ -15,3 +15,16 @@ if test "$OS_NAME" = Darwin
     set -x JAVA_HOME /opt/homebrew/Cellar/openjdk/23
     set -x SHELL /opt/homebrew/bin/fish
 end
+
+# Secret tokens that are not in the repo
+# Define the path to the .shell_secrets file
+set SECRETS_FILE "$HOME/.shell_secrets"
+
+# Check if the file exists
+if test -f "$SECRETS_FILE"
+    # Source the file if it exists
+    source $SECRETS_FILE
+    echo ".shell_secrets file sourced successfully."
+else
+    echo ".shell_secrets file does not exist."
+end
