@@ -146,6 +146,19 @@ addToPath() {
 # Some settings like env
 source ~/.zsh_profile
 
+# Secret tokens that is not in the repo
+# Define the path to the .shell_secrets file
+SECRETS_FILE="$HOME/.shell_secrets"
+
+# Check if the file exists
+if [ -f "$SECRETS_FILE" ]; then
+  # Source the file if it exists
+  source "$SECRETS_FILE"
+  echo ".shell_secrets file sourced successfully."
+else
+  echo ".shell_secrets file does not exist."
+fi
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
