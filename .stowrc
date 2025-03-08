@@ -10,4 +10,5 @@
 --ignore=stow
 --ignore=sway/*
 --ignore=vscode/*
+--ignore=zed/*
 --ignore=zsh/*

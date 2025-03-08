@@ -2,6 +2,7 @@
 set -x CC clang
 set -x CXX clang++
 set -x STARSHIP_CONFIG ~/.config/starship/starship.toml
+set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 
 # Detect the operating system
 set OS_NAME (uname -s)
@@ -13,4 +14,17 @@ if test "$OS_NAME" = Darwin
     set -x CPPFLAGS -I/opt/homebrew/opt/llvm/include
     set -x JAVA_HOME /opt/homebrew/Cellar/openjdk/23
     set -x SHELL /opt/homebrew/bin/fish
+end
+
+# Secret tokens that are not in the repo
+# Define the path to the .shell_secrets file
+set SECRETS_FILE "$HOME/.shell_secrets"
+
+# Check if the file exists
+if test -f "$SECRETS_FILE"
+    # Source the file if it exists
+    source $SECRETS_FILE
+    echo ".shell_secrets file sourced successfully."
+else
+    echo ".shell_secrets file does not exist."
 end
