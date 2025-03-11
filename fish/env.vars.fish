@@ -24,7 +24,7 @@ set SECRETS_FILE "$HOME/.shell_secrets"
 if test -f "$SECRETS_FILE"
     # Source the file if it exists
     source $SECRETS_FILE
-    echo ".shell_secrets file sourced successfully."
+    #echo ".shell_secrets file sourced successfully."
 else
-    echo ".shell_secrets file does not exist."
+    #echo ".shell_secrets file does not exist."
 end
