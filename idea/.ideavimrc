@@ -2,7 +2,7 @@
 "   the same commands as the original .vimrc configuration.
 " You can find a list of commands here: https://jb.gg/h38q75
 " Find more examples here: https://jb.gg/share-ideavimrc
-set ideajoin
+
 
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
@@ -23,7 +23,12 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-commentary'
 " NerdTree plugin
 Plug 'preservim/nerdtree'
-
+"set NERDTree
+" vim-surround
+Plug 'tpope/vim-surround'
+" which-key
+set which-key
+set notimeout
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
@@ -35,7 +40,9 @@ Plug 'preservim/nerdtree'
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 set guicursor = " "
-set scrolloff = 8
+set showmode
+set scrolloff=5
+set history=1000
 set number
 set relativenumber
 set shortmess-=S
@@ -49,6 +56,23 @@ set hlsearch
 set ignorecase
 set smartcase
 
+set visualbell
+set noerrorbells
+
+set easymotion
+
+" Do incremental searching.
+set incsearch
+
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+set ideajoin
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 
@@ -56,12 +80,88 @@ nnoremap <C-d> <C-d>zz
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapJumpParent='h'
 " sometimes not working if :NerdTree isn't run before, solve this
-nmap <leader>e :NerdTreeToggle<CR>
+nmap <leader>e :NERDTreeToggle<CR>
 
 "nvim like searching mappings
 nnoremap <leader>ff :action SearchEverywhere<CR>
 nnoremap <leader>sg :action FindInPath<CR>
+nnoremap <leader><leader> :action Switcher<CR>
 imap jj <Esc>
 
+"nvim like capital and normal mappings
+nnoremap Y y$
+nnoremap C c$
+nnoremap D d$
+command! wa :action SaveAll
+
+"nvim like copy paste
+nnoremap cp "+p
+nnoremap cP "+P
+nnoremap cy "+y
+nnoremap cY "+Y
+
+xmap cp "+p
+xmap cP "+P
+xmap cy "+y
+xmap cY "+Y
+
+"nvim like save c-s
+imap <C-s> <Esc>:w<CR>
+xmap <C-s> <Esc>:w<CR>
+nmap <C-s> :w<CR>
+smap <C-s> <Esc>:w<CR>
+
+"nvim like move line
 vmap J :m '>+1<CR>gv=gv
 vmap K :m '>-2<CR>gv=gv
+
+" Go to definition
+nmap gd <Action>(GotoDeclaration)
+" Go to references/usages
+nmap gr <Action>(FindUsages)
+
+"nvim neotest like mappings
+nnoremap <leader>tt :action RunCurrentFile<CR>
+nnoremap <leader>tT :action RunAllTests<CR>
+nnoremap <leader>tr :action RunNearestTest<CR>
+nnoremap <leader>tl :action RerunLastTest<CR>
+nnoremap <leader>ts :action ToggleTestSummary<CR>
+nnoremap <leader>to :action ShowTestOutput<CR>
+nnoremap <leader>tO :action ToggleTestOutputPanel<CR>
+nnoremap <leader>tS :action StopTest<CR>
+nnoremap <leader>tw :action ToggleTestWatch<CR>
+
+"nvim dapui like debug mappings
+nnoremap <F1> :action StepInto<CR>
+nnoremap <F2> :action StepOver<CR>
+nnoremap <F3> :action StepOut<CR>
+nnoremap <F4> :action RunToCursor<CR>
+nnoremap <F5> :action ResumeProgram<CR>
+
+nnoremap <leader>dc :action ResumeProgram<CR>
+nnoremap <leader>du :action ToggleDebuggerUI<CR>
+nnoremap <leader>de :action EvaluateExpression<CR>
+nnoremap <leader>db :action ToggleLineBreakpoint<CR>
+nnoremap <leader>de :action EvaluateExpression<CR>
+nnoremap <leader>dc :action Debugger.RunToCursor<CR>
+nnoremap <leader>dB :action EditBreakpoint<CR>
+
+
+"TODO: make NERDTree work like mini.nvim tree or oil.nvim
+
+"Terminal mappings
+"TODO: Fix this to make it like neovim
+nnoremap <c-/> :action ActivateTerminal<CR>
+tnoremap <Esc> <C-\><C-n>
+
+"Mappings for changing windows
+nnoremap <C-h> :action SelectPreviousWindow<CR>
+nnoremap <C-l> :action SelectNextWindow<CR>
+
+"Rename
+nmap <leader>cr <Action>(RenameElement)
+
+"Scroll to center
+nmap zz <Action>(EditorScrollToCenter)
+"Fold-unfold toggle
+nmap za <Action>(CollapseExpandRegion)
