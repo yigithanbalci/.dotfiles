@@ -1,8 +1,12 @@
 # c/c++ compiler settings
 export CC=clang
 export CXX=clang++
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+# export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+# export  LDFLAGS="-L/opt/homebrew/opt/llvm/lib/unwind -lunwind"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib/unwind -lunwind"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+
+# program settings
 export JAVA_HOME=/opt/homebrew/Cellar/openjdk/23
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 
@@ -18,6 +22,7 @@ addToPath $HOME/go/bin
 addToPath $HOME/.config/emacs/bin
 addToPath /opt/homebrew/opt/llvm/bin
 addToPath $JAVA_HOME/bin
+addToPath $HOME/programs/flutter/bin/
 
 # os specific tasks
 osSpecificTasks() {
@@ -27,6 +32,8 @@ osSpecificTasks() {
   if [ "$OS_NAME" = "Darwin" ]; then
     # Add the Homebrew setup command here
     addToPath /opt/homebrew/bin
+    #LLVM 
+    addToPath /opt/homebrew/opt/llvm/bin
     eval "$(/opt/homebrew/bin/brew shellenv)"
   else
     # Add commands for other operating systems if needed
@@ -52,3 +59,82 @@ bindkey -s '^f' "tmux-sessionizer\n"
 
 alias emacs='emacsclient -c -a ""'
 alias jvim="nvim --cmd 'set runtimepath^=$HOME/.config/jvim'"
+
+# Vim alias to open nvim 
+# alias vim='nvim'
+# NOTE: if you don't want following 
+# you can run: "command vim" to run vim instead of alias
+# alias realvim="$(which vim)"
+
+vim() {
+  if [[ "$1" == "--real" ]]; then
+    shift
+    command vim "$@"
+  elif command -v nvim >/dev/null 2>&1; then
+    command nvim "$@"
+  else
+    command vim "$@"
+  fi
+}
+
+# Git Aliases
+alias gitlog='git log --oneline --graph --decorate --all'
+alias gitrebase='git rebase --interactive --autostash --keep-empty --no-autosquash --rebase-merges'
+gitprune() {
+    git fetch -p
+    git remote prune origin
+    git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+}
+
+#this does not work somehow, probably need to eval zoxide
+eval "$(zoxide init zsh)"
+# cd: try z first, fallback to builtin cd, then ls
+cd() {
+  if command -v z >/dev/null 2>&1; then
+    z "$@"
+    if [ $? -ne 0 ]; then
+      builtin cd "$@"
+    fi
+  else
+    builtin cd "$@"
+  fi
+  # always list contents after cd
+  ls
+}
+# cd: try z first, fallback to builtin cd, then not ls
+cx() {
+  if [ -z "$1" ]; then
+    echo "Usage: cx <directory>"
+    return 1
+  fi
+
+  if command -v z >/dev/null 2>&1; then
+    z "$1"
+    if [ $? -ne 0 ]; then
+      builtin cd "$1"
+    fi
+  else
+    builtin cd "$1"
+  fi
+}
+# use eza instead of ls if available
+# Remove any existing alias for ls
+unalias ls 2>/dev/null
+# Define ls function
+# ls -G is the default alias for whatever reason
+ls() {
+  if command -v eza >/dev/null 2>&1; then
+    eza "$@" || command ls -G "$@"
+  else
+    command ls -G "$@"
+  fi
+}
+
+# carapace setup
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
+# Bind Ctrl-P / Ctrl-N to navigate completion menu
+bindkey -M menuselect '^P' up-line-or-history
+bindkey -M menuselect '^N' down-line-or-history
