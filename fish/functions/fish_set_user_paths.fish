@@ -41,6 +41,7 @@ function fish_set_user_paths
     addToPath $HOME/.cargo/bin
     addToPath $HOME/go/bin
     addToPath $HOME/.config/emacs/bin
+    addToPath $HOME/programs/flutter/bin
     addToPath /opt/homebrew/opt/llvm/bin
     addToPath /opt/homebrew/Cellar/openjdk/23/bin
 

@@ -1,242 +1,141 @@
 {
-  "breadcrumbs.enabled": false,
+  "files.autoSave": "onWindowChange",
+  "editor.fontSize": 17,
+  "editor.cursorStyle": "block",
+  "editor.cursorBlinking": "solid",
+  "editor.wordWrap": "off",
+  "editor.lineNumbers": "off",
+  "editor.minimap.enabled": false,
   "editor.scrollbar.vertical": "hidden",
   "editor.scrollbar.horizontal": "hidden",
-  "editor.fontSize": 17,
-  "editor.matchBrackets": "never",
-  "editor.hideCursorInOverviewRuler": true,
-  "editor.overviewRulerBorder": false,
-  "editor.glyphMargin": false,
-  // This is for making the base-atelier-dune theme looks smooth on the variables
-  "editor.tokenColorCustomizations": {
-    //"variables": "#a6a28c",
-    "comments": "#2ea542",
-  },
-  // Suggestions
-  "editor.wordBasedSuggestions": false,
-  "editor.acceptSuggestionOnEnter": "on",
-  "editor.quickSuggestions": {
-    "other": true,
-    "comments": false,
-    "strings": false
-  },
-  "editor.roundedSelection": false,
-  "editor.minimap.enabled": false,
   "editor.renderLineHighlight": "none",
-  "editor.cursorStyle": "block",
-  "editor.lineNumbers": "off",
-  "editor.cursorBlinking": "solid",
-  "editor.folding": false,
-  "editor.autoClosingBrackets": "never",
-  "editor.insertSpaces": false,
+  "editor.smoothScrolling": true,
+  "editor.mouseWheelZoom": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.cursorSurroundingLines": 10,
   "editor.formatOnSave": true,
-  "diffEditor.renderSideBySide": false,
-  // Vim setup
-  "vim.enableNeovim": false,
+  "editor.guides.indentation": false,
+  "editor.tabSize": 4,
+
+  // Vim plugin settings
+  "vim.enableNeovim": true,
   "vim.neovimPath": "/usr/bin/nvim",
-  "vim.searchHighlightColor": "rgba(150, 255, 255, 0.3)",
-  "vim.leader": "<space>",
-  "vim.cursorStylePerMode.insert": "block",
-  "vim.easymotion": true,
-  "vim.incsearch": true,
+  "vim.neovimUseConfigFile": true,
   "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.easymotion": true,
+  "vim.leader": "<space>",
+  "vim.localleader": "\\",
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false
   },
-  "vim.insertModeKeyBindings": [
-    {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    }
+
+  // Neovim plugin and LazyVim settings
+  "vim.autoformat": true,
+  "vim.snacks_animate": true,
+  "vim.lazyvim_picker": "auto",
+  "vim.lazyvim_cmp": "auto",
+  "vim.ai_cmp": true,
+  "vim.root_spec": ["lsp", [".git", "lua"], "cwd"],
+  "vim.root_lsp_ignore": ["copilot"],
+  "vim.deprecation_warnings": false,
+  "vim.trouble_lualine": true,
+
+  // Neovim Options (translate vim.opt settings)
+  "vim.autowrite": true,
+  "vim.clipboard": "unnamedplus",
+  "vim.completeopt": "menu,menuone,noselect",
+  "vim.conceallevel": 2,
+  "vim.confirm": true,
+  "vim.cursorline": true,
+  "vim.expandtab": true,
+  "vim.fillchars": {
+    "foldopen": "",
+    "foldclose": "",
+    "fold": " ",
+    "foldsep": " ",
+    "diff": "╱",
+    "eob": " "
+  },
+  "vim.foldlevel": 99,
+  "vim.formatoptions": "jcroqlnt",
+  "vim.grepformat": "%f:%l:%c:%m",
+  "vim.grepprg": "rg --vimgrep",
+  "vim.ignorecase": true,
+  "vim.inccommand": "nosplit",
+  "vim.jumpoptions": "view",
+  "vim.laststatus": 3,
+  "vim.linebreak": true,
+  "vim.list": true,
+  "vim.mouse": "a",
+  "vim.number": true,
+  "vim.pumblend": 10,
+  "vim.pumheight": 10,
+  "vim.relativenumber": true,
+  "vim.scrolloff": 4,
+  "vim.sessionoptions": [
+    "buffers",
+    "curdir",
+    "tabpages",
+    "winsize",
+    "help",
+    "globals",
+    "skiprtp",
+    "folds"
   ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": [
-        "<leader>",
-        "d"
-      ],
-      "after": [
-        "d",
-        "d"
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "i"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.terminal.focus"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "u"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.focusActiveEditorGroup"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "p"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.quickOpen"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "o"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.quickOpen"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "n"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.terminal.toggleTerminal"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "v"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.splitEditor"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "h"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.focusFirstEditorGroup"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<leader>",
-        "l"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": "workbench.action.focusSecondEditorGroup"
-        }
-      ]
-    },
-    {
-      "before": [
-        "<C-n>"
-      ],
-      "after": [],
-      "commands": [
-        {
-          "command": ":nohl"
-        }
-      ]
-    }
-  ],
-  "workbench.startupEditor": "newUntitledFile",
-  "javascript.format.enable": false,
-  "window.closeWhenEmpty": true,
-  "diffEditor.renderIndicators": false,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "go.buildFlags": [
-    "-v"
-  ],
-  "go.useLanguageServer": true,
-  "go.autocompleteUnimportedPackages": true,
-  "go.testEnvFile": "",
-  "go.toolsManagement.autoUpdate": true,
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
-  },
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "editor.cursorSurroundingLines": 10,
-  "workbench.enableExperiments": false,
-  "workbench.activityBar.visible": false,
-  "explorer.compactFolders": false,
-  "telemetry.telemetryLevel": "off",
-  "vim.cursorStylePerMode.normal": "block",
-  "vim.neovimUseConfigFile": true,
-  "explorer.confirmDragAndDrop": false,
-  "editor.tabSize": 4,
-  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
-  "editor.wordWrap": "off",
-  "extensions.ignoreRecommendations": true,
-  "editor.guides.indentation": false,
-  "workbench.colorCustomizations": {
-    // "editorError.foreground": "#3a2525",
-    // "editorWarning.foreground": "#00000000",
-    // "editorInfo.foreground": "#00000000",
-  },
-  "workbench.colorTheme": "Gruvbox Dark Hard",
-  "rust-analyzer.inlayHints.parameterHints.enable": false,
-  "rust-analyzer.inlayHints.typeHints.enable": false,
-  "rust-analyzer.inlayHints.typeHints.hideClosureInitialization": false,
-  "rust-analyzer.inlayHints.typeHints.hideNamedConstructor": false,
-  "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": false,
-  "rust-analyzer.inlayHints.reborrowHints.enable": "never",
-  "rust-analyzer.inlayHints.chainingHints.enable": false,
-  "rust-analyzer.inlayHints.bindingModeHints.enable": false,
-  "rust-analyzer.inlayHints.renderColons": false,
-  "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "never",
-  "rust-analyzer.inlayHints.closingBraceHints.enable": false,
-  "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "never",
-  "rust-analyzer.inlayHints.closingBraceHints.minLines": 0,
-  "rust-analyzer.completion.callable.snippets": "none",
-  "rust-analyzer.semanticHighlighting.doc.comment.inject.enable": false,
-  "rust-analyzer.procMacro.ignored": {}
+  "vim.shiftround": true,
+  "vim.shiftwidth": 2,
+  "vim.shortmess": { "W": true, "I": true, "c": true, "C": true },
+  "vim.showmode": false,
+  "vim.sidescrolloff": 8,
+  "vim.signcolumn": "yes",
+  "vim.smartcase": true,
+  "vim.smartindent": true,
+  "vim.spelllang": ["en"],
+  "vim.splitbelow": true,
+  "vim.splitkeep": "screen",
+  "vim.splitright": true,
+  "vim.statuscolumn": "v:lua.require'snacks.statuscolumn'.get()",
+  "vim.tabstop": 2,
+  "vim.termguicolors": true,
+  "vim.timeoutlen": 1000,
+  "vim.undofile": true,
+  "vim.undolevels": 10000,
+  "vim.updatetime": 200,
+  "vim.virtualedit": "block",
+  "vim.wildmode": "longest:full,full",
+  "vim.winminwidth": 5,
+  "vim.wrap": false,
+
+  // Keybindings
+  "vim.keybindings": [
+    { "key": "space f f", "command": "workbench.action.quickOpen" },
+    { "key": "space f r", "command": "workbench.action.openRecent" },
+    { "key": "space /", "command": "workbench.action.findInFiles" },
+    { "key": "space w", "command": "workbench.action.files.save" },
+    { "key": "space q", "command": "workbench.action.closeWindow" },
+    { "key": "space x", "command": "workbench.action.closeActiveEditor" },
+    { "key": "space n", "command": "workbench.action.terminal.toggleTerminal" },
+    { "key": "space l", "command": "workbench.action.nextEditor" },
+    { "key": "space h", "command": "workbench.action.previousEditor" },
+    { "key": "space u", "command": "workbench.view.explorer" },
+    { "key": "space b d", "command": "workbench.action.closeActiveEditor" },
+    { "key": "space b a", "command": "workbench.action.closeAllEditors" },
+    { "key": "space s v", "command": "workbench.action.splitEditorRight" },
+    { "key": "space c s", "command": "workbench.action.openSettings" },
+    { "key": "space f m", "command": "editor.action.formatDocument" },
+    { "key": "C-s", "command": "workbench.action.files.save" }, // Save file (Ctrl+s)
+    { "key": "C-h", "command": "workbench.action.navigateBack" }, // Move to the Left Window (Ctrl+h)
+    { "key": "C-j", "command": "workbench.action.navigateDown" }, // Move to the Lower Window (Ctrl+j)
+    { "key": "C-k", "command": "workbench.action.navigateUp" }, // Move to the Upper Window (Ctrl+k)
+    { "key": "C-l", "command": "workbench.action.navigateForward" }, // Move to the Right Window (Ctrl+l)
+    { "key": "A-j", "command": "editor.action.moveLinesDownAction" }, // Move line down (Alt+j)
+    { "key": "A-k", "command": "editor.action.moveLinesUpAction" }, // Move line up (Alt+k)
+    { "key": "shift+alt+down", "command": "editor.action.moveLinesDownAction" }, // Move line down (Alt+Down)
+    { "key": "shift+alt+up", "command": "editor.action.moveLinesUpAction" }, // Move line up (Alt+Up)
+    { "key": "C-s", "command": "editor.action.save" } // Save File (Ctrl+s)
+  ]
 }
