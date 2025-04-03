@@ -269,7 +269,9 @@ symbol = "rb "
 symbol = "rs "
 
 [scala]
-symbol = "scala "
+detect_extensions = ["scala", "sbt"]
+detect_files = ["build.sbt", "build.sc"]
+detect_folders = ["project"]
 
 [spack]
 symbol = "spack "
