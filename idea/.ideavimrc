@@ -2,7 +2,7 @@
 "   the same commands as the original .vimrc configuration.
 " You can find a list of commands here: https://jb.gg/h38q75
 " Find more examples here: https://jb.gg/share-ideavimrc
-set ideajoin
+
 
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
@@ -23,6 +23,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-commentary'
 " NerdTree plugin
 Plug 'preservim/nerdtree'
+set NERDTree
 
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
@@ -49,6 +50,18 @@ set hlsearch
 set ignorecase
 set smartcase
 
+" Do incremental searching.
+set incsearch
+
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+set ideajoin
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 
@@ -63,5 +76,23 @@ nnoremap <leader>ff :action SearchEverywhere<CR>
 nnoremap <leader>sg :action FindInPath<CR>
 imap jj <Esc>
 
+"nvim like copy paste
+nnoremap cp "+p
+nnoremap cP "+P
+nnoremap cy "+y
+nnoremap cY "+Y
+
+xmap cp "+p
+xmap cP "+P
+xmap cy "+y
+xmap cY "+Y
+
+"nvim like save c-s
+imap <C-s> <Esc>:w<CR>
+xmap <C-s> <Esc>:w<CR>
+nmap <C-s> :w<CR>
+smap <C-s> <Esc>:w<CR>
+
+"nvim like move line
 vmap J :m '>+1<CR>gv=gv
 vmap K :m '>-2<CR>gv=gv
