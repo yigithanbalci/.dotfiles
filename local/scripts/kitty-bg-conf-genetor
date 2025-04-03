@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+BG_IMG="$HOME/Pictures/wallpapers/default.jpg"
+CONF_DIR="$HOME/.config/kitty"
+BG_CONF="$CONF_DIR/bg.conf"
+
+if [[ -f "$BG_IMG" ]]; then
+  echo "background_image $BG_IMG" > "$BG_CONF"
+else
+  echo "# background_image not set, fallback to default background color" > "$BG_CONF"
+fi

@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# Only run on macOS
+if [[ "$(uname)" == "Darwin" ]]; then
+  # Apple Silicon (M1/M2/M3 Macs)
+  if [[ -d "/opt/homebrew" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  # Intel Macs
+  elif [[ -d "/usr/local/Homebrew" ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+fi
+
+# If a parameter is passed, use it as preferred shell and export it
+if [[ -n "$1" ]]; then
+  export PREFERRED_SHELL="$1"
+elif [[ -z "$PREFERRED_SHELL" ]]; then
+  # If no parameter and PREFERRED_SHELL not set, default to fish
+  export PREFERRED_SHELL=fish
+fi
+
+# Default fallback shells
+FALLBACK_SHELLS=(fish zsh bash)
+
+# Try preferred shell first
+PREF_PATH=$(command -v "$PREFERRED_SHELL" 2>/dev/null)
+if [[ -x "$PREF_PATH" ]]; then
+  exec "$PREF_PATH" --login --interactive
+else
+  echo "Warning: Preferred shell '$PREFERRED_SHELL' not found or not executable. Falling back..."
+fi
+
+# Try fallback shells excluding preferred shell (already tried)
+for shell in "${FALLBACK_SHELLS[@]}"; do
+  if [[ "$shell" == "$PREFERRED_SHELL" ]]; then
+    continue
+  fi
+  SHELL_PATH=$(command -v "$shell" 2>/dev/null)
+  if [[ -x "$SHELL_PATH" ]]; then
+    exec "$SHELL_PATH" --login --interactive
+  fi
+done
+
+echo "Error: None of the preferred shells (fish, zsh, bash) were found in PATH"
+exit 1
