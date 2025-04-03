@@ -12,3 +12,9 @@ source $HOME/.config/fish/env.vars.fish
 fzf --fish | source
 
 starship init fish | source
+if status is-interactive
+    # Do not run fastfetch if inside Neovim jobs (check for NVIM env var)
+    if not set -q NVIM
+        fastfetch
+    end
+end
