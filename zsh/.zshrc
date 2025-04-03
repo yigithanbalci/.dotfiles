@@ -170,13 +170,28 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
+#Ruby 
+if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+  export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
+
 # Use Bat-extras for man pages in zsh/bash:
 eval "$(batman --export-env)"
 
 # Use Bat (by itself) for man pages:
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# Use Nvim for Man Pages
+# NOTE: MANPAGER is overriden here, in zshrc batman is there
+export MANPAGER='nvim +Man! -'
 
 # Use less for man syntax highlighting:
 # export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
 eval "$(starship init zsh)"
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/yigithanbalci/.dart-cli-completion/zsh-config.zsh ]] && . /Users/yigithanbalci/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
