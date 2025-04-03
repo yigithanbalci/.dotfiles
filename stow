@@ -3,3 +3,4 @@
 stow .
 stow local --target=$HOME/.local
 stow zsh --target=$HOME
+stow idea --target=$HOME
