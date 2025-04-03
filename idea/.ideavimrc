@@ -23,7 +23,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-commentary'
 " NerdTree plugin
 Plug 'preservim/nerdtree'
-set NERDTree
+"set NERDTree
 " vim-surround
 Plug 'tpope/vim-surround'
 " which-key
@@ -73,7 +73,7 @@ nnoremap <C-d> <C-d>zz
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapJumpParent='h'
 " sometimes not working if :NerdTree isn't run before, solve this
-nmap <leader>e :NerdTreeToggle<CR>
+nmap <leader>e :NERDTreeToggle<CR>
 
 "nvim like searching mappings
 nnoremap <leader>ff :action SearchEverywhere<CR>
