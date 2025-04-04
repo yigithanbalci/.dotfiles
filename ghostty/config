@@ -10,3 +10,5 @@ adjust-cell-height = 15%
 adjust-cell-width = 5%
 
 command = /opt/homebrew/bin/fish --login --interactive
+
+custom-shader = ./shaders/inside-the-matrix.glsl
