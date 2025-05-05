@@ -130,3 +130,8 @@ nnoremap <leader>du :action ToggleDebuggerUI<CR>
 nnoremap <leader>de :action EvaluateExpression<CR>
 
 "TODO: make NERDTree work like mini.nvim tree or oil.nvim
+
+"Terminal mappings
+"TODO: Fix this to make it like neovim
+nnoremap <c-/> :action ActivateTerminal<CR>
+tnoremap <Esc> <C-\><C-n>
