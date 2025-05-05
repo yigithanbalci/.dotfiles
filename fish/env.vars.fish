@@ -12,7 +12,7 @@ if test "$OS_NAME" = Darwin
     # Set vars from Homebrew 
     set -x LDFLAGS -L/opt/homebrew/opt/llvm/lib
     set -x CPPFLAGS -I/opt/homebrew/opt/llvm/include
-    set -x JAVA_HOME /opt/homebrew/Cellar/openjdk/23
+    set -x JAVA_HOME /opt/homebrew/Cellar/openjdk@21/21.0.7/
     set -x SHELL /opt/homebrew/bin/fish
 end
 
