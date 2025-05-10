@@ -12,7 +12,7 @@ if test "$OS_NAME" = Darwin
     # Set vars from Homebrew 
     set -x LDFLAGS -L/opt/homebrew/opt/llvm/lib
     set -x CPPFLAGS -I/opt/homebrew/opt/llvm/include
-    set -x JAVA_HOME /opt/homebrew/Cellar/openjdk/23
+    set -x JAVA_HOME /opt/homebrew/Cellar/openjdk@21/21.0.7/
     set -x SHELL /opt/homebrew/bin/fish
 end
 
@@ -24,7 +24,7 @@ set SECRETS_FILE "$HOME/.shell_secrets"
 if test -f "$SECRETS_FILE"
     # Source the file if it exists
     source $SECRETS_FILE
-    echo ".shell_secrets file sourced successfully."
+    #echo ".shell_secrets file sourced successfully."
 else
-    echo ".shell_secrets file does not exist."
+    #echo ".shell_secrets file does not exist."
 end
