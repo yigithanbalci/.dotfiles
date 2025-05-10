@@ -78,6 +78,7 @@ nmap <leader>e :NERDTreeToggle<CR>
 "nvim like searching mappings
 nnoremap <leader>ff :action SearchEverywhere<CR>
 nnoremap <leader>sg :action FindInPath<CR>
+nnoremap <leader><leader> :action Switcher<CR>
 imap jj <Esc>
 
 "nvim like capital and normal mappings
