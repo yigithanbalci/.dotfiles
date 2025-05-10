@@ -141,3 +141,7 @@ nnoremap <leader>dB :action EditBreakpoint<CR>
 "TODO: Fix this to make it like neovim
 nnoremap <c-/> :action ActivateTerminal<CR>
 tnoremap <Esc> <C-\><C-n>
+
+"Mappings for changing windows
+nnoremap <C-h> :action SelectPreviousWindow<CR>
+nnoremap <C-l> :action SelectNextWindow<CR>
