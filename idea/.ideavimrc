@@ -128,6 +128,11 @@ nnoremap <F5> :action ResumeProgram<CR>
 nnoremap <leader>dc :action ResumeProgram<CR>
 nnoremap <leader>du :action ToggleDebuggerUI<CR>
 nnoremap <leader>de :action EvaluateExpression<CR>
+nnoremap <leader>db :action ToggleLineBreakpoint<CR>
+nnoremap <leader>de :action EvaluateExpression<CR>
+nnoremap <leader>dc :action Debugger.RunToCursor<CR>
+nnoremap <leader>dB :action EditBreakpoint<CR>
+
 
 "TODO: make NERDTree work like mini.nvim tree or oil.nvim
 
