@@ -150,3 +150,6 @@ tnoremap <Esc> <C-\><C-n>
 "Mappings for changing windows
 nnoremap <C-h> :action SelectPreviousWindow<CR>
 nnoremap <C-l> :action SelectNextWindow<CR>
+
+"Rename
+nmap <leader>cr <Action>(RenameElement)
