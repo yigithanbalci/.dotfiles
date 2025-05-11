@@ -108,6 +108,11 @@ smap <C-s> <Esc>:w<CR>
 vmap J :m '>+1<CR>gv=gv
 vmap K :m '>-2<CR>gv=gv
 
+" Go to definition
+nmap gd <Action>(GotoDeclaration)
+" Go to references/usages
+nmap gr <Action>(FindUsages)
+
 "nvim neotest like mappings
 nnoremap <leader>tt :action RunCurrentFile<CR>
 nnoremap <leader>tT :action RunAllTests<CR>
