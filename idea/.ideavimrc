@@ -153,3 +153,8 @@ nnoremap <C-l> :action SelectNextWindow<CR>
 
 "Rename
 nmap <leader>cr <Action>(RenameElement)
+
+"Scroll to center
+nmap zz <Action>(EditorScrollToCenter)
+"Fold-unfold toggle
+nmap za <Action>(CollapseExpandRegion)
