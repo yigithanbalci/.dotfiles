@@ -1,0 +1,61 @@
+[
+  // Clear search highlight
+  {
+    "key": "ctrl+n",
+    "command": "editor.action.clearHighlight"
+  },
+  // Open terminal (like <leader>n)
+  {
+    "key": "space n",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "editorTextFocus"
+  },
+  // Focus terminal (like <leader>i)
+  {
+    "key": "space i",
+    "command": "workbench.action.terminal.focus",
+    "when": "editorTextFocus"
+  },
+  // Focus editor from terminal (like <leader>u)
+  {
+    "key": "space u",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  },
+  // Quick open (like <leader>p)
+  {
+    "key": "space p",
+    "command": "workbench.action.quickOpen",
+    "when": "editorTextFocus"
+  },
+  // Split editor vertically (like <leader>v)
+  {
+    "key": "space v",
+    "command": "workbench.action.splitEditor",
+    "when": "editorTextFocus"
+  },
+  // Focus left editor group (like <leader>h)
+  {
+    "key": "space h",
+    "command": "workbench.action.focusPreviousGroup",
+    "when": "editorTextFocus"
+  },
+  // Focus right editor group (like <leader>l)
+  {
+    "key": "space l",
+    "command": "workbench.action.focusNextGroup",
+    "when": "editorTextFocus"
+  },
+  // Delete line (like <leader>d)
+  {
+    "key": "space d",
+    "command": "editor.action.deleteLines",
+    "when": "editorTextFocus"
+  },
+  // Cancel search highlight explicitly (useful as fallback)
+  {
+    "key": "space esc",
+    "command": "editor.action.clearHighlight",
+    "when": "editorFocus"
+  }
+]
