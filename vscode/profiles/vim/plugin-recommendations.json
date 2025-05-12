@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "asvetliakov.vscode-neovim", // Neovim backend inside VSCode
+    "morhetz.gruvbox", // Gruvbox color theme (dark hard)
+    "pkief.material-icon-theme", // File icons (material icons)
+    "github.copilot", // Copilot inline suggestions (optional like LazyVim AI)
+    "eamodio.gitlens", // GitLens (Git integration)
+    "esbenp.prettier-vscode", // Prettier (formatter)
+    "rust-lang.rust-analyzer", // Rust analyzer (if using Rust)
+    "ms-python.python", // Python LSP (optional)
+    "dbaeumer.vscode-eslint", // ESLint (for JS/TS linting)
+    "formulahendry.auto-rename-tag", // Auto rename paired HTML/XML tags (like LazyVim)
+    "bradlc.vscode-tailwindcss" // TailwindCSS (if using Tailwind)
+  ]
+}

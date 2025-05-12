@@ -1,62 +1,17 @@
 [
-  {
-    "key": "space f f",
-    "command": "workbench.action.quickOpen"
-  },
-  {
-    "key": "space f r",
-    "command": "workbench.action.openRecent"
-  },
-  {
-    "key": "space /",
-    "command": "workbench.action.findInFiles"
-  },
-  {
-    "key": "space w",
-    "command": "workbench.action.files.save"
-  },
-  {
-    "key": "space q",
-    "command": "workbench.action.closeWindow"
-  },
-  {
-    "key": "space x",
-    "command": "workbench.action.closeActiveEditor"
-  },
-  {
-    "key": "space n",
-    "command": "workbench.action.terminal.toggleTerminal"
-  },
-  {
-    "key": "space l",
-    "command": "workbench.action.nextEditor"
-  },
-  {
-    "key": "space h",
-    "command": "workbench.action.previousEditor"
-  },
-  {
-    "key": "space u",
-    "command": "workbench.view.explorer"
-  },
-  {
-    "key": "space b d",
-    "command": "workbench.action.closeActiveEditor"
-  },
-  {
-    "key": "space b a",
-    "command": "workbench.action.closeAllEditors"
-  },
-  {
-    "key": "space s v",
-    "command": "workbench.action.splitEditorRight"
-  },
-  {
-    "key": "space c s",
-    "command": "workbench.action.openSettings"
-  },
-  {
-    "key": "space f m",
-    "command": "editor.action.formatDocument"
-  }
+  { "key": "space f f", "command": "workbench.action.quickOpen" },
+  { "key": "space f r", "command": "workbench.action.openRecent" },
+  { "key": "space /", "command": "workbench.action.findInFiles" },
+  { "key": "space w", "command": "workbench.action.files.save" },
+  { "key": "space q", "command": "workbench.action.closeWindow" },
+  { "key": "space x", "command": "workbench.action.closeActiveEditor" },
+  { "key": "space n", "command": "workbench.action.terminal.toggleTerminal" },
+  { "key": "space l", "command": "workbench.action.nextEditor" },
+  { "key": "space h", "command": "workbench.action.previousEditor" },
+  { "key": "space u", "command": "workbench.view.explorer" },
+  { "key": "space b d", "command": "workbench.action.closeActiveEditor" },
+  { "key": "space b a", "command": "workbench.action.closeAllEditors" },
+  { "key": "space s v", "command": "workbench.action.splitEditorRight" },
+  { "key": "space c s", "command": "workbench.action.openSettings" },
+  { "key": "space f m", "command": "editor.action.formatDocument" }
 ]

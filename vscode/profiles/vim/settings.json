@@ -1,23 +1,22 @@
 {
-  // General
   "files.autoSave": "onFocusChange",
   "editor.fontSize": 17,
-  "editor.wordWrap": "off",
-  "editor.formatOnSave": true,
-  "editor.tabSize": 4,
   "editor.cursorStyle": "block",
   "editor.cursorBlinking": "solid",
-  "editor.minimap.enabled": false,
-  "editor.renderLineHighlight": "none",
+  "editor.wordWrap": "off",
   "editor.lineNumbers": "off",
-  "editor.guides.indentation": false,
+  "editor.minimap.enabled": false,
   "editor.scrollbar.vertical": "hidden",
   "editor.scrollbar.horizontal": "hidden",
+  "editor.renderLineHighlight": "none",
   "editor.smoothScrolling": true,
   "editor.mouseWheelZoom": true,
-  "editor.inlineSuggest.enabled": true,
   "editor.stickyScroll.enabled": true,
+  "editor.inlineSuggest.enabled": true,
   "editor.cursorSurroundingLines": 10,
+  "editor.formatOnSave": true,
+  "editor.guides.indentation": false,
+  "editor.tabSize": 4,
 
   // Neovim plugin setup
   "vim.enableNeovim": true,
@@ -26,8 +25,6 @@
   "vim.useSystemClipboard": true,
   "vim.hlsearch": true,
   "vim.incsearch": true,
-  "vim.cursorStylePerMode.normal": "block",
-  "vim.cursorStylePerMode.insert": "block",
   "vim.easymotion": true,
   "vim.leader": "<space>",
   "vim.handleKeys": {
@@ -35,75 +32,7 @@
     "<C-f>": false
   },
 
-  // Custom key mappings inside Neovim plugin
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<leader>", "n"],
-      "commands": ["workbench.action.terminal.toggleTerminal"]
-    },
-    {
-      "before": ["<leader>", "u"],
-      "commands": ["workbench.view.explorer"]
-    },
-    {
-      "before": ["<leader>", "p"],
-      "commands": ["workbench.action.quickOpen"]
-    },
-    {
-      "before": ["<leader>", "/"],
-      "commands": ["workbench.action.findInFiles"]
-    },
-    {
-      "before": ["<leader>", "f", "f"],
-      "commands": ["workbench.action.quickOpen"]
-    },
-    {
-      "before": ["<leader>", "f", "r"],
-      "commands": ["workbench.action.openRecent"]
-    },
-    {
-      "before": ["<leader>", "w"],
-      "commands": ["workbench.action.files.save"]
-    },
-    {
-      "before": ["<leader>", "q"],
-      "commands": ["workbench.action.closeWindow"]
-    },
-    {
-      "before": ["<leader>", "x"],
-      "commands": ["workbench.action.closeActiveEditor"]
-    },
-    {
-      "before": ["<leader>", "l"],
-      "commands": ["workbench.action.nextEditor"]
-    },
-    {
-      "before": ["<leader>", "h"],
-      "commands": ["workbench.action.previousEditor"]
-    },
-    {
-      "before": ["<leader>", "b", "d"],
-      "commands": ["workbench.action.closeActiveEditor"]
-    },
-    {
-      "before": ["<leader>", "b", "a"],
-      "commands": ["workbench.action.closeAllEditors"]
-    },
-    {
-      "before": ["<leader>", "s", "v"],
-      "commands": ["workbench.action.splitEditorRight"]
-    },
-    {
-      "before": ["<leader>", "f", "m"],
-      "commands": ["editor.action.formatDocument"]
-    },
-    {
-      "before": ["<leader>", "c", "s"],
-      "commands": ["workbench.action.openSettings"]
-    }
-  ],
-
-  // Theme & Icons
+  // Theme & UI
   "workbench.colorTheme": "Gruvbox Dark Hard",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.activityBar.visible": false,
@@ -112,25 +41,23 @@
   "explorer.compactFolders": false,
   "explorer.confirmDragAndDrop": false,
 
-  // LSP & Language features
+  // LSP & languages
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "javascript.suggest.completeFunctionCalls": true,
   "typescript.suggest.completeFunctionCalls": true,
 
-  // Rust example config (optional)
+  // Rust (optional example)
   "rust-analyzer.inlayHints.parameterHints.enable": false,
   "rust-analyzer.inlayHints.typeHints.enable": false,
 
-  // Performance
+  // Disable telemetry and distractions
+  "redhat.telemetry.enabled": false,
+  "telemetry.telemetryLevel": "off",
+  "extensions.ignoreRecommendations": true,
   "files.watcherExclude": {
     "**/.bloop": true,
     "**/.metals": true,
     "**/.ammonite": true
-  },
-  "redhat.telemetry.enabled": false,
-  "telemetry.telemetryLevel": "off",
-
-  // Ignore recommendations (like LazyVim disables Vim's recommendations)
-  "extensions.ignoreRecommendations": true
+  }
 }
