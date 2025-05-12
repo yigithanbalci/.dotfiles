@@ -18,6 +18,7 @@ addToPath $HOME/go/bin
 addToPath $HOME/.config/emacs/bin
 addToPath /opt/homebrew/opt/llvm/bin
 addToPath $JAVA_HOME/bin
+addToPath $HOME/programs/flutter/bin/
 
 # os specific tasks
 osSpecificTasks() {
