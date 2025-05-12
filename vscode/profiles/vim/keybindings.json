@@ -1,61 +1,62 @@
 [
-  // Clear search highlight
   {
-    "key": "ctrl+n",
-    "command": "editor.action.clearHighlight"
+    "key": "space f f",
+    "command": "workbench.action.quickOpen"
   },
-  // Open terminal (like <leader>n)
+  {
+    "key": "space f r",
+    "command": "workbench.action.openRecent"
+  },
+  {
+    "key": "space /",
+    "command": "workbench.action.findInFiles"
+  },
+  {
+    "key": "space w",
+    "command": "workbench.action.files.save"
+  },
+  {
+    "key": "space q",
+    "command": "workbench.action.closeWindow"
+  },
+  {
+    "key": "space x",
+    "command": "workbench.action.closeActiveEditor"
+  },
   {
     "key": "space n",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "editorTextFocus"
+    "command": "workbench.action.terminal.toggleTerminal"
   },
-  // Focus terminal (like <leader>i)
-  {
-    "key": "space i",
-    "command": "workbench.action.terminal.focus",
-    "when": "editorTextFocus"
-  },
-  // Focus editor from terminal (like <leader>u)
-  {
-    "key": "space u",
-    "command": "workbench.action.focusActiveEditorGroup",
-    "when": "terminalFocus"
-  },
-  // Quick open (like <leader>p)
-  {
-    "key": "space p",
-    "command": "workbench.action.quickOpen",
-    "when": "editorTextFocus"
-  },
-  // Split editor vertically (like <leader>v)
-  {
-    "key": "space v",
-    "command": "workbench.action.splitEditor",
-    "when": "editorTextFocus"
-  },
-  // Focus left editor group (like <leader>h)
-  {
-    "key": "space h",
-    "command": "workbench.action.focusPreviousGroup",
-    "when": "editorTextFocus"
-  },
-  // Focus right editor group (like <leader>l)
   {
     "key": "space l",
-    "command": "workbench.action.focusNextGroup",
-    "when": "editorTextFocus"
+    "command": "workbench.action.nextEditor"
   },
-  // Delete line (like <leader>d)
   {
-    "key": "space d",
-    "command": "editor.action.deleteLines",
-    "when": "editorTextFocus"
+    "key": "space h",
+    "command": "workbench.action.previousEditor"
   },
-  // Cancel search highlight explicitly (useful as fallback)
   {
-    "key": "space esc",
-    "command": "editor.action.clearHighlight",
-    "when": "editorFocus"
+    "key": "space u",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "space b d",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "space b a",
+    "command": "workbench.action.closeAllEditors"
+  },
+  {
+    "key": "space s v",
+    "command": "workbench.action.splitEditorRight"
+  },
+  {
+    "key": "space c s",
+    "command": "workbench.action.openSettings"
+  },
+  {
+    "key": "space f m",
+    "command": "editor.action.formatDocument"
   }
 ]

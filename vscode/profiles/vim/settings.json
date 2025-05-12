@@ -1,222 +1,136 @@
 {
-  // === General Editor Behavior ===
+  // General
   "files.autoSave": "onFocusChange",
-  "editor.wordWrap": "on",
-  "editor.tabSize": 2,
+  "editor.fontSize": 17,
+  "editor.wordWrap": "off",
   "editor.formatOnSave": true,
-  "editor.formatOnType": true,
-  "editor.suggestSelection": "first",
-  "editor.linkedEditing": true,
-  "editor.mouseWheelZoom": true,
-  "editor.cursorSurroundingLines": 10,
-  "editor.inlineSuggest.enabled": true,
-  "editor.stickyScroll.enabled": true,
-
-  // === Font & Appearance ===
-  "editor.fontSize": 18,
+  "editor.tabSize": 4,
   "editor.cursorStyle": "block",
   "editor.cursorBlinking": "solid",
-  "editor.lineNumbers": "off",
-  "editor.renderLineHighlight": "none",
   "editor.minimap.enabled": false,
+  "editor.renderLineHighlight": "none",
+  "editor.lineNumbers": "off",
+  "editor.guides.indentation": false,
   "editor.scrollbar.vertical": "hidden",
   "editor.scrollbar.horizontal": "hidden",
-  "editor.matchBrackets": "never",
-  "editor.roundedSelection": false,
-  "editor.glyphMargin": false,
-  "editor.folding": false,
-  "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+  "editor.smoothScrolling": true,
+  "editor.mouseWheelZoom": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.stickyScroll.enabled": true,
+  "editor.cursorSurroundingLines": 10,
 
-  // === Clipboard & Suggestions ===
-  "editor.wordBasedSuggestions": false,
-  "editor.acceptSuggestionOnEnter": "on",
-  "debug.console.acceptSuggestionOnEnter": "on",
-  "editor.quickSuggestions": {
-    "other": true,
-    "comments": false,
-    "strings": false
+  // Neovim plugin setup
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/bin/nvim",
+  "vim.neovimUseConfigFile": true,
+  "vim.useSystemClipboard": true,
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.cursorStylePerMode.insert": "block",
+  "vim.easymotion": true,
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
   },
 
-  // === Terminal ===
-  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  // Custom key mappings inside Neovim plugin
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "n"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    },
+    {
+      "before": ["<leader>", "u"],
+      "commands": ["workbench.view.explorer"]
+    },
+    {
+      "before": ["<leader>", "p"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "/"],
+      "commands": ["workbench.action.findInFiles"]
+    },
+    {
+      "before": ["<leader>", "f", "f"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<leader>", "f", "r"],
+      "commands": ["workbench.action.openRecent"]
+    },
+    {
+      "before": ["<leader>", "w"],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "commands": ["workbench.action.closeWindow"]
+    },
+    {
+      "before": ["<leader>", "x"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "l"],
+      "commands": ["workbench.action.nextEditor"]
+    },
+    {
+      "before": ["<leader>", "h"],
+      "commands": ["workbench.action.previousEditor"]
+    },
+    {
+      "before": ["<leader>", "b", "d"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["<leader>", "b", "a"],
+      "commands": ["workbench.action.closeAllEditors"]
+    },
+    {
+      "before": ["<leader>", "s", "v"],
+      "commands": ["workbench.action.splitEditorRight"]
+    },
+    {
+      "before": ["<leader>", "f", "m"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["<leader>", "c", "s"],
+      "commands": ["workbench.action.openSettings"]
+    }
+  ],
 
-  // === File & Workspace Management ===
-  "files.exclude": {
-    "**/.classpath": true,
-    "**/.project": true,
-    "**/.settings": true,
-    "**/.factorypath": true
-  },
+  // Theme & Icons
+  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.activityBar.visible": false,
+  "workbench.statusBar.visible": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "explorer.compactFolders": false,
+  "explorer.confirmDragAndDrop": false,
+
+  // LSP & Language features
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.suggest.completeFunctionCalls": true,
+  "typescript.suggest.completeFunctionCalls": true,
+
+  // Rust example config (optional)
+  "rust-analyzer.inlayHints.parameterHints.enable": false,
+  "rust-analyzer.inlayHints.typeHints.enable": false,
+
+  // Performance
   "files.watcherExclude": {
     "**/.bloop": true,
     "**/.metals": true,
     "**/.ammonite": true
   },
-  "workbench.activityBar.visible": false,
-  "workbench.startupEditor": "newUntitledFile",
-  "workbench.enableExperiments": false,
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Gruvbox Dark Hard",
-  "workbench.settings.applyToAllProfiles": [],
-  "explorer.compactFolders": false,
-  "explorer.confirmDragAndDrop": false,
-
-  // === Telemetry & Recommendations ===
-  "telemetry.telemetryLevel": "off",
   "redhat.telemetry.enabled": false,
-  "extensions.ignoreRecommendations": true,
+  "telemetry.telemetryLevel": "off",
 
-  // === Color & UI Customizations ===
-  "workbench.colorCustomizations": {},
-  "editor.tokenColorCustomizations": {
-    "comments": "#2ea542"
-  },
-
-  // === Language Specific Settings ===
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
-  },
-  "[javascript][html][cs][json][jsonc][typescript]": {
-    "editor.acceptSuggestionOnEnter": "on",
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[Go]": {
-    "editor.defaultFormatter": "golang.go"
-  },
-
-  // === Java ===
-  "java.format.settings.url": "~/.vscode/eclipse-java-google-style.xml",
-  "java.semanticHighlighting.enabled": true,
-
-  // === Go ===
-  "go.useLanguageServer": true,
-  "go.autocompleteUnimportedPackages": true,
-  "go.buildFlags": ["-v"],
-  "go.useCodeSnippetsOnFunctionSuggest": true,
-  "go.testEnvFile": "",
-  "go.toolsManagement.autoUpdate": true,
-
-  // === Rust Analyzer ===
-  "rust-analyzer.inlayHints.parameterHints.enable": false,
-  "rust-analyzer.inlayHints.typeHints.enable": false,
-  "rust-analyzer.inlayHints.typeHints.hideClosureInitialization": false,
-  "rust-analyzer.inlayHints.typeHints.hideNamedConstructor": false,
-  "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": false,
-  "rust-analyzer.inlayHints.reborrowHints.enable": "never",
-  "rust-analyzer.inlayHints.chainingHints.enable": false,
-  "rust-analyzer.inlayHints.bindingModeHints.enable": false,
-  "rust-analyzer.inlayHints.renderColons": false,
-  "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "never",
-  "rust-analyzer.inlayHints.closingBraceHints.enable": false,
-  "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "never",
-  "rust-analyzer.inlayHints.closingBraceHints.minLines": 0,
-  "rust-analyzer.completion.callable.snippets": "none",
-  "rust-analyzer.semanticHighlighting.doc.comment.inject.enable": false,
-  "rust-analyzer.procMacro.ignored": {},
-
-  // === CMake ===
-  "cmake.options.statusBarVisibility": "icon",
-  "cmake.configureOnOpen": true,
-  "cmake.additionalCompilerSearchDirs": [
-    "C:/msys64/mingw32/bin",
-    "C:/msys64/mingw64/bin",
-    "C:/msys64/clang32/bin",
-    "C:/msys64/clang64/bin",
-    "C:/msys64/clangarm64/bin",
-    "C:/msys64/ucrt64/bin"
-  ],
-
-  // === Dart/Flutter ===
-  "dart.flutterSdkPath": "/Users/yigithanbalci/programs/flutter",
-
-  // === Git ===
-  "git.autofetch": true,
-
-  // === Vim Plugin (asvetliakov.vscode-neovim) ===
-  "vim.enableNeovim": true,
-  "vim.neovimPath": "/usr/bin/nvim",
-  "vim.neovimUseConfigFile": true,
-  "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": true,
-  "vim.hlsearch": true,
-  "vim.incsearch": true,
-  "vim.easymotion": true,
-  "vim.leader": "<space>",
-  "vim.cursorStylePerMode.normal": "block",
-  "vim.cursorStylePerMode.insert": "block",
-  "vim.searchHighlightColor": "rgba(150, 255, 255, 0.3)",
-  "vim.handleKeys": {
-    "<C-a>": false,
-    "<C-f>": false
-  },
-  "vim.insertModeKeyBindings": [
-    {
-      "before": ["j", "j"],
-      "after": ["<Esc>"]
-    }
-  ],
-  "vim.normalModeKeyBindingsNonRecursive": [
-    {
-      "before": ["<leader>", "d"],
-      "after": ["d", "d"]
-    },
-    {
-      "before": ["<leader>", "i"],
-      "commands": [{ "command": "workbench.action.terminal.focus" }]
-    },
-    {
-      "before": ["<leader>", "u"],
-      "commands": [{ "command": "workbench.action.focusActiveEditorGroup" }]
-    },
-    {
-      "before": ["<leader>", "p"],
-      "commands": [{ "command": "workbench.action.quickOpen" }]
-    },
-    {
-      "before": ["<leader>", "n"],
-      "commands": [{ "command": "workbench.action.terminal.toggleTerminal" }]
-    },
-    {
-      "before": ["<leader>", "v"],
-      "commands": [{ "command": "workbench.action.splitEditor" }]
-    },
-    {
-      "before": ["<leader>", "h"],
-      "commands": [{ "command": "workbench.action.focusFirstEditorGroup" }]
-    },
-    {
-      "before": ["<leader>", "l"],
-      "commands": [{ "command": "workbench.action.focusSecondEditorGroup" }]
-    },
-    {
-      "before": ["<C-n>"],
-      "commands": [{ "command": ":nohl" }]
-    }
-  ],
-
-  // === Extensions Affinity ===
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  },
-
-  // === Misc ===
-  "rsp-ui.enableStartServerOnActivation": [
-    {
-      "id": "redhat.vscode-community-server-connector",
-      "name": "Community Server Connector",
-      "startOnActivation": true
-    }
-  ]
+  // Ignore recommendations (like LazyVim disables Vim's recommendations)
+  "extensions.ignoreRecommendations": true
 }
