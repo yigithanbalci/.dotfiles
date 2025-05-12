@@ -28,3 +28,9 @@ if test -f "$SECRETS_FILE"
 else
     #echo ".shell_secrets file does not exist."
 end
+
+# Ruby
+if test -d /opt/homebrew/opt/ruby/bin
+    set -x PATH /opt/homebrew/opt/ruby/bin $PATH
+    set -x PATH (gem environment gemdir)/bin $PATH
+end
