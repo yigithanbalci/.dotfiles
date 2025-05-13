@@ -1,5 +1,5 @@
 {
-  "files.autoSave": "onFocusChange",
+  "files.autoSave": "onWindowChange",
   "editor.fontSize": 17,
   "editor.cursorStyle": "block",
   "editor.cursorBlinking": "solid",
@@ -18,7 +18,7 @@
   "editor.guides.indentation": false,
   "editor.tabSize": 4,
 
-  // Neovim plugin setup
+  // Vim plugin settings
   "vim.enableNeovim": true,
   "vim.neovimPath": "/usr/bin/nvim",
   "vim.neovimUseConfigFile": true,
@@ -27,37 +27,86 @@
   "vim.incsearch": true,
   "vim.easymotion": true,
   "vim.leader": "<space>",
+  "vim.localleader": "\\",
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false
   },
 
-  // Theme & UI
-  "workbench.colorTheme": "Gruvbox Dark Hard",
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.activityBar.visible": false,
-  "workbench.statusBar.visible": true,
-  "workbench.startupEditor": "newUntitledFile",
-  "explorer.compactFolders": false,
-  "explorer.confirmDragAndDrop": false,
+  // Neovim plugin and LazyVim settings
+  "vim.autoformat": true,
+  "vim.snacks_animate": true,
+  "vim.lazyvim_picker": "auto",
+  "vim.lazyvim_cmp": "auto",
+  "vim.ai_cmp": true,
+  "vim.root_spec": ["lsp", [".git", "lua"], "cwd"],
+  "vim.root_lsp_ignore": ["copilot"],
+  "vim.deprecation_warnings": false,
+  "vim.trouble_lualine": true,
 
-  // LSP & languages
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "javascript.suggest.completeFunctionCalls": true,
-  "typescript.suggest.completeFunctionCalls": true,
-
-  // Rust (optional example)
-  "rust-analyzer.inlayHints.parameterHints.enable": false,
-  "rust-analyzer.inlayHints.typeHints.enable": false,
-
-  // Disable telemetry and distractions
-  "redhat.telemetry.enabled": false,
-  "telemetry.telemetryLevel": "off",
-  "extensions.ignoreRecommendations": true,
-  "files.watcherExclude": {
-    "**/.bloop": true,
-    "**/.metals": true,
-    "**/.ammonite": true
-  }
+  // Neovim Options (translate vim.opt settings)
+  "vim.autowrite": true,
+  "vim.clipboard": "unnamedplus",
+  "vim.completeopt": "menu,menuone,noselect",
+  "vim.conceallevel": 2,
+  "vim.confirm": true,
+  "vim.cursorline": true,
+  "vim.expandtab": true,
+  "vim.fillchars": {
+    "foldopen": "",
+    "foldclose": "",
+    "fold": " ",
+    "foldsep": " ",
+    "diff": "╱",
+    "eob": " "
+  },
+  "vim.foldlevel": 99,
+  "vim.formatoptions": "jcroqlnt",
+  "vim.grepformat": "%f:%l:%c:%m",
+  "vim.grepprg": "rg --vimgrep",
+  "vim.ignorecase": true,
+  "vim.inccommand": "nosplit",
+  "vim.jumpoptions": "view",
+  "vim.laststatus": 3,
+  "vim.linebreak": true,
+  "vim.list": true,
+  "vim.mouse": "a",
+  "vim.number": true,
+  "vim.pumblend": 10,
+  "vim.pumheight": 10,
+  "vim.relativenumber": true,
+  "vim.scrolloff": 4,
+  "vim.sessionoptions": [
+    "buffers",
+    "curdir",
+    "tabpages",
+    "winsize",
+    "help",
+    "globals",
+    "skiprtp",
+    "folds"
+  ],
+  "vim.shiftround": true,
+  "vim.shiftwidth": 2,
+  "vim.shortmess": { "W": true, "I": true, "c": true, "C": true },
+  "vim.showmode": false,
+  "vim.sidescrolloff": 8,
+  "vim.signcolumn": "yes",
+  "vim.smartcase": true,
+  "vim.smartindent": true,
+  "vim.spelllang": ["en"],
+  "vim.splitbelow": true,
+  "vim.splitkeep": "screen",
+  "vim.splitright": true,
+  "vim.statuscolumn": "v:lua.require'snacks.statuscolumn'.get()",
+  "vim.tabstop": 2,
+  "vim.termguicolors": true,
+  "vim.timeoutlen": 1000,
+  "vim.undofile": true,
+  "vim.undolevels": 10000,
+  "vim.updatetime": 200,
+  "vim.virtualedit": "block",
+  "vim.wildmode": "longest:full,full",
+  "vim.winminwidth": 5,
+  "vim.wrap": false
 }
