@@ -108,5 +108,34 @@
   "vim.virtualedit": "block",
   "vim.wildmode": "longest:full,full",
   "vim.winminwidth": 5,
-  "vim.wrap": false
+  "vim.wrap": false,
+
+  // Keybindings
+  "vim.keybindings": [
+    { "key": "space f f", "command": "workbench.action.quickOpen" },
+    { "key": "space f r", "command": "workbench.action.openRecent" },
+    { "key": "space /", "command": "workbench.action.findInFiles" },
+    { "key": "space w", "command": "workbench.action.files.save" },
+    { "key": "space q", "command": "workbench.action.closeWindow" },
+    { "key": "space x", "command": "workbench.action.closeActiveEditor" },
+    { "key": "space n", "command": "workbench.action.terminal.toggleTerminal" },
+    { "key": "space l", "command": "workbench.action.nextEditor" },
+    { "key": "space h", "command": "workbench.action.previousEditor" },
+    { "key": "space u", "command": "workbench.view.explorer" },
+    { "key": "space b d", "command": "workbench.action.closeActiveEditor" },
+    { "key": "space b a", "command": "workbench.action.closeAllEditors" },
+    { "key": "space s v", "command": "workbench.action.splitEditorRight" },
+    { "key": "space c s", "command": "workbench.action.openSettings" },
+    { "key": "space f m", "command": "editor.action.formatDocument" },
+    { "key": "C-s", "command": "workbench.action.files.save" }, // Save file (Ctrl+s)
+    { "key": "C-h", "command": "workbench.action.navigateBack" }, // Move to the Left Window (Ctrl+h)
+    { "key": "C-j", "command": "workbench.action.navigateDown" }, // Move to the Lower Window (Ctrl+j)
+    { "key": "C-k", "command": "workbench.action.navigateUp" }, // Move to the Upper Window (Ctrl+k)
+    { "key": "C-l", "command": "workbench.action.navigateForward" }, // Move to the Right Window (Ctrl+l)
+    { "key": "A-j", "command": "editor.action.moveLinesDownAction" }, // Move line down (Alt+j)
+    { "key": "A-k", "command": "editor.action.moveLinesUpAction" }, // Move line up (Alt+k)
+    { "key": "shift+alt+down", "command": "editor.action.moveLinesDownAction" }, // Move line down (Alt+Down)
+    { "key": "shift+alt+up", "command": "editor.action.moveLinesUpAction" }, // Move line up (Alt+Up)
+    { "key": "C-s", "command": "editor.action.save" } // Save File (Ctrl+s)
+  ]
 }

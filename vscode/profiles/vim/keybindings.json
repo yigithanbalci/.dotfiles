@@ -14,14 +14,45 @@
   { "key": "space s v", "command": "workbench.action.splitEditorRight" },
   { "key": "space c s", "command": "workbench.action.openSettings" },
   { "key": "space f m", "command": "editor.action.formatDocument" },
-  { "key": "C-s", "command": "workbench.action.files.save" }, // Save file (Ctrl+s)
-  { "key": "C-h", "command": "workbench.action.navigateBack" }, // Move to the Left Window (Ctrl+h)
-  { "key": "C-j", "command": "workbench.action.navigateDown" }, // Move to the Lower Window (Ctrl+j)
-  { "key": "C-k", "command": "workbench.action.navigateUp" }, // Move to the Upper Window (Ctrl+k)
-  { "key": "C-l", "command": "workbench.action.navigateForward" }, // Move to the Right Window (Ctrl+l)
-  { "key": "A-j", "command": "editor.action.moveLinesDownAction" }, // Move line down (Alt+j)
-  { "key": "A-k", "command": "editor.action.moveLinesUpAction" }, // Move line up (Alt+k)
-  { "key": "shift+alt+down", "command": "editor.action.moveLinesDownAction" }, // Move line down (Alt+Down)
-  { "key": "shift+alt+up", "command": "editor.action.moveLinesUpAction" }, // Move line up (Alt+Up)
-  { "key": "C-s", "command": "editor.action.save" } // Save File (Ctrl+s)
+  { "key": "C-s", "command": "workbench.action.files.save" },
+  { "key": "C-h", "command": "workbench.action.navigateBack" },
+  { "key": "C-j", "command": "workbench.action.navigateDown" },
+  { "key": "C-k", "command": "workbench.action.navigateUp" },
+  { "key": "C-l", "command": "workbench.action.navigateForward" },
+  { "key": "A-j", "command": "editor.action.moveLinesDownAction" },
+  { "key": "A-k", "command": "editor.action.moveLinesUpAction" },
+  { "key": "shift+alt+down", "command": "editor.action.moveLinesDownAction" },
+  { "key": "shift+alt+up", "command": "editor.action.moveLinesUpAction" },
+  { "key": "C-s", "command": "editor.action.save" },
+
+  // Additional Keybindings from Neovim Setup
+
+  { "key": "space p", "command": "editor.action.paste" },
+  { "key": "space y", "command": "editor.action.copy" },
+  { "key": "space d", "command": "editor.action.cut" },
+  { "key": "space f f", "command": "workbench.action.quickOpen" },
+  { "key": "space c p", "command": "editor.action.formatDocument" },
+
+  // Neovim-inspired Keybindings
+  { "key": "C-u", "command": "editor.action.scrollLineUp" },
+  { "key": "C-d", "command": "editor.action.scrollLineDown" },
+  { "key": "n", "command": "workbench.action.findInFiles" },
+  { "key": "N", "command": "workbench.action.searchBackwards" },
+
+  // Window Navigation (Neovim-inspired)
+  { "key": "C-Left", "command": "workbench.action.focusLeftGroup" },
+  { "key": "C-Right", "command": "workbench.action.focusRightGroup" },
+  { "key": "C-Up", "command": "workbench.action.focusAboveGroup" },
+  { "key": "C-Down", "command": "workbench.action.focusBelowGroup" },
+
+  // Resize Window Keybindings (Neovim-inspired)
+  { "key": "C-Left", "command": "workbench.action.resizeEditorLeft" },
+  { "key": "C-Right", "command": "workbench.action.resizeEditorRight" },
+  { "key": "C-Up", "command": "workbench.action.resizeEditorUp" },
+  { "key": "C-Down", "command": "workbench.action.resizeEditorDown" },
+
+  // Completion Settings (Neovim-inspired)
+  { "key": "C-Space", "command": "editor.action.triggerSuggest" },
+  { "key": "C-Enter", "command": "editor.action.acceptSuggestion" },
+  { "key": "C-Backspace", "command": "editor.action.deleteLeft" }
 ]
