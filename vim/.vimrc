@@ -1,106 +1,223 @@
-" Leader keys
+" Vim configuration matching merged nvim settings
+
+" Leader and Local Leader keys
 let mapleader = " "
 let maplocalleader = "\\"
 
-" Autoformatting (custom usage, no direct equivalent in plain Vim)
-let g:autoformat = 1
+" LazyVim auto format
+let g:autoformat = v:true
 
-" Snacks animations (hypothetical global variable)
-let g:snacks_animate = 1
+" Snacks animations
+let g:snacks_animate = v:true
 
-" Picker selection - not applicable directly, could integrate fzf.vim
-" TODO: is this and some others can be ported to vim ?
+" LazyVim picker to use
 let g:lazyvim_picker = "auto"
 
-" Completion engine - not applicable directly
+" LazyVim completion engine to use
 let g:lazyvim_cmp = "auto"
 
-" AI source preference (only with specific AI plugins)
-let g:ai_cmp = 1
+" Use AI source in completion engine if supported
+let g:ai_cmp = v:true
 
-" Root detection - no native equivalent, external plugin like 'vim-rooter' can help
-" You can mimic it by using:
-let g:root_spec = ['.git', 'lua']
+" LazyVim root dir detection
+let g:root_spec = ['lsp', ['.git', 'lua'], 'cwd']
 
-" LSP ignore (manual management, no direct Vim equivalent)
+" Ignore specific LSP servers for root detection
 let g:root_lsp_ignore = ['copilot']
 
-" Deprecation warnings
-let g:deprecation_warnings = 0
+" Hide deprecation warnings
+let g:deprecation_warnings = v:false
 
-" Trouble in lualine - not applicable, but you could use 'vim-airline' + 'vim-trouble'
-let g:trouble_lualine = 1
+" Show document symbols location in lualine from Trouble
+let g:trouble_lualine = v:true
 
-" Basic Options
-set autowrite
-if !has("nvim")
-  set clipboard=unnamedplus
-endif
-set completeopt=menu,menuone,noselect
-set conceallevel=2
-set confirm
-set cursorline
-set expandtab
-set foldlevel=99
-set formatoptions=jcroqlnt
-set grepformat=%f:%l:%c:%m
-set grepprg=rg\ --vimgrep
-set ignorecase
-set inccommand=nosplit
-set laststatus=2
-set linebreak
-set list
-set mouse=a
-set number
-set pumheight=10
-set relativenumber
-set scrolloff=4
-set shiftround
-set shiftwidth=2
-set showmode
-set sidescrolloff=8
-set signcolumn=yes
-set smartcase
-set smartindent
-set spelllang=en
-set splitbelow
-set splitright
-set tabstop=2
-set termguicolors
-set timeoutlen=300
-set undofile
-set undolevels=10000
-set updatetime=200
-set virtualedit=block
-set wildmode=longest:full,full
-set winminwidth=5
-set wrap!
-
-" Short messages
-set shortmess+=W
-set shortmess+=I
-set shortmess+=c
-set shortmess+=C
-
-" Disable markdown recommended style
+" Disable recommended markdown style
 let g:markdown_recommended_style = 0
 
-" Fill characters (custom Unicode characters for folds etc.)
-set fillchars=foldopen:,foldclose:,fold:\ ,foldsep:\ ,diff:╱,eob:\ 
+" Enable auto write
+set autowrite
 
-" Folds - fallback to indent method since Lua expressions won't work
-set foldmethod=indent
-set foldtext=v:lua.require'lazyvim.util'.ui.foldtext() " No direct Vim support, use default or a plugin
+" Do not sync with system clipboard (important for SSH compatibility)
+set clipboard=
 
-" Statuscolumn is not supported in Vim, skip it or use 'signcolumn'
+" Completion options
+set completeopt=menu,menuone,noselect
 
-" Session options
+" Hide * markup for bold and italic, but not markers with substitutions
+set conceallevel=2
+
+" Confirm to save changes before exiting modified buffer
+set confirm
+
+" Highlight the current line
+set cursorline
+
+" Use spaces instead of tabs
+set expandtab
+
+" Characters used to display folds, end of buffer, etc.
+set fillchars=foldopen:,foldclose:,fold: ,foldsep: ,diff:╱,eob:\ 
+
+" Start with all folds open
+set foldlevel=99
+
+" Use LazyVim's format expression
+set formatexpr=v:lua.require'lazyvim.util'.format.formatexpr()
+
+" Better formatting options
+set formatoptions=jcroqlnt
+
+" Format for grep output
+set grepformat=%f:%l:%c:%m
+
+" Use ripgrep for grep program
+set grepprg=rg\ --vimgrep
+
+" Make cursor block in insert mode
+set guicursor=
+
+" Ignore case when searching
+set ignorecase
+
+" Show live preview of :substitute command
+set inccommand=nosplit
+
+" Keep view when jumping
+set jumpoptions=view
+
+" Always use global statusline
+set laststatus=3
+
+" Wrap lines at convenient points
+set linebreak
+
+" Show invisible characters (tabs, trailing spaces, etc.)
+set list
+
+" Enable mouse mode
+set mouse=a
+
+" Show absolute line numbers
+set number
+
+" Popup menu blend transparency
+set pumblend=10
+
+" Maximum number of entries in a popup
+set pumheight=10
+
+" Show relative line numbers
+set relativenumber
+
+" Disable default ruler
+set noruler
+
+" Lines of context above/below cursor
+set scrolloff=4
+
+" Options to persist in sessions
 set sessionoptions=buffers,curdir,tabpages,winsize,help,globals,skiprtp,folds
 
-" Terminal setup: if you want PowerShell, you can set manually (for Windows)
-" set shell=pwsh
+" Round indent to nearest shiftwidth
+set shiftround
 
-" Grep program (using ripgrep)
-if executable('rg')
-  set grepprg=rg\ --vimgrep
+" Size of an indent
+set shiftwidth=2
+
+" Short messages configuration
+set shortmess+=WIcC
+
+" Do not show mode (since we have a statusline)
+set noshowmode
+
+" Columns of context when side scrolling
+set sidescrolloff=8
+
+" Always show signcolumn
+set signcolumn=yes
+
+" Don't ignore case if search contains uppercase letters
+set smartcase
+
+" Insert indents automatically
+set smartindent
+
+" Spell check language
+set spelllang=en
+
+" Open splits below current window
+set splitbelow
+
+" Keep screen view consistent when splitting
+set splitkeep=screen
+
+" Open splits to the right
+set splitright
+
+" Use Snacks custom statuscolumn
+set statuscolumn=%!v:lua.require'snacks.statuscolumn'.get()
+
+" Number of spaces tabs count for
+set tabstop=2
+
+" Enable 24-bit colors
+set termguicolors
+
+" Time in milliseconds to wait for a mapped sequence to complete
+set timeoutlen=300
+
+" Save undo history to an undo file
+set undofile
+
+" Maximum number of undo levels
+set undolevels=10000
+
+" Time in milliseconds to trigger CursorHold event
+set updatetime=200
+
+" Allow cursor to move where there is no text in visual block mode
+set virtualedit=block
+
+" Command-line completion mode
+set wildmode=longest:full,full
+
+" Minimum window width
+set winminwidth=5
+
+" Disable line wrap
+set nowrap
+
+" Advanced folding and smoothscroll settings for Neovim >= 0.10
+if has("nvim-0.10")
+  set smoothscroll
+  set foldexpr=v:lua.require'lazyvim.util'.ui.foldexpr()
+  set foldmethod=expr
+  set foldtext=
+else
+  set foldmethod=indent
+  set foldtext=v:lua.require'lazyvim.util'.ui.foldtext()
 endif
+
+" Keep additional settings from the original vimrc that are not in your provided options
+
+" Use Zsh as shell
+set shell=/bin/zsh
+
+" Ignore specific files and folders in file searches
+set wildignore+=.git,.DS_Store,*/node_modules/*,*/dist/*
+
+" Enable incremental search
+set incsearch
+
+" Allow buffers to be hidden without being saved
+set hidden
+
+" Set background to dark
+set background=dark
+
+" Improve redraw performance in macros etc.
+set ttyfast
+set lazyredraw
+
+" Use system clipboard (this is from the original, but you said not to sync, keeping the original here for context)
+set clipboard=unnamed
