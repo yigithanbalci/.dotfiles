@@ -3,6 +3,8 @@ export CC=clang
 export CXX=clang++
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+
+# program settings
 export JAVA_HOME=/opt/homebrew/Cellar/openjdk/23
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 
@@ -53,3 +55,4 @@ bindkey -s '^f' "tmux-sessionizer\n"
 
 alias emacs='emacsclient -c -a ""'
 alias jvim="nvim --cmd 'set runtimepath^=$HOME/.config/jvim'"
+

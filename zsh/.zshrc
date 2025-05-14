@@ -180,9 +180,18 @@ fi
 eval "$(batman --export-env)"
 
 # Use Bat (by itself) for man pages:
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# Use Nvim for Man Pages
+# NOTE: MANPAGER is overriden here, in zshrc batman is there
+export MANPAGER='nvim +Man! -'
 
 # Use less for man syntax highlighting:
 # export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
 eval "$(starship init zsh)"
+
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/yigithanbalci/.dart-cli-completion/zsh-config.zsh ]] && . /Users/yigithanbalci/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
