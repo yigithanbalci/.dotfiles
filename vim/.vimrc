@@ -1,4 +1,5 @@
 " Pure Vim-compatible configuration (Neovim features replaced or removed)
+" TODO: add plugins later like tpope surround 
 
 " Leader and Local Leader keys
 let mapleader = " "
