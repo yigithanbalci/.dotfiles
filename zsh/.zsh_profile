@@ -56,3 +56,8 @@ bindkey -s '^f' "tmux-sessionizer\n"
 alias emacs='emacsclient -c -a ""'
 alias jvim="nvim --cmd 'set runtimepath^=$HOME/.config/jvim'"
 
+# Vim alias to open nvim 
+alias vim='nvim'
+# NOTE: if you don't want following 
+# you can run: "command vim" to run vim instead of alias
+alias realvim="$(which vim)"
