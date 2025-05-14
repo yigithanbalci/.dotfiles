@@ -1,40 +1,10 @@
-" Vim configuration matching merged nvim settings
+" Pure Vim-compatible configuration (Neovim features replaced or removed)
 
 " Leader and Local Leader keys
 let mapleader = " "
 let maplocalleader = "\\"
 
-" LazyVim auto format
-let g:autoformat = v:true
-
-" Snacks animations
-let g:snacks_animate = v:true
-
-" LazyVim picker to use
-let g:lazyvim_picker = "auto"
-
-" LazyVim completion engine to use
-let g:lazyvim_cmp = "auto"
-
-" Use AI source in completion engine if supported
-let g:ai_cmp = v:true
-
-" LazyVim root dir detection
-let g:root_spec = ['lsp', ['.git', 'lua'], 'cwd']
-
-" Ignore specific LSP servers for root detection
-let g:root_lsp_ignore = ['copilot']
-
-" Hide deprecation warnings
-let g:deprecation_warnings = v:false
-
-" Show document symbols location in lualine from Trouble
-let g:trouble_lualine = v:true
-
-" Disable recommended markdown style
-let g:markdown_recommended_style = 0
-
-" Enable auto write
+" Auto write files on certain commands
 set autowrite
 
 " Do not sync with system clipboard (important for SSH compatibility)
@@ -56,13 +26,16 @@ set cursorline
 set expandtab
 
 " Characters used to display folds, end of buffer, etc.
-set fillchars=foldopen:,foldclose:,fold: ,foldsep: ,diff:╱,eob:\ 
+set fillchars=foldopen:.,foldclose:.,fold: ,foldsep: ,diff:.,eob:\ 
 
 " Start with all folds open
 set foldlevel=99
 
-" Use LazyVim's format expression
-set formatexpr=v:lua.require'lazyvim.util'.format.formatexpr()
+" Use indentation as fold method (Lua foldexpr removed)
+set foldmethod=indent
+
+" Custom fold text (fallback, since Lua unavailable)
+set foldtext=foldtext()
 
 " Better formatting options
 set formatoptions=jcroqlnt
@@ -70,23 +43,26 @@ set formatoptions=jcroqlnt
 " Format for grep output
 set grepformat=%f:%l:%c:%m
 
-" Use ripgrep for grep program
-set grepprg=rg\ --vimgrep
+" Use ripgrep if available, fallback to grep
+if executable('rg')
+  set grepprg=rg\ --vimgrep
+else
+  set grepprg=grep\ -nH\ $*
+endif
 
-" Make cursor block in insert mode
-set guicursor=
+" Make cursor block in insert mode (fallback behavior, since no guicursor in Vim console mode)
+if has("gui_running")
+  set guicursor=
+endif
 
 " Ignore case when searching
 set ignorecase
 
-" Show live preview of :substitute command
-set inccommand=nosplit
+" Show live preview of :substitute command (not available in Vim, fallback to default behavior)
 
-" Keep view when jumping
-set jumpoptions=view
+" Keep view when jumping (not supported, fallback)
 
-" Always use global statusline
-set laststatus=3
+" Always use global statusline (not supported, fallback to default statusline)
 
 " Wrap lines at convenient points
 set linebreak
@@ -100,8 +76,7 @@ set mouse=a
 " Show absolute line numbers
 set number
 
-" Popup menu blend transparency
-set pumblend=10
+" Popup menu blend transparency (not supported, ignore)
 
 " Maximum number of entries in a popup
 set pumheight=10
@@ -116,7 +91,7 @@ set noruler
 set scrolloff=4
 
 " Options to persist in sessions
-set sessionoptions=buffers,curdir,tabpages,winsize,help,globals,skiprtp,folds
+set sessionoptions=buffers,curdir,tabpages,winsize,help,globals,folds
 
 " Round indent to nearest shiftwidth
 set shiftround
@@ -125,7 +100,7 @@ set shiftround
 set shiftwidth=2
 
 " Short messages configuration
-set shortmess+=WIcC
+set shortmess+=WIc
 
 " Do not show mode (since we have a statusline)
 set noshowmode
@@ -148,31 +123,29 @@ set spelllang=en
 " Open splits below current window
 set splitbelow
 
-" Keep screen view consistent when splitting
-set splitkeep=screen
-
 " Open splits to the right
 set splitright
-
-" Use Snacks custom statuscolumn
-set statuscolumn=%!v:lua.require'snacks.statuscolumn'.get()
 
 " Number of spaces tabs count for
 set tabstop=2
 
-" Enable 24-bit colors
-set termguicolors
+" Enable 24-bit colors if supported (fallback to best available in Vim)
+if has('termguicolors')
+  set termguicolors
+endif
 
 " Time in milliseconds to wait for a mapped sequence to complete
 set timeoutlen=300
 
-" Save undo history to an undo file
-set undofile
+" Save undo history to an undo file (only if persistent undo supported)
+if has("persistent_undo")
+  set undofile
+endif
 
 " Maximum number of undo levels
 set undolevels=10000
 
-" Time in milliseconds to trigger CursorHold event
+" Time in milliseconds to trigger CursorHold event (fallback to 'updatetime')
 set updatetime=200
 
 " Allow cursor to move where there is no text in visual block mode
@@ -187,21 +160,10 @@ set winminwidth=5
 " Disable line wrap
 set nowrap
 
-" Advanced folding and smoothscroll settings for Neovim >= 0.10
-if has("nvim-0.10")
-  set smoothscroll
-  set foldexpr=v:lua.require'lazyvim.util'.ui.foldexpr()
-  set foldmethod=expr
-  set foldtext=
-else
-  set foldmethod=indent
-  set foldtext=v:lua.require'lazyvim.util'.ui.foldtext()
+" Use Zsh as shell if available
+if executable('/bin/zsh')
+  set shell=/bin/zsh
 endif
-
-" Keep additional settings from the original vimrc that are not in your provided options
-
-" Use Zsh as shell
-set shell=/bin/zsh
 
 " Ignore specific files and folders in file searches
 set wildignore+=.git,.DS_Store,*/node_modules/*,*/dist/*
@@ -219,5 +181,5 @@ set background=dark
 set ttyfast
 set lazyredraw
 
-" Use system clipboard (this is from the original, but you said not to sync, keeping the original here for context)
+" Use system clipboard (can be disabled by user preference)
 set clipboard=unnamed
