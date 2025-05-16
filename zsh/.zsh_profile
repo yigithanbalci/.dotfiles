@@ -72,3 +72,6 @@ vim() {
     command vim "$@"
   fi
 }
+
+# Git Aliases
+alias gitlog='git log --oneline --graph --decorate --all'
