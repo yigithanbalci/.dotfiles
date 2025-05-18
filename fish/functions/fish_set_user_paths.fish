@@ -44,6 +44,7 @@ function fish_set_user_paths
     addToPath $HOME/programs/flutter/bin
     addToPath /opt/homebrew/opt/llvm/bin
     addToPath /opt/homebrew/Cellar/openjdk/23/bin
+    addToPath $HOME/.pub-cache/bin
 
     # Source Rust environment variables if needed
     # source $HOME/.cargo/env
