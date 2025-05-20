@@ -40,7 +40,9 @@ set notimeout
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 set guicursor = " "
-set scrolloff = 8
+set showmode
+set scrolloff=5
+set history=1000
 set number
 set relativenumber
 set shortmess-=S
@@ -53,6 +55,11 @@ set smartindent
 set hlsearch
 set ignorecase
 set smartcase
+
+set visualbell
+set noerrorbells
+
+set easymotion
 
 " Do incremental searching.
 set incsearch
