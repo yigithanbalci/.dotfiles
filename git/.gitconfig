@@ -16,6 +16,16 @@
 	signingkey = ~/.ssh/github_noreply_yigithanbalci.pub
 	name = yigithanbalci
 	email = 13695727+yigithanbalci@users.noreply.github.com
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[merge]
+	tool = vimdiff
+[pull]
+	rebase = true
 [core]
 	autocrlf = input
 [pull]
@@ -31,9 +41,3 @@
   lg = log --oneline --graph --all --decorate
   rbs = "!f() { git rebase -i --keep-empty --no-autostash --rebase-merges \"$@\"; }; f"
   prn = !sh -c 'git fetch -p && git remote prune origin && git branch -vv | grep \": gone]\" | awk \"{print \\$1}\" | xargs -r git branch -D'
-[credential "https://github.com"]
-  helper = !gh auth git-credential
-[credential "https://gist.github.com"]
-  helper = !gh auth git-credential
-[credential "https://gitlab.com"]
-  helper = !glab auth git-credential
