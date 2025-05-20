@@ -1,0 +1,21 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = yigithanbalci
+	email = 13695727+yigithanbalci@users.noreply.github.com
+[core]
+	autocrlf = input
+[pull]
+	rebase = false
+[alias]
+  st = status
+  co = checkout
+  br = branch
+  ci = commit
+  cm = commit -m
+  lg = log --oneline --graph --all --decorate
+  rbs = "!f() { git rebase -i --keep-empty --no-autostash --rebase-merges \"$@\"; }; f"
+  pru = !sh -c 'git fetch -p && git remote prune origin && git branch -vv | grep \": gone]\" | awk \"{print \\$1}\" | xargs -r git branch -D'

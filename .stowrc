@@ -5,10 +5,12 @@
 --ignore=DS_Store
 --ignore=bin/*
 --ignore=idea/*
+--ignore=git/*
 --ignore=local/*
 --ignore=pulse/*
 --ignore=stow
 --ignore=sway/*
+--ignore=vim/*
 --ignore=vscode/*
 --ignore=zed/*
 --ignore=zsh/*

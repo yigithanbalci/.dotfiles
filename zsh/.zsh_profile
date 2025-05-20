@@ -75,3 +75,10 @@ vim() {
 
 # Git Aliases
 alias gitlog='git log --oneline --graph --decorate --all'
+alias gitrebase='git rebase --interactive --autostash --keep-empty --no-autosquash --rebase-merges'
+gitprune() {
+    git fetch -p
+    git remote prune origin
+    git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
+}
+
