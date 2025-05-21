@@ -21,4 +21,4 @@
   cm = commit -m
   lg = log --oneline --graph --all --decorate
   rbs = "!f() { git rebase -i --keep-empty --no-autostash --rebase-merges \"$@\"; }; f"
-  pru = !sh -c 'git fetch -p && git remote prune origin && git branch -vv | grep \": gone]\" | awk \"{print \\$1}\" | xargs -r git branch -D'
+  prn = !sh -c 'git fetch -p && git remote prune origin && git branch -vv | grep \": gone]\" | awk \"{print \\$1}\" | xargs -r git branch -D'
