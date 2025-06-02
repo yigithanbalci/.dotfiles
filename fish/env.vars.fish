@@ -4,6 +4,7 @@ set -x CXX clang++
 set -x STARSHIP_CONFIG ~/.config/starship/starship.toml
 #set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -x MANPAGER "nvim +Man! -"
+set -x SHELL (which fish)
 
 # Detect the operating system
 set OS_NAME (uname -s)
