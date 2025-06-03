@@ -12,7 +12,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   elif [[ -d "/usr/local/Homebrew" ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
   fi
+  export PATH="${HOMEBREW_PREFIX}/opt/openssl/bin:$PATH"
 fi
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
-. "$HOME/.cargo/env"
+alias python="python3"
