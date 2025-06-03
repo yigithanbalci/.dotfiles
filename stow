@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 stow -R .
+stow -R bash --target=$HOME
 stow -R local --target=$HOME/.local
 stow -R zsh --target=$HOME
 stow -R idea --target=$HOME

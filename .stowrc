@@ -3,6 +3,7 @@
 --ignore=install
 --ignore=ubuntu
 --ignore=DS_Store
+--ignore=bash/*
 --ignore=bin/*
 --ignore=idea/*
 --ignore=git/*

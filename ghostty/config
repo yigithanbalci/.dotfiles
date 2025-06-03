@@ -10,4 +10,4 @@ adjust-cell-height = 15%
 adjust-cell-width = 5%
 background-opacity = 0.9
 
-command = fish --login --interactive
+command = "~/.local/scripts/ghostty-fish"

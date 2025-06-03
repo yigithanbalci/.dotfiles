@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Only run on macOS
+if [[ "$(uname)" == "Darwin" ]]; then
+  # Apple Silicon (M1/M2/M3 Macs)
+  if [[ -d "/opt/homebrew" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  # Intel Macs
+  elif [[ -d "/usr/local/Homebrew" ]]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+fi
+
+# Dynamically find fish (works across platforms)
+FISH=$(command -v fish)
+
+if [[ -x "$FISH" ]]; then
+  exec "$FISH" --login --interactive
+else
+  echo "Error: fish shell not found in PATH"
+  exit 1
+fi
