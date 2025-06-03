@@ -11,12 +11,32 @@ if [[ "$(uname)" == "Darwin" ]]; then
   fi
 fi
 
-# Dynamically find fish (works across platforms)
-FISH=$(command -v fish)
-
-if [[ -x "$FISH" ]]; then
-  exec "$FISH" --login --interactive
-else
-  echo "Error: fish shell not found in PATH"
-  exit 1
+# If PREFERRED_SHELL is not set in environment, set and export it to fish
+if [[ -z "$PREFERRED_SHELL" ]]; then
+  export PREFERRED_SHELL=fish
 fi
+
+# Default fallback shells
+FALLBACK_SHELLS=(fish zsh bash)
+
+# Try preferred shell first
+PREF_PATH=$(command -v "$PREFERRED_SHELL" 2>/dev/null)
+if [[ -x "$PREF_PATH" ]]; then
+  exec "$PREF_PATH" --login --interactive
+else
+  echo "Warning: Preferred shell '$PREFERRED_SHELL' not found or not executable. Falling back..."
+fi
+
+# Try fallback shells excluding preferred shell (already tried)
+for shell in "${FALLBACK_SHELLS[@]}"; do
+  if [[ "$shell" == "$PREFERRED_SHELL" ]]; then
+    continue
+  fi
+  SHELL_PATH=$(command -v "$shell" 2>/dev/null)
+  if [[ -x "$SHELL_PATH" ]]; then
+    exec "$SHELL_PATH" --login --interactive
+  fi
+done
+
+echo "Error: None of the preferred shells (fish, zsh, bash) were found in PATH"
+exit 1
