@@ -11,8 +11,11 @@ if [[ "$(uname)" == "Darwin" ]]; then
   fi
 fi
 
-# If PREFERRED_SHELL is not set in environment, set and export it to fish
-if [[ -z "$PREFERRED_SHELL" ]]; then
+# If a parameter is passed, use it as preferred shell and export it
+if [[ -n "$1" ]]; then
+  export PREFERRED_SHELL="$1"
+elif [[ -z "$PREFERRED_SHELL" ]]; then
+  # If no parameter and PREFERRED_SHELL not set, default to fish
   export PREFERRED_SHELL=fish
 fi
 
