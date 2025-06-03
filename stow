@@ -7,3 +7,5 @@ stow -R zsh --target=$HOME
 stow -R idea --target=$HOME
 stow -R git --target=$HOME
 #stow -R vim --target=$HOME/.vim
+
+./link
