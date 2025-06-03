@@ -1,4 +1,7 @@
 # ~/.bash_profile
+#
+# ~/.bash_profile
+#
 
 # Only run on macOS
 if [[ "$(uname)" == "Darwin" ]]; then
@@ -10,3 +13,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
     eval "$(/usr/local/bin/brew shellenv)"
   fi
 fi
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+. "$HOME/.cargo/env"
