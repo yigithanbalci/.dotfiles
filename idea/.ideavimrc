@@ -40,7 +40,9 @@ set notimeout
 "" Map \b to toggle the breakpoint on the current line
 "map \b <Action>(ToggleLineBreakpoint)
 set guicursor = " "
-set scrolloff = 8
+set showmode
+set scrolloff=5
+set history=1000
 set number
 set relativenumber
 set shortmess-=S
@@ -53,6 +55,11 @@ set smartindent
 set hlsearch
 set ignorecase
 set smartcase
+
+set visualbell
+set noerrorbells
+
+set easymotion
 
 " Do incremental searching.
 set incsearch
@@ -78,6 +85,7 @@ nmap <leader>e :NERDTreeToggle<CR>
 "nvim like searching mappings
 nnoremap <leader>ff :action SearchEverywhere<CR>
 nnoremap <leader>sg :action FindInPath<CR>
+nnoremap <leader><leader> :action Switcher<CR>
 imap jj <Esc>
 
 "nvim like capital and normal mappings
@@ -106,6 +114,11 @@ smap <C-s> <Esc>:w<CR>
 "nvim like move line
 vmap J :m '>+1<CR>gv=gv
 vmap K :m '>-2<CR>gv=gv
+
+" Go to definition
+nmap gd <Action>(GotoDeclaration)
+" Go to references/usages
+nmap gr <Action>(FindUsages)
 
 "nvim neotest like mappings
 nnoremap <leader>tt :action RunCurrentFile<CR>
@@ -140,3 +153,15 @@ nnoremap <leader>dB :action EditBreakpoint<CR>
 "TODO: Fix this to make it like neovim
 nnoremap <c-/> :action ActivateTerminal<CR>
 tnoremap <Esc> <C-\><C-n>
+
+"Mappings for changing windows
+nnoremap <C-h> :action SelectPreviousWindow<CR>
+nnoremap <C-l> :action SelectNextWindow<CR>
+
+"Rename
+nmap <leader>cr <Action>(RenameElement)
+
+"Scroll to center
+nmap zz <Action>(EditorScrollToCenter)
+"Fold-unfold toggle
+nmap za <Action>(CollapseExpandRegion)

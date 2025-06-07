@@ -2,7 +2,9 @@
 set -x CC clang
 set -x CXX clang++
 set -x STARSHIP_CONFIG ~/.config/starship/starship.toml
-set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+#set -x MANPAGER "sh -c 'col -bx | bat -l man -p'"
+set -x MANPAGER "nvim +Man! -"
+set -x SHELL (which fish)
 
 # Detect the operating system
 set OS_NAME (uname -s)
@@ -27,4 +29,10 @@ if test -f "$SECRETS_FILE"
     #echo ".shell_secrets file sourced successfully."
 else
     #echo ".shell_secrets file does not exist."
+end
+
+# Ruby
+if test -d /opt/homebrew/opt/ruby/bin
+    set -x PATH /opt/homebrew/opt/ruby/bin $PATH
+    set -x PATH (gem environment gemdir)/bin $PATH
 end

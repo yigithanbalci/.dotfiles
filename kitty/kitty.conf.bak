@@ -1,9 +1,8 @@
 # vim:fileencoding=utf-8:ft=conf:foldmethod=marker
 
 # Shell (login + interactive)
-shell terminal-shell
-# shell fish
-# shell_args --login --interactive
+shell /opt/homebrew/bin/fish
+shell_args --login --interactive
 # shell zsh
 
 #shell /usr/bin/zsh -l
@@ -1493,9 +1492,3 @@ font_size 16.0
 #: }}}
 
 #: }}}
-
-
-# BEGIN_KITTY_THEME
-# Catppuccin-Mocha
-include current-theme.conf
-# END_KITTY_THEME

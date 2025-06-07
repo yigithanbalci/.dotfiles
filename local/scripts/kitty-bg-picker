@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Root directory for wallpapers (will search recursively)
+WALLPAPER_DIR="$HOME/Pictures/wallpapers"
+
+# Use find to search recursively for image files
+SELECTED=$(find "$WALLPAPER_DIR" -type f \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' \) | \
+  fzf --preview 'chafa {}' --preview-window=right:60%)
+
+# If an image is selected, set it as kitty background
+if [[ -n "$SELECTED" ]]; then
+  kitty @ set-colors --all --configured background_image="$SELECTED"
+else
+  echo "No image selected"
+fi
