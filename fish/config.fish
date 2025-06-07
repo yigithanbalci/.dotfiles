@@ -12,3 +12,4 @@ source $HOME/.config/fish/env.vars.fish
 fzf --fish | source
 
 starship init fish | source
+fastfetch
