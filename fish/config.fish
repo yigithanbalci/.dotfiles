@@ -18,3 +18,5 @@ if status is-interactive
         fastfetch
     end
 end
+
+zoxide init fish | source

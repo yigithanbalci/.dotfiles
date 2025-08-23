@@ -82,3 +82,15 @@ gitprune() {
     git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -D
 }
 
+#this does not work somehow, probably need to eval zoxide
+eval "$(zoxide init zsh)"
+cd() {
+  if command -v z >/dev/null 2>&1; then
+    z "$@"
+    if [ $? -ne 0 ]; then
+      builtin cd "$@"
+    fi
+  else
+    builtin cd "$@"
+  fi
+}
