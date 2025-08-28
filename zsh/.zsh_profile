@@ -1,7 +1,9 @@
 # c/c++ compiler settings
 export CC=clang
 export CXX=clang++
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+# export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+# export  LDFLAGS="-L/opt/homebrew/opt/llvm/lib/unwind -lunwind"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib/unwind -lunwind"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 # program settings
@@ -30,6 +32,8 @@ osSpecificTasks() {
   if [ "$OS_NAME" = "Darwin" ]; then
     # Add the Homebrew setup command here
     addToPath /opt/homebrew/bin
+    #LLVM 
+    addToPath /opt/homebrew/opt/llvm/bin
     eval "$(/opt/homebrew/bin/brew shellenv)"
   else
     # Add commands for other operating systems if needed
