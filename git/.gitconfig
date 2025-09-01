@@ -14,8 +14,8 @@
 	gpgsign = true
 [user]
 	signingkey = ~/.ssh/github_noreply_yigithanbalci.pub
-	name = yigithanbalci
-	email = 13695727+yigithanbalci@users.noreply.github.com
+	name = yigithanbalciacc
+	email = 172791293+yigithanbalciacc@users.noreply.github.com
 [credential "https://github.com"]
   helper = !gh auth git-credential
 [credential "https://gist.github.com"]
