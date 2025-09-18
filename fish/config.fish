@@ -5,6 +5,7 @@ if status is-interactive
 end
 
 batman --export-env | source
+zoxide init fish | source
 
 source $HOME/.config/fish/settings.fish
 source $HOME/.config/fish/env.vars.fish

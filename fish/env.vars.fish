@@ -12,7 +12,10 @@ set OS_NAME (uname -s)
 # Check if the OS is macOS
 if test "$OS_NAME" = Darwin
     # Set vars from Homebrew 
-    set -x LDFLAGS -L/opt/homebrew/opt/llvm/lib
+    fish_add_path /opt/homebrew/opt/llvm/bin
+    # set -x LDFLAGS -L/opt/homebrew/opt/llvm/lib/unwind -lunwind 
+    # set -x LDFLAGS -L/opt/homebrew/opt/llvm/lib
+    set -x LDFLAGS -L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib/unwind -lunwind
     set -x CPPFLAGS -I/opt/homebrew/opt/llvm/include
     set -x JAVA_HOME /opt/homebrew/Cellar/openjdk@21/21.0.7/
     set -x SHELL /opt/homebrew/bin/fish
