@@ -41,13 +41,4 @@ if test -d /opt/homebrew/opt/ruby/bin
 end
 
 # Carapace
-# set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
-
-# FZF default options: Vim-style navigation
-set -g FZF_DEFAULT_OPTS '
-  --height 40% 
-  --layout=reverse 
-  --bind ctrl-j:down,ctrl-k:up,ctrl-d:half-page-down,ctrl-u:half-page-up
-'
-# Example for fzf-tab (if you use it)
-set -g FZF_TAB_OPTS $FZF_DEFAULT_OPTS
+set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
