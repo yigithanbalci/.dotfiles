@@ -19,3 +19,6 @@ if status is-interactive
         fastfetch
     end
 end
+
+# carapace
+carapace _carapace | source

@@ -39,3 +39,6 @@ if test -d /opt/homebrew/opt/ruby/bin
     set -x PATH /opt/homebrew/opt/ruby/bin $PATH
     set -x PATH (gem environment gemdir)/bin $PATH
 end
+
+# Carapace
+set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
