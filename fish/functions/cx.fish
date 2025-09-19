@@ -1,10 +1,12 @@
-# cx <dir> → cd into dir and ls contents
+# use z if available, otherwise fallback to builtin cd
+# don't do ls afterwards
 function cx
-    if test (count $argv) -eq 0
-        echo "Usage: cx <directory>"
-        return 1
+    if type -q z
+        z $argv
+        if test $status -ne 0
+            builtin cd $argv
+        end
+    else
+        builtin cd $argv
     end
-
-    cd $argv[1]; or return
-    ls
 end

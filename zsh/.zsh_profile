@@ -88,7 +88,7 @@ gitprune() {
 
 #this does not work somehow, probably need to eval zoxide
 eval "$(zoxide init zsh)"
-# use z instead of cd which is more powerful
+# cd: try z first, fallback to builtin cd, then ls
 cd() {
   if command -v z >/dev/null 2>&1; then
     z "$@"
@@ -98,16 +98,24 @@ cd() {
   else
     builtin cd "$@"
   fi
+  # always list contents after cd
+  ls
 }
-# cx <dir> → cd into dir and ls contents
+# cd: try z first, fallback to builtin cd, then not ls
 cx() {
   if [ -z "$1" ]; then
     echo "Usage: cx <directory>"
     return 1
   fi
 
-  cd "$1" || return
-  ls
+  if command -v z >/dev/null 2>&1; then
+    z "$1"
+    if [ $? -ne 0 ]; then
+      builtin cd "$1"
+    fi
+  else
+    builtin cd "$1"
+  fi
 }
 # use eza instead of ls if available
 # Remove any existing alias for ls
