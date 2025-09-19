@@ -98,6 +98,18 @@ cd() {
     builtin cd "$@"
   fi
 }
+# use eza instead of ls if available
+# Remove any existing alias for ls
+unalias ls 2>/dev/null
+# Define ls function
+# ls -G is the default alias for whatever reason
+ls() {
+  if command -v eza >/dev/null 2>&1; then
+    eza "$@" || command ls -G "$@"
+  else
+    command ls -G "$@"
+  fi
+}
 
 # carapace setup
 # TODO: revisit later
