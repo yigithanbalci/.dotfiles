@@ -195,3 +195,5 @@ eval "$(starship init zsh)"
 [[ -f /Users/yigithanbalci/.dart-cli-completion/zsh-config.zsh ]] && . /Users/yigithanbalci/.dart-cli-completion/zsh-config.zsh || true
 ## [/Completion]
 
+# Carapace
+eval "$(carapace init zsh)"

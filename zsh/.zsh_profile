@@ -131,7 +131,10 @@ ls() {
 }
 
 # carapace setup
-# TODO: revisit later
-# export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
-# zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-# source <(carapace _carapace)
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
+# Bind Ctrl-P / Ctrl-N to navigate completion menu
+bindkey -M menuselect '^P' up-line-or-history
+bindkey -M menuselect '^N' down-line-or-history
