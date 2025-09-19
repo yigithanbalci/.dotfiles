@@ -21,4 +21,6 @@ if status is-interactive
 end
 
 # carapace
-carapace _carapace | source
+# seems like not needed in fish that much atleast for now
+# TODO: revisit later
+# carapace _carapace | source

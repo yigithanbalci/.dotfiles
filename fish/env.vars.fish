@@ -41,4 +41,4 @@ if test -d /opt/homebrew/opt/ruby/bin
 end
 
 # Carapace
-set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
+# set -Ux CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
