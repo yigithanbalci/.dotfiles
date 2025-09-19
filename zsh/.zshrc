@@ -154,7 +154,8 @@ SECRETS_FILE="$HOME/.shell_secrets"
 if [ -f "$SECRETS_FILE" ]; then
   # Source the file if it exists
   source "$SECRETS_FILE"
-  echo ".shell_secrets file sourced successfully."
+  # not needed it bloats 
+  # echo ".shell_secrets file sourced successfully."
 else
   echo ".shell_secrets file does not exist."
 fi
