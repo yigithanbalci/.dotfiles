@@ -1,7 +1,7 @@
 font-family = "FiraCoda Nerd Font Mono"
 font-size = 16
 
-shell-integration = fish
+shell-integration = zsh
 shell-integration-features = no-cursor
 cursor-style = block
 cursor-style-blink = false
@@ -10,4 +10,4 @@ adjust-cell-height = 15%
 adjust-cell-width = 5%
 background-opacity = 0.9
 
-command = "~/.local/scripts/terminal-shell"
+command = "~/.local/scripts/terminal-shell zsh"
