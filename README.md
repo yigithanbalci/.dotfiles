@@ -4,6 +4,8 @@ My dotfiles
 
 TODO: emacs and doom config
 TODO: batman & less as fallback manpager
+TODO: fix fish navigation c-p c-n later
+TODO: starship not working properly with zsh and fish at the same time, should be fixed
 TODO: nushell? 
 TODO: install atuin and setup, but sync should be studied, it should not store secrets entered?? 
 
