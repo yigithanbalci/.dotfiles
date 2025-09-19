@@ -11,7 +11,7 @@ $all$fill>[─╮](white)
 [╰─](white)\
 $character
 """
-right_format = "<[─╯](white) "
+right_format = "<[─╯](white)"
 # right_format = """$all"""
 continuation_prompt = '▶▶ '
 
