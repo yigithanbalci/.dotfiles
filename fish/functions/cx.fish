@@ -1,6 +1,6 @@
 # use z if available, otherwise fallback to builtin cd
-# do ls afterwards
-function cd
+# don't do ls afterwards
+function cx
     if type -q z
         z $argv
         if test $status -ne 0
@@ -9,6 +9,4 @@ function cd
     else
         builtin cd $argv
     end
-    # list contents after changing dir
-    ls
 end

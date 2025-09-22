@@ -88,6 +88,7 @@ gitprune() {
 
 #this does not work somehow, probably need to eval zoxide
 eval "$(zoxide init zsh)"
+# cd: try z first, fallback to builtin cd, then ls
 cd() {
   if command -v z >/dev/null 2>&1; then
     z "$@"
@@ -97,4 +98,43 @@ cd() {
   else
     builtin cd "$@"
   fi
+  # always list contents after cd
+  ls
 }
+# cd: try z first, fallback to builtin cd, then not ls
+cx() {
+  if [ -z "$1" ]; then
+    echo "Usage: cx <directory>"
+    return 1
+  fi
+
+  if command -v z >/dev/null 2>&1; then
+    z "$1"
+    if [ $? -ne 0 ]; then
+      builtin cd "$1"
+    fi
+  else
+    builtin cd "$1"
+  fi
+}
+# use eza instead of ls if available
+# Remove any existing alias for ls
+unalias ls 2>/dev/null
+# Define ls function
+# ls -G is the default alias for whatever reason
+ls() {
+  if command -v eza >/dev/null 2>&1; then
+    eza "$@" || command ls -G "$@"
+  else
+    command ls -G "$@"
+  fi
+}
+
+# carapace setup
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)
+
+# Bind Ctrl-P / Ctrl-N to navigate completion menu
+bindkey -M menuselect '^P' up-line-or-history
+bindkey -M menuselect '^N' down-line-or-history

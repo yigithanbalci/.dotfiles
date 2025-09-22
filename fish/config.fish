@@ -19,3 +19,8 @@ if status is-interactive
         fastfetch
     end
 end
+
+# carapace
+# seems like not needed in fish that much atleast for now
+carapace init fish | source
+# carapace _carapace | source
