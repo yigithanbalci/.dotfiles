@@ -10,6 +10,9 @@ export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 export JAVA_HOME=/opt/homebrew/Cellar/openjdk/23
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 
+# Git User Name to be used in elsewhere
+export GIT_USER="$(git config user.name)"
+
 # env var path 
 addToPath /usr/local/bin
 addToPath /usr/local/go/bin
