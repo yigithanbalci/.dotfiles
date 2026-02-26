@@ -141,3 +141,15 @@ source <(carapace _carapace)
 # Bind Ctrl-P / Ctrl-N to navigate completion menu
 bindkey -M menuselect '^P' up-line-or-history
 bindkey -M menuselect '^N' down-line-or-history
+
+yarn() {
+  command yarn "$@"
+  local yarn_exit_code=$?
+  
+  if [[ $yarn_exit_code -ne 0 ]]; then
+    # Running it inside ( ) & "disowns" the job so you don't see the [PID] or 'done' message
+    (afplay ~/devenv/sounds/faaaah.wav &>/dev/null &)
+  fi
+  
+  return $yarn_exit_code
+}
