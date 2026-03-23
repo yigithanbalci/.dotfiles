@@ -13,8 +13,8 @@ function fish_user_key_bindings
     bind \cn menu-select +1
     # Bind Ctrl+F to tv projects with fallback to tmux-sessionizer
     function __tv_projects_or_sessionizer
-        if command -v tv > /dev/null 2>&1
-            tv projects
+        if command -v tv >/dev/null 2>&1
+            tv tmux-sessionizer
         else
             tmux-sessionizer
         end
@@ -25,7 +25,7 @@ function fish_user_key_bindings
 
     # Bind Ctrl+R to tv fish-history with fallback to fzf history search
     function __tv_history_or_fzf
-        if command -v tv > /dev/null 2>&1
+        if command -v tv >/dev/null 2>&1
             set -l current_prompt (commandline -cp)
             printf "\n"
             set selected (tv fish-history --input "$current_prompt" --inline --no-status-bar)

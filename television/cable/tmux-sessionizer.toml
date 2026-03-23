@@ -1,5 +1,5 @@
 [metadata]
-name = "projects"
+name = "tmux-sessionizer"
 description = "Open selected project folder in a tmux session"
 
 [source]
@@ -22,9 +22,9 @@ find \
 command = "ls -la '{}'"
 
 [keybindings]
-enter = "actions:open_tmux"
+enter = "actions:open"
 
-[actions.open_tmux]
+[actions.open]
 description = "Open in tmux session"
 command = "tmux-project '{}'"
 mode = "execute"
