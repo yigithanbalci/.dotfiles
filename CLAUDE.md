@@ -51,6 +51,15 @@ Custom shell scripts live in `local/scripts/` (stowed to `~/.local/scripts/`):
 - `terminal-shell` — shell switching utility (also symlinked to `~/.local/bin/`)
 - `kitty-bg-picker` / `kitty-bg-conf-generator` — Kitty background tools
 
+## Guidelines
+
+### Platform-specific configurations
+
+This repo targets multiple OSes (macOS and Linux). Always make configs platform-specific wherever applicable:
+- Use OS conditionals in shell files (e.g., `if [[ "$OSTYPE" == "darwin"* ]]`)
+- Use platform-specific config directories (`aerospace/`, `yabai/`, `skhd/` for macOS; `hypr/`, `i3/`, `sway/`, `waybar/` for Linux)
+- Never add macOS-only or Linux-only settings globally without a platform guard
+
 ### Shell setup
 
 - **Primary shell:** Zsh (`zsh/.zshrc`, `zsh/.zsh_profile`) — stowed to `$HOME`
