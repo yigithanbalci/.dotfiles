@@ -61,6 +61,22 @@ _tv_projects_or_sessionizer() {
 zle -N _tv_projects_or_sessionizer
 bindkey '^f' _tv_projects_or_sessionizer
 
+_tv_history_or_fzf() {
+  if command -v tv &>/dev/null; then
+    local output
+    output=$(tv zsh-history --no-status-bar --input "$LBUFFER" --inline)
+    if [[ -n "$output" ]]; then
+      RBUFFER=""
+      LBUFFER="$output"
+      zle redisplay
+    fi
+  else
+    zle fzf-history-widget
+  fi
+}
+zle -N _tv_history_or_fzf
+bindkey '^r' _tv_history_or_fzf
+
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
 #   - the correct directories to the PATH

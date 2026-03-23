@@ -22,4 +22,22 @@ function fish_user_key_bindings
     end
     bind \cf __tv_projects_or_sessionizer
     bind -M insert \cf __tv_projects_or_sessionizer
+
+    # Bind Ctrl+R to tv fish-history with fallback to fzf history search
+    function __tv_history_or_fzf
+        if command -v tv > /dev/null 2>&1
+            set -l current_prompt (commandline -cp)
+            printf "\n"
+            set selected (tv fish-history --input "$current_prompt" --inline --no-status-bar)
+            if test -n "$selected"
+                commandline -r -- $selected
+            end
+            printf "\033[A"
+        else
+            _fzf_search_history
+        end
+        commandline -f repaint
+    end
+    bind \cr __tv_history_or_fzf
+    bind -M insert \cr __tv_history_or_fzf
 end
