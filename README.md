@@ -11,3 +11,5 @@ TODO: install atuin and setup, but sync should be studied, it should not store s
 
 NOTE: making emacs server run at startup is a better practice and maybe automate this?
 NOTE: Since there is stowrc file it's sufficient to `stow .` but for dirs like zsh or bin, command should be `stow --target=~ bin`
+
+TODO: add television installs and config
