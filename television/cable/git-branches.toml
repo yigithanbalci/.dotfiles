@@ -1,0 +1,18 @@
+[metadata]
+name = "git-branches"
+description = "Select a git branch and switch to it"
+requirements = ["git"]
+
+[source]
+command = "git branch -a --format='%(refname:short)' 2>/dev/null | sed 's|^origin/||' | sort -u"
+
+[preview]
+command = "git log --oneline --graph --color=always -20 '{}' 2>/dev/null"
+
+[keybindings]
+enter = "actions:checkout"
+
+[actions.checkout]
+description = "Switch to branch"
+command = "git checkout '{}'"
+mode = "execute"
