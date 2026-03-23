@@ -49,8 +49,17 @@ source <(fzf --zsh)
 
 # Some useful keybindings to use my custom scripts or zsh features
 bindkey -v
-#bindkey -ar '^f' #unbinds 
-bindkey -s '^f' "tmux-sessionizer\n"
+#bindkey -ar '^f' #unbinds
+_tv_projects_or_sessionizer() {
+  if command -v tv &>/dev/null; then
+    tv projects
+  else
+    tmux-sessionizer
+  fi
+  zle reset-prompt
+}
+zle -N _tv_projects_or_sessionizer
+bindkey '^f' _tv_projects_or_sessionizer
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:

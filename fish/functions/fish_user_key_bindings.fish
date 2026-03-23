@@ -11,7 +11,15 @@ function fish_user_key_bindings
 
     # Map Ctrl-N to select the next menu item
     bind \cn menu-select +1
-    # Bind Ctrl+F to run tmux-sessionizer (equivalent to bindkey -s '^f' "tmux-sessionizer\n")
-    bind \cf tmux-sessionizer
-    bind -M insert \cf tmux-sessionizer 'commandline -f repaint'
+    # Bind Ctrl+F to tv projects with fallback to tmux-sessionizer
+    function __tv_projects_or_sessionizer
+        if command -v tv > /dev/null 2>&1
+            tv projects
+        else
+            tmux-sessionizer
+        end
+        commandline -f repaint
+    end
+    bind \cf __tv_projects_or_sessionizer
+    bind -M insert \cf __tv_projects_or_sessionizer
 end

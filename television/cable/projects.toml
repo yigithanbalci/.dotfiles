@@ -1,0 +1,30 @@
+[metadata]
+name = "projects"
+description = "Open selected project folder in a tmux session"
+
+[source]
+command = """
+find \
+  ~/ \
+  ~/flutter_projects \
+  ~/Workspace/exercise/algo \
+  ~/Workspace/exercise/exercism \
+  ~/work \
+  ~/personal \
+  ~/personal/yt \
+  ~/devenv \
+  ~/devenv/dotfiles \
+  ~/.dotfiles \
+  -mindepth 1 -maxdepth 1 -type d 2>/dev/null
+"""
+
+[preview]
+command = "ls -la '{}'"
+
+[keybindings]
+enter = "actions:open_tmux"
+
+[actions.open_tmux]
+description = "Open in tmux session"
+command = "tmux-project '{}'"
+mode = "execute"
