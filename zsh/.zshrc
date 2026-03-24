@@ -24,6 +24,15 @@ else
   echo ".shell_secrets file does not exist."
 fi
 
-# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK
+# SDKMAN (lazy-loaded — saves ~217ms per shell)
 export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+__load_sdkman() {
+  unfunction sdk java javac gradle mvn kotlin kotlinc groovy groovyc 2>/dev/null
+  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+}
+
+for __sdk_cmd in sdk java javac gradle mvn kotlin kotlinc groovy groovyc; do
+  eval "${__sdk_cmd}() { __load_sdkman; ${__sdk_cmd} \"\$@\" }"
+done
+unset __sdk_cmd
