@@ -35,6 +35,7 @@
   branches = !tv git-branch
   stsh = !tv git-stash
   sub = !tv git-submodule
+  logs = !tv git-log
 [credential "https://github.com"]
   helper = !gh auth git-credential
 [credential "https://gist.github.com"]
