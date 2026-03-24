@@ -1,11 +1,18 @@
 # Aliases
 
-# Brew upgrade — clears zsh init cache so updated tools regenerate on next shell
-#TODO: do similar thing for linux as well 
-# maybe change brew upgrade to clear cache too instead of 
-# new command 
+# Wrap brew — clears zsh init cache after upgrade/reinstall/install so updated tools regenerate
+#TODO: do similar thing for linux as well
 if [[ "$(uname -s)" == "Darwin" ]]; then
-  alias brewup='brew update && brew upgrade && rm -rf "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/"'
+  brew() {
+    command brew "$@"
+    local ret=$?
+    case "$1" in
+      upgrade|reinstall|install)
+        rm -rf "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/"
+        ;;
+    esac
+    return $ret
+  }
 fi
 
 alias emacs='emacsclient -c -a ""'
