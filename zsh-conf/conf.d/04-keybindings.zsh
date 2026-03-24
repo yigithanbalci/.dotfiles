@@ -1,0 +1,43 @@
+# Keybindings
+
+bindkey -v
+
+# Ctrl-F: tv projects or tmux-sessionizer
+#NOTE: for future reference: Use zle -U instead of accept-line
+# to ensure 'tv' and 'tmux' get proper TTY access when
+# triggered via a bindkey.
+_tv_projects_or_sessionizer() {
+  LBUFFER=""
+  RBUFFER=""
+
+  if command -v tv &>/dev/null; then
+    zle -U "tv tmux-sessionizer
+"
+  else
+    zle -U "tmux-sessionizer
+"
+  fi
+}
+zle -N _tv_projects_or_sessionizer
+bindkey '^f' _tv_projects_or_sessionizer
+
+# Ctrl-R: tv history or fzf
+_tv_history_or_fzf() {
+  if command -v tv &>/dev/null; then
+    local output
+    output=$(tv zsh-history --no-status-bar --input "$LBUFFER" --inline)
+    if [[ -n "$output" ]]; then
+      RBUFFER=""
+      LBUFFER="$output"
+      zle redisplay
+    fi
+  else
+    zle fzf-history-widget
+  fi
+}
+zle -N _tv_history_or_fzf
+bindkey '^r' _tv_history_or_fzf
+
+# Carapace menu navigation
+bindkey -M menuselect '^P' up-line-or-history
+bindkey -M menuselect '^N' down-line-or-history

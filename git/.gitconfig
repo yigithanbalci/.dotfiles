@@ -31,6 +31,11 @@
   lg = log --oneline --graph --all --decorate
   rbs = "!f() { git rebase -i --keep-empty --no-autostash --rebase-merges \"$@\"; }; f"
   prn = !sh -c 'git fetch -p && git remote prune origin && git branch -vv | grep \": gone]\" | awk \"{print \\$1}\" | xargs -r git branch -D'
+  sw = !tv git-branches
+  branches = !tv git-branch
+  stsh = !tv git-stash
+  sub = !tv git-submodule
+  logs = !tv git-log
 [credential "https://github.com"]
   helper = !gh auth git-credential
 [credential "https://gist.github.com"]

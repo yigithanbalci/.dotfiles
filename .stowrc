@@ -1,5 +1,6 @@
 --target=~/.config
 --ignore=.stowrc
+--ignore=CLAUDE.md
 --ignore=install
 --ignore=ubuntu
 --ignore=DS_Store
