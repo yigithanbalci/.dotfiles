@@ -20,7 +20,8 @@ fi
 
 if (( ${#__error_sound_player} )); then
   __error_sound_precmd() {
-    (( __error_sound_last_status )) && \
+    # Play only for real errors (1-128), not signals like Ctrl-C (130 = 128+SIGINT)
+    (( __error_sound_last_status > 0 && __error_sound_last_status <= 128 )) && \
       ( "${__error_sound_player[@]}" "$__error_sound_file" &>/dev/null & )
   }
 
