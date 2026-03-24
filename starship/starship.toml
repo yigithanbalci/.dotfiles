@@ -7,7 +7,7 @@ $directory\
 $git_branch\
 $git_status \
 $git_metrics\
-$all$fill>[─╮](white) 
+$all$fill[─╮](white)
 [╰─](white)\
 $character
 """

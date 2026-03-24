@@ -12,3 +12,4 @@ fi
 
 # Program settings
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
+export ZLE_RPROMPT_INDENT=0
