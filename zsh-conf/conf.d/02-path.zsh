@@ -4,7 +4,7 @@
 if [[ "$(uname -s)" == "Darwin" ]]; then
   addToPath /opt/homebrew/bin
   addToPath /opt/homebrew/opt/llvm/bin
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  _cached_eval brew '/opt/homebrew/bin/brew shellenv' /opt/homebrew/bin/brew
 
   # OpenJDK
   export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"

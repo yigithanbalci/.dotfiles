@@ -1,13 +1,13 @@
-# Tool initializations
+# Tool initializations (cached — auto-invalidates when binaries update)
 
 # FZF
-source <(fzf --zsh)
+_cached_eval fzf 'fzf --zsh'
 
 # Zoxide
-eval "$(zoxide init zsh)"
+_cached_eval zoxide 'zoxide init zsh'
 
 # Starship prompt
-eval "$(starship init zsh)"
+_cached_eval starship 'starship init zsh'
 
 # NVM (lazy-loaded — saves ~534ms per shell)
 export NVM_DIR="$HOME/.nvm"
@@ -28,13 +28,27 @@ for __nvm_cmd in nvm node npm npx; do
 done
 unset __nvm_cmd
 
-# Opam (OCaml)
-[[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
+# Opam (OCaml — lazy-loaded)
+__load_opam() {
+  unfunction opam ocaml ocamlfind dune 2>/dev/null
+  [[ -r "$HOME/.opam/opam-init/init.zsh" ]] && source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
+}
+for __opam_cmd in opam ocaml ocamlfind dune; do
+  eval "${__opam_cmd}() { __load_opam; ${__opam_cmd} \"\$@\" }"
+done
+unset __opam_cmd
 
-# Dart CLI completion
-[[ -f "$HOME/.dart-cli-completion/zsh-config.zsh" ]] && . "$HOME/.dart-cli-completion/zsh-config.zsh" || true
+# Dart CLI completion (lazy-loaded)
+__load_dart_completion() {
+  unfunction dart flutter 2>/dev/null
+  [[ -f "$HOME/.dart-cli-completion/zsh-config.zsh" ]] && . "$HOME/.dart-cli-completion/zsh-config.zsh"
+}
+for __dart_cmd in dart flutter; do
+  eval "${__dart_cmd}() { __load_dart_completion; ${__dart_cmd} \"\$@\" }"
+done
+unset __dart_cmd
 
 # Carapace
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
-source <(carapace _carapace)
+_cached_eval carapace 'carapace _carapace'

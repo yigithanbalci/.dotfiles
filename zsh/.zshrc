@@ -3,12 +3,12 @@ export ZSH="$HOME/.oh-my-zsh"
 export COLORTERM=truecolor
 
 plugins=(
-  git
+  #git — OMZ git aliases; custom aliases in 05-aliases.zsh
   zsh-autosuggestions
   zsh-syntax-highlighting
   #this breaks ^f bindkey
   #zsh-vi-mode
-  fzf
+  #fzf — already initialized in 03-tools.zsh
 )
 
 source $ZSH/oh-my-zsh.sh
