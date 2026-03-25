@@ -7,14 +7,23 @@ requirements = ["git"]
 command = "git --no-pager branch --all --format=\"%(refname:short)\""
 output = "{split: :0}"
 
+# [preview]
+# command = "git show -p --stat --pretty=fuller --color=always '{0}'"
+
 [preview]
-command = "git show -p --stat --pretty=fuller --color=always '{0}'"
+command = "git log --oneline --graph --decorate --color=always -20 '{0}' 2>/dev/null"
 
 [keybindings]
-enter = "actions:checkout"
+enter = "actions:switch"
+ctrl-c = "actions:checkout"
 ctrl-d = "actions:delete"
 ctrl-m = "actions:merge"
 ctrl-r = "actions:rebase"
+
+[actions.switch]
+description = "Checkout the selected branch"
+command = "git switch '{0}'"
+mode = "execute"
 
 [actions.checkout]
 description = "Checkout the selected branch"
