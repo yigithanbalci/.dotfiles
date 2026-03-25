@@ -25,7 +25,7 @@ bindkey '^f' _tv_projects_or_sessionizer
 _tv_history_or_fzf() {
   if command -v tv &>/dev/null; then
     local output
-    output=$(tv zsh-history --no-status-bar --input "$LBUFFER" --inline)
+    output=$(tv zsh-history --input "$LBUFFER")
     if [[ -n "$output" ]]; then
       RBUFFER=""
       LBUFFER="$output"

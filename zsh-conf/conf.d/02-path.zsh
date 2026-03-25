@@ -4,16 +4,21 @@
 if [[ "$(uname -s)" == "Darwin" ]]; then
   addToPath /opt/homebrew/bin
   addToPath /opt/homebrew/opt/llvm/bin
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  _cached_eval brew '/opt/homebrew/bin/brew shellenv' /opt/homebrew/bin/brew
 
   # OpenJDK
   export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
   export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
 
-  # Ruby
+  # Ruby (gem path cached — invalidate with: rm ~/.cache/zsh/gem_dir)
   if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
     export PATH=/opt/homebrew/opt/ruby/bin:$PATH
-    export PATH=$(gem environment gemdir)/bin:$PATH
+    local _gem_cache="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/gem_dir"
+    if [[ ! -f "$_gem_cache" ]]; then
+      command mkdir -p "${_gem_cache:h}"
+      gem environment gemdir > "$_gem_cache"
+    fi
+    export PATH="$(< "$_gem_cache")/bin:$PATH"
   fi
 fi
 

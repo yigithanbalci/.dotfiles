@@ -12,6 +12,4 @@ fi
 
 # Program settings
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
-
-# Git
-export GIT_USER="$(git config user.name)"
+export ZLE_RPROMPT_INDENT=0

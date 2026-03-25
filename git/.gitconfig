@@ -28,10 +28,10 @@
   ci = commit
   cm = commit -S -m
   cmp = commit -mp
-  lg = log --oneline --graph --all --decorate
+  lg = log --oneline --graph --decorate
   rbs = "!f() { git rebase -i --keep-empty --no-autostash --rebase-merges \"$@\"; }; f"
+  rb = "!f() { git rebase -i --autostash --keep-empty --no-autosquash --rebase-merges \"$@\"; }; f"
   prn = !sh -c 'git fetch -p && git remote prune origin && git branch -vv | grep \": gone]\" | awk \"{print \\$1}\" | xargs -r git branch -D'
-  sw = !tv git-branches
   branches = !tv git-branch
   stsh = !tv git-stash
   sub = !tv git-submodule
