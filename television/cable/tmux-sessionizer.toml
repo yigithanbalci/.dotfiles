@@ -36,5 +36,5 @@ enter = "actions:open"
 
 [actions.open]
 description = "Open in tmux session"
-command = "tmux-project '{}'"
+command = "tmux-project '{split:\t:1}'"
 mode = "execute"
