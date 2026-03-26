@@ -1,0 +1,24 @@
+[metadata]
+name = "man-pages"
+description = "Browse and preview system manual pages"
+requirements = ["apropos", "man"]
+
+[source]
+# List all man page names, stripping section suffixes like (1), (3), etc.
+command = "apropos . | awk '{print $1}' | sed 's/([^)]*)//g' | sort -u"
+
+[preview]
+command = "man -P cat '{}' 2>/dev/null | col -b"
+env = { "MANWIDTH" = "80" }
+
+[keybindings]
+enter = "actions:open"
+
+[actions.open]
+description = "Open the selected man page in the system pager"
+command = "man '{}'"
+mode = "execute"
+
+[ui]
+layout = "portrait"
+preview_panel = { header = "{}" }

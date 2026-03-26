@@ -1,0 +1,12 @@
+#!/bin/sh
+# Resolve version-named binaries (e.g. "2.1.81") back to the symlink name
+# that points to them (e.g. "claude"). Falls through for normal commands.
+cmd="${1:?}"
+case "$cmd" in
+  [0-9]*)
+    for f in "$HOME/.local/bin"/*; do
+      [ -L "$f" ] && case "$(readlink "$f")" in */"$cmd") cmd=$(basename "$f"); break;; esac
+    done 2>/dev/null
+    ;;
+esac
+echo "$cmd"

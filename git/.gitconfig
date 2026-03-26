@@ -1,0 +1,90 @@
+[user]
+	name = yigithanbalci
+	email = 13695727+yigithanbalci@users.noreply.github.com
+	signingkey = ~/.ssh/github_noreply_yigithanbalci.pub
+
+[core]
+	autocrlf = input
+
+[commit]
+	gpgsign = true
+
+[tag]
+	gpgsign = true
+
+[gpg]
+	format = ssh
+
+[diff]
+	tool = vimdiff
+
+[difftool]
+	prompt = false
+
+[difftool "vimdiff"]
+	cmd = "if command -v nvim >/dev/null 2>&1; then nvim -d \"$LOCAL\" \"$REMOTE\"; else vim -d \"$LOCAL\" \"$REMOTE\"; fi"
+
+[merge]
+	tool = vimdiff
+
+[mergetool]
+	prompt = false
+
+[mergetool "vimdiff"]
+	cmd = "if command -v nvim >/dev/null 2>&1; then nvim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"; else vim -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"; fi"
+
+[pull]
+	rebase = false
+
+# rerere (REuse REcorded REsolution) — remembers how you resolved merge conflicts
+# and automatically applies the same resolution if the same conflict recurs
+[rerere]
+	enabled = false
+
+[alias]
+	st = status                # short status
+	co = checkout              # short checkout
+	br = branch                # short branch
+	ci = commit                # short commit
+	cm = commit -S -m          # signed commit with inline message
+	cmp = commit -mp           # commit with inline message, no GPG sign prompt
+	adp = add -p               # interactively stage hunks
+	lg = log --oneline --graph --decorate  # compact log with branch graph
+	# interactive rebase with autostash, preserving empty commits and merge structure
+	rb = "!f() { git rebase -i --autostash --keep-empty --no-autosquash --rebase-merges \"$@\"; }; f"
+	# interactive rebase without autostash (manual stash control)
+	rbs = "!f() { git rebase -i --keep-empty --no-autostash --rebase-merges \"$@\"; }; f"
+	# prune local branches whose upstream is gone from remote
+	prn = !sh -c 'git fetch -p && git remote prune origin && git branch -vv | grep \": gone]\" | awk \"{print \\$1}\" | xargs -r git branch -D'
+	# tv (terminal velocity) powered fuzzy finders
+	branches = !tv git-branch     # fuzzy branch picker
+	stsh = !tv git-stash          # fuzzy stash picker
+	sub = !tv git-submodule       # fuzzy submodule picker
+	logs = !tv git-log            # fuzzy log browser
+
+# Git Large File Storage — tracks large files (binaries, assets) via pointers
+# instead of storing them directly in the repo
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[credential "https://github.com"]
+	helper = !gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper = !gh auth git-credential
+
+[credential "https://gitlab.com"]
+	helper = !glab auth git-credential
+
+[credential "https://dev.azure.com"]
+	helper = manager
+
+# Conditional override for Azure Repos
+[includeIf "gitdir:~/work/az-repos"]
+  path = ~/work/az-repos/.gitconfig-azure
+
+[include]
+	path = ~/.gitconfig.local

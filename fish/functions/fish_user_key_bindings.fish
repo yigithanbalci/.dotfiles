@@ -4,7 +4,40 @@ function fish_user_key_bindings
     # Enable Vi mode (equivalent to bindkey -v)
     fish_vi_key_bindings --no-erase insert
 
-    # Bind Ctrl+F to run tmux-sessionizer (equivalent to bindkey -s '^f' "tmux-sessionizer\n")
-    bind \cf tmux-sessionizer
-    bind -M insert \cf tmux-sessionizer 'commandline -f repaint'
+    # --- Custom binds ---
+
+    # Map Ctrl-P to select the previous menu item
+    bind \cp menu-select -1
+
+    # Map Ctrl-N to select the next menu item
+    bind \cn menu-select +1
+    # Bind Ctrl+F to tv projects with fallback to tmux-sessionizer
+    function __tv_projects_or_sessionizer
+        if command -v tv >/dev/null 2>&1
+            tv tmux-sessionizer
+        else
+            tmux-sessionizer
+        end
+        commandline -f repaint
+    end
+    bind \cf __tv_projects_or_sessionizer
+    bind -M insert \cf __tv_projects_or_sessionizer
+
+    # Bind Ctrl+R to tv fish-history with fallback to fzf history search
+    function __tv_history_or_fzf
+        if command -v tv >/dev/null 2>&1
+            set -l current_prompt (commandline -cp)
+            printf "\n"
+            set selected (tv fish-history --input "$current_prompt" --inline --no-status-bar)
+            if test -n "$selected"
+                commandline -r -- $selected
+            end
+            printf "\033[A"
+        else
+            _fzf_search_history
+        end
+        commandline -f repaint
+    end
+    bind \cr __tv_history_or_fzf
+    bind -M insert \cr __tv_history_or_fzf
 end

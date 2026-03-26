@@ -1,0 +1,40 @@
+[metadata]
+name = "tmux-sessionizer"
+description = "Open selected project folder in a tmux session"
+
+[source]
+command = """
+find \
+  ~/ \
+  ~/flutter_projects \
+  ~/Workspace/exercise/algo \
+  ~/Workspace/exercise/exercism \
+  ~/work \
+  ~/personal \
+  ~/personal/yt \
+  ~/devenv \
+  ~/devenv/dotfiles \
+  ~/.dotfiles \
+  -mindepth 1 -maxdepth 1 -type d 2>/dev/null \
+  | awk -F/ '{print $NF "\t" $0}'
+"""
+display = "{split:\t:0}"
+output = "{split:\t:1}"
+
+[preview]
+# -F: adds / to dirs, * to executables
+# -1: forces single column
+# -a: shows hidden files
+# --color: adds visual depth
+command = "ls -F1a --color=always '{split:\t:1}'"
+
+[ui.preview_panel]
+header = "{split:\t:1}"
+
+[keybindings]
+enter = "actions:open"
+
+[actions.open]
+description = "Open in tmux session"
+command = "tmux-project '{split:\t:1}'"
+mode = "execute"
