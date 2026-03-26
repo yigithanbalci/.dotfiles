@@ -82,9 +82,10 @@
 [credential "https://dev.azure.com"]
 	helper = manager
 
+[include]
+	path = ~/.gitconfig.local
+
 # Conditional override for Azure Repos
 [includeIf "gitdir:~/work/az-repos"]
   path = ~/work/az-repos/.gitconfig-azure
 
-[include]
-	path = ~/.gitconfig.local
