@@ -86,6 +86,6 @@
 	path = ~/.gitconfig.local
 
 # Conditional override for Azure Repos
-[includeIf "gitdir:~/work/az-repos"]
+[includeIf "gitdir:~/work/az-repos/**"]
   path = ~/work/az-repos/.gitconfig-azure
 
