@@ -3,6 +3,7 @@
 # Compiler settings
 export CC=clang
 export CXX=clang++
+export EDITOR="vim"
 
 if [[ "$(uname -s)" == "Darwin" ]]; then
   export LDFLAGS="-L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib/unwind -lunwind"
