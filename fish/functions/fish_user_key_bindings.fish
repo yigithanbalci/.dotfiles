@@ -7,10 +7,10 @@ function fish_user_key_bindings
     # --- Custom binds ---
 
     # Map Ctrl-P to select the previous menu item
-    bind \cp menu-select -1
+    bind \cp up-or-search
 
     # Map Ctrl-N to select the next menu item
-    bind \cn menu-select +1
+    bind \cn down-or-search
     # Bind Ctrl+F to tv projects with fallback to tmux-sessionizer
     function __tv_projects_or_sessionizer
         if command -v tv >/dev/null 2>&1
