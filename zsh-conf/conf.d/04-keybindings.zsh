@@ -48,7 +48,7 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
-# Map undo again bcz it is overriden by vi mode 
+# Map undo again bcz it is overridden by vi mode 
 # use <esc>+u for undo in vi mode
 bindkey -M viins '^_' undo
 
@@ -58,7 +58,7 @@ bindkey ' ' magic-space
 
 # Custom Widgets
 # Clear screen but keep current command buffer
-function clear-screen-and-scrollback() {
+clear-screen-and-scrollback() {
   echoti civis >"$TTY"
   printf '%b' '\e[H\e[2J\e[3J' >"$TTY"
   echoti cnorm >"$TTY"
@@ -69,7 +69,7 @@ bindkey '^Xl' clear-screen-and-scrollback
 
 # Copy current command buffer to clipboard
 # macOS: pbcopy | Linux: wl-copy (Wayland) > xclip (X11) > xsel (X11 fallback)
-function copy-buffer-to-clipboard() {
+copy-buffer-to-clipboard() {
   if [[ "$OSTYPE" == darwin* ]]; then
     echo -n "$BUFFER" | pbcopy
   elif command -v wl-copy &>/dev/null; then
@@ -91,7 +91,7 @@ bindkey '^Xc' copy-buffer-to-clipboard
 # Use ZLE widgets (LBUFFER/RBUFFER) for cursor positioning since
 # vi mode doesn't bind \C-b to backward-char like emacs mode does.
 # \n in bindkey -s strings executes immediately.
-function _insert_git_commit() {
+_insert_git_commit() {
   LBUFFER='git cm "'
   RBUFFER='"'
 }
