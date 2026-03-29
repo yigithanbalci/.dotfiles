@@ -18,8 +18,18 @@ if test "$OS_NAME" = Darwin
     # set -x LDFLAGS -L/opt/homebrew/opt/llvm/lib
     set -x LDFLAGS -L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib/unwind -lunwind
     set -x CPPFLAGS -I/opt/homebrew/opt/llvm/include
-    set -x JAVA_HOME /opt/homebrew/Cellar/openjdk@21/21.0.7/
     set -x SHELL /opt/homebrew/bin/fish
+end
+
+# Java — detect JAVA_HOME per platform
+if test "$OS_NAME" = Darwin
+    set -x JAVA_HOME (/usr/libexec/java_home 2>/dev/null)
+else if test -d /usr/lib/jvm/default
+    # Arch
+    set -x JAVA_HOME /usr/lib/jvm/default
+else if test -d /usr/lib/jvm/default-java
+    # Ubuntu/Debian
+    set -x JAVA_HOME /usr/lib/jvm/default-java
 end
 
 # Secret tokens that are not in the repo
