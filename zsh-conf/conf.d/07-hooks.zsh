@@ -38,11 +38,32 @@ if (( ${#__error_sound_player} )); then
   fi
 fi
 
+# Auto-use correct Node version with nvm
+# nvm.sh is sourced with --no-use (see 03-tools.zsh) so we control
+# when `nvm use` runs — once on first prompt and on every cd.
+__nvm_auto_use() {
+  if [[ -f .nvmrc ]]; then
+    # Lazy-load nvm if it hasn't been loaded yet
+    if (( $+functions[__load_nvm] )); then
+      __load_nvm
+    fi
+    nvm use
+  fi
+}
+
+# Run once on first prompt (covers tmux new-session -c, tmux-project, etc.)
+# Guard: some plugins duplicate precmd_functions entries, so we use a flag
+# to ensure this only fires once even if listed multiple times.
+__nvm_first_precmd() {
+  if (( __nvm_first_precmd_done )); then return; fi
+  __nvm_first_precmd_done=1
+  __nvm_auto_use
+  precmd_functions=(${precmd_functions:#__nvm_first_precmd})
+}
+precmd_functions+=(__nvm_first_precmd)
+
 # chpwd Hook - Run Commands on Directory Change
 # NOTE: Only one chpwd hook can be defined at once
 chpwd() {
-  # Auto-use correct Node version with nvm
-  if [[ -f .nvmrc ]]; then
-    nvm use
-  fi
+  __nvm_auto_use
 }
