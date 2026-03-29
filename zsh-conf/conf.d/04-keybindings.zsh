@@ -67,16 +67,22 @@ function clear-screen-and-scrollback() {
 zle -N clear-screen-and-scrollback
 bindkey '^Xl' clear-screen-and-scrollback
 
-# Copy current command buffer to clipboard (macOS)
+# Copy current command buffer to clipboard
+# macOS: pbcopy | Linux: wl-copy (Wayland) > xclip (X11) > xsel (X11 fallback)
 function copy-buffer-to-clipboard() {
-  echo -n "$BUFFER" | pbcopy
+  if [[ "$OSTYPE" == darwin* ]]; then
+    echo -n "$BUFFER" | pbcopy
+  elif command -v wl-copy &>/dev/null; then
+    echo -n "$BUFFER" | wl-copy
+  elif command -v xclip &>/dev/null; then
+    echo -n "$BUFFER" | xclip -selection clipboard
+  elif command -v xsel &>/dev/null; then
+    echo -n "$BUFFER" | xsel --clipboard --input
+  else
+    zle -M "No clipboard tool found"
+    return 1
+  fi
   zle -M "Copied to clipboard"
 }
 zle -N copy-buffer-to-clipboard
 bindkey '^Xc' copy-buffer-to-clipboard
-
-# For Linux with wl-copy:
-# function copy-buffer-to-clipboard() {
-#   echo -n "$BUFFER" | wl-copy
-#   zle -M "Copied to clipboard"
-# }
