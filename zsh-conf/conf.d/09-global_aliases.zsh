@@ -12,8 +12,9 @@ alias -g NUL='>/dev/null 2>&1'
 # Pipe to jq
 alias -g J='| jq'
 
-# Copy output to clipboard (macOS)
-alias -g C='| pbcopy'
-
-# Copy output to clipboard (Linux with xclip)
-# alias -g C='| xclip -selection clipboard'
+# Copy output to clipboard
+if [[ "$OSTYPE" == darwin* ]]; then
+  alias -g C='| pbcopy'
+else
+  alias -g C='| xclip -selection clipboard'
+fi
