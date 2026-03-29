@@ -37,3 +37,12 @@ if (( ${#__error_sound_player} )); then
     precmd_functions+=(__error_sound_precmd)
   fi
 fi
+
+# chpwd Hook - Run Commands on Directory Change
+# NOTE: Only one chpwd hook can be defined at once
+chpwd() {
+  # Auto-use correct Node version with nvm
+  if [[ -f .nvmrc ]]; then
+    nvm use
+  fi
+}
