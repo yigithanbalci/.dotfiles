@@ -43,5 +43,9 @@ alias -s {css,scss,html}='$EDITOR'
 if [[ "$OSTYPE" == darwin* ]]; then
   alias -s {pdf,svg}=open
 else
-  alias -s {pdf,svg}=xdg-open
+  if command -v xdg-open >/dev/null 2>&1; then
+    alias -s {pdf,svg}=xdg-open
+  elif command -v open >/dev/null 2>&1; then
+    alias -s {pdf,svg}=open
+  fi
 fi
