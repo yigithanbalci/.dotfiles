@@ -86,3 +86,13 @@ function copy-buffer-to-clipboard() {
 }
 zle -N copy-buffer-to-clipboard
 bindkey '^Xc' copy-buffer-to-clipboard
+
+# Hotkey Insertions - Text Snippets
+# Insert git commit template (Ctrl+X, G, C)
+# \C-b moves cursor back one position
+bindkey -s '^Xgc' 'git commit -m ""\C-b'
+
+# More examples:
+bindkey -s '^Xgp' 'git push origin '
+bindkey -s '^Xgs' 'git status\n'
+bindkey -s '^Xgl' 'git log --oneline -n 10\n'
