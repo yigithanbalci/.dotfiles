@@ -47,3 +47,7 @@ bindkey -M menuselect '^N' down-line-or-history
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
+
+# Map undo again bcz it is overriden by vi mode 
+# use <esc>+u for undo in vi mode
+bindkey -M viins '^_' undo
