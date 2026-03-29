@@ -15,10 +15,10 @@ export NVM_DIR="$HOME/.nvm"
 __load_nvm() {
   unfunction nvm node npm npx 2>/dev/null
   if [[ "$(uname -s)" == "Darwin" ]]; then
-    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+    [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh" --no-use
     [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
   else
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
   fi
 }
@@ -47,6 +47,14 @@ for __dart_cmd in dart flutter; do
   eval "${__dart_cmd}() { __load_dart_completion; ${__dart_cmd} \"\$@\" }"
 done
 unset __dart_cmd
+
+# zmv - Advanced batch rename/move
+# Usage examples:
+# zmv '(*).log' '$1.txt'           # Rename .log to .txt
+# zmv -w '*.log' '*.txt'           # Same thing, simpler syntax
+# zmv -n '(*).log' '$1.txt'        # Dry run (preview changes)
+# zmv -i '(*).log' '$1.txt'        # Interactive mode (confirm each)
+autoload -Uz zmv
 
 # Carapace
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'

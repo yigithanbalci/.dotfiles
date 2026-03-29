@@ -40,4 +40,8 @@ function fish_user_key_bindings
     end
     bind \cr __tv_history_or_fzf
     bind -M insert \cr __tv_history_or_fzf
+
+    # Open the current command in $EDITOR with Ctrl+X Ctrl+E
+    bind \cx\ce edit_command_buffer
+    bind -M insert \cx\ce edit_command_buffer
 end

@@ -14,3 +14,7 @@ fi
 # Program settings
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 export ZLE_RPROMPT_INDENT=0
+
+# Named Directories — access with ~name syntax (e.g., cd ~dot, ls ~dl)
+hash -d dot=~/devenv/dotfiles
+hash -d dl=~/Downloads
