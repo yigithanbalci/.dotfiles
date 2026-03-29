@@ -88,8 +88,15 @@ zle -N copy-buffer-to-clipboard
 bindkey '^Xc' copy-buffer-to-clipboard
 
 # Hotkey Insertions - Text Snippets (uses git aliases from .gitconfig)
-# \C-b moves cursor back one position, \n executes immediately
-bindkey -s '^Xgc' 'git cm ""\C-b'   # signed commit with message (cm alias)
+# Use ZLE widgets (LBUFFER/RBUFFER) for cursor positioning since
+# vi mode doesn't bind \C-b to backward-char like emacs mode does.
+# \n in bindkey -s strings executes immediately.
+function _insert_git_commit() {
+  LBUFFER='git cm "'
+  RBUFFER='"'
+}
+zle -N _insert_git_commit
+bindkey '^Xgc' _insert_git_commit   # signed commit with message (cm alias)
 bindkey -s '^Xgp' 'git push origin '
 bindkey -s '^Xgs' 'git st\n'        # status (st alias)
 bindkey -s '^Xgl' 'git lg -10\n'    # compact log with graph (lg alias)
