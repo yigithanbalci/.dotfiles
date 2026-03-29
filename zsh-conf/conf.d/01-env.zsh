@@ -14,3 +14,9 @@ fi
 # Program settings
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 export ZLE_RPROMPT_INDENT=0
+
+# Named Directories - Bookmark Folders
+# Access with ~name syntax, e.g., cd ~yt or ls ~yt
+# hash -d yt=~/projects/youtube
+hash -d dot=~/devenv/.dotfiles
+hash -d dl=~/Downloads
