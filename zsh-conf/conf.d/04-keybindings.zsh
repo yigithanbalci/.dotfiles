@@ -51,3 +51,7 @@ bindkey '^X^E' edit-command-line
 # Map undo again bcz it is overriden by vi mode 
 # use <esc>+u for undo in vi mode
 bindkey -M viins '^_' undo
+
+# Expands history expressions like !! or !$ when you press space
+# default is <tab> 
+bindkey ' ' magic-space
