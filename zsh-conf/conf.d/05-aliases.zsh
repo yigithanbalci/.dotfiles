@@ -15,5 +15,9 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
   }
 fi
 
+# zmv pattern aliases
+alias zcp='zmv -C'  # Copy with patterns
+alias zln='zmv -L'  # Link with patterns
+
 alias emacs='emacsclient -c -a ""'
 alias jvim="nvim --cmd 'set runtimepath^=\$HOME/.config/jvim'"
