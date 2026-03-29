@@ -87,12 +87,9 @@ function copy-buffer-to-clipboard() {
 zle -N copy-buffer-to-clipboard
 bindkey '^Xc' copy-buffer-to-clipboard
 
-# Hotkey Insertions - Text Snippets
-# Insert git commit template (Ctrl+X, G, C)
-# \C-b moves cursor back one position
-bindkey -s '^Xgc' 'git commit -m ""\C-b'
-
-# More examples:
+# Hotkey Insertions - Text Snippets (uses git aliases from .gitconfig)
+# \C-b moves cursor back one position, \n executes immediately
+bindkey -s '^Xgc' 'git cm ""\C-b'   # signed commit with message (cm alias)
 bindkey -s '^Xgp' 'git push origin '
-bindkey -s '^Xgs' 'git status\n'
-bindkey -s '^Xgl' 'git log --oneline -n 10\n'
+bindkey -s '^Xgs' 'git st\n'        # status (st alias)
+bindkey -s '^Xgl' 'git lg -10\n'    # compact log with graph (lg alias)
