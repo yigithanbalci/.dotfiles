@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Stow places terminal-shell into ~/.local/scripts/, but it can't create a
+# cross-directory symlink into ~/.local/bin/ (which is on $PATH). This script
+# bridges that gap so terminal-shell is callable by name.
+
 # Ensure ~/.local/bin exists
 mkdir -p "$HOME/.local/bin"
 
