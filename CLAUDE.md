@@ -2,66 +2,40 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Deploying Dotfiles
+## What This Is
 
-The primary deployment script is `stow`, which symlinks configs to their expected locations:
+A GNU Stow-based dotfiles repo targeting **macOS** (primary) and **Linux** (Arch, Ubuntu). Each top-level directory is a stow package.
 
-```bash
-./stow          # deploy all configs
+## Symlink / Install Commands
+
+```sh
+./stow          # Re-stow all packages (runs `stow -R` per package, then `./link`)
+./install       # Unstow + restow using $STOW_FOLDERS, then runs ./link
+./link          # Creates cross-directory symlinks stow can't handle (e.g. terminal-shell → ~/.local/bin/)
+./ubuntu        # Bootstrap subset of packages on Ubuntu ($STOW_FOLDERS defaults to bin,kitty,lazygit,nvim,tmux,zsh)
 ```
 
-This script runs `stow -R` for each tool, using custom `--target` flags for tools that live outside `~/.config`:
+## Stow Routing
 
-| Tool | Target |
-|------|--------|
-| Most configs (nvim, tmux, etc.) | `~/.config` (via `.stowrc`) |
-| `bash`, `zsh`, `git`, `idea`, `aerospace` | `$HOME` |
-| `local` | `$HOME/.local` |
+`.stowrc` sets default target to `~/.config` and ignores certain directories. Packages that need a different target are handled explicitly in `./stow` with `--target=`:
+- `bash`, `zsh`, `idea`, `git`, `aerospace` → `$HOME`
+- `local` → `$HOME/.local`
+- Everything else (fish, starship, nvim, tmux, ghostty, etc.) → `~/.config` (via `.stowrc` default)
 
-After stowing, `./link` creates a symlink for `terminal-shell` from `~/.local/scripts/` to `~/.local/bin/`.
+## Key Architecture
 
-### `.stowrc` behavior
+**Zsh config** is split across two packages:
+- `zsh/` — `.zshrc` and `.zsh_profile` (stowed to `$HOME`)
+- `zsh-conf/` — the actual config, stowed to `~/.config/zsh-conf/`. Numbered files in `conf.d/` are loaded in order: `00-utils` → `01-env` → `02-path` → `03-tools` → `04-keybindings` → `05-aliases` → ... `09-global_aliases`. Custom functions live in `functions/`.
 
-Running `stow .` from the repo root uses `.stowrc` which sets `--target=~/.config` and explicitly ignores tools that need custom targets (`zsh`, `git`, `bash`, `local`, `aerospace`, `idea`, etc.). Those must be stowed separately.
+**Fish config** mirrors the zsh setup: `config.fish` sources `settings.fish` and `env.vars.fish`, with `conf.d/` and `functions/` subdirectories.
 
-## Architecture
+**Platform detection** is used extensively in env/path files (`01-env.zsh`, `02-path.zsh`, `env.vars.fish`). Configs branch on `uname` output (Darwin vs Linux) and Linux distro (Arch vs Ubuntu). Secrets are sourced from `~/.shell_secrets` (not tracked).
 
-### Submodules
+**Submodules**: `nvim` and `doom` are separate repos pulled in as git submodules. Edit those configs in their own repositories.
 
-`nvim` and `doom` are separate git repos included as submodules:
-- `nvim` → https://github.com/yigithanbalci/nvim.git (LazyVim-based)
-- `doom` → https://github.com/yigithanbalci/doom.git
+## Things to Watch Out For
 
-After cloning: `git submodule update --init --recursive`
-
-### Directory conventions
-
-Each top-level directory mirrors the application name and contains files in the structure expected after symlinking to its target. For example, `nvim/` symlinks to `~/.config/nvim/`, `zsh/.zshrc` symlinks to `~/.zshrc`.
-
-### Platform-specific configs
-
-- **macOS:** `aerospace/`, `yabai/`, `skhd/`
-- **Linux:** `hypr/`, `i3/`, `sway/`, `waybar/`
-
-### Local scripts
-
-Custom shell scripts live in `local/scripts/` (stowed to `~/.local/scripts/`):
-- `tmux-sessionizer` / `tmux-windowizer` — tmux workflow helpers
-- `tmux-cht.sh` — cheat sheet lookup via tmux
-- `terminal-shell` — shell switching utility (also symlinked to `~/.local/bin/`)
-- `kitty-bg-picker` / `kitty-bg-conf-generator` — Kitty background tools
-
-## Guidelines
-
-### Platform-specific configurations
-
-This repo targets multiple OSes (macOS and Linux). Always make configs platform-specific wherever applicable:
-- Use OS conditionals in shell files (e.g., `if [[ "$OSTYPE" == "darwin"* ]]`)
-- Use platform-specific config directories (`aerospace/`, `yabai/`, `skhd/` for macOS; `hypr/`, `i3/`, `sway/`, `waybar/` for Linux)
-- Never add macOS-only or Linux-only settings globally without a platform guard
-
-### Shell setup
-
-- **Primary shell:** Zsh (`zsh/.zshrc`, `zsh/.zsh_profile`) — stowed to `$HOME`
-- **Alternative:** Fish (`fish/config.fish`, `fish/env.vars.fish`)
-- **Prompt:** Starship (`starship/starship.toml`)
+- `.stowrc` has an ignore list — new top-level directories that should stow to `~/.config` work automatically, but directories needing `$HOME` as target must be added to both `.stowrc` ignore list and `./stow` script.
+- Environment variables like `JAVA_HOME`, `CC`, `CXX` have guards to avoid setting empty values when tools aren't installed. Preserve these guards.
+- The numbered `conf.d/` ordering matters — utils and env must load before path and tools.
