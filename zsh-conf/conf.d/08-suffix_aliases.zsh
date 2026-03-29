@@ -39,5 +39,13 @@ alias -s {toml,cmake}='$EDITOR'
 # Web
 alias -s {css,scss,html}='$EDITOR'
 
-# --- Browser (macOS: open) ---
-alias -s {pdf,svg}=open
+# --- Open with default app (macOS: open, Linux: xdg-open) ---
+if [[ "$OSTYPE" == darwin* ]]; then
+  alias -s {pdf,svg}=open
+else
+  if command -v xdg-open >/dev/null 2>&1; then
+    alias -s {pdf,svg}=xdg-open
+  elif command -v open >/dev/null 2>&1; then
+    alias -s {pdf,svg}=open
+  fi
+fi
