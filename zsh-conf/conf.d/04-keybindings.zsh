@@ -41,3 +41,9 @@ bindkey '^r' _tv_history_or_fzf
 # Carapace menu navigation
 bindkey -M menuselect '^P' up-line-or-history
 bindkey -M menuselect '^N' down-line-or-history
+
+# Open the current command in your $EDITOR (e.g., neovim)
+# Press Ctrl+X followed by Ctrl+E to trigger
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
