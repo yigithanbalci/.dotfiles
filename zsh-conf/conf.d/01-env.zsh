@@ -8,7 +8,17 @@ export EDITOR="vim"
 if [[ "$(uname -s)" == "Darwin" ]]; then
   export LDFLAGS="-L/opt/homebrew/opt/llvm/lib -L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib/unwind -lunwind"
   export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-  export JAVA_HOME=/opt/homebrew/Cellar/openjdk/23
+fi
+
+# Java — detect JAVA_HOME per platform
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
+elif [[ -d /usr/lib/jvm/default ]]; then
+  # Arch
+  export JAVA_HOME=/usr/lib/jvm/default
+elif [[ -d /usr/lib/jvm/default-java ]]; then
+  # Ubuntu/Debian
+  export JAVA_HOME=/usr/lib/jvm/default-java
 fi
 
 # Program settings
