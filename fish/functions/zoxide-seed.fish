@@ -24,11 +24,11 @@ function zoxide-seed
         return 1
     end
 
-    # Cache hit — zoxide db already has these entries, nothing to do
-    test -f $__ZOXIDE_SEED_CACHE; and return 0
-
-    command mkdir -p (dirname $__ZOXIDE_SEED_CACHE)
-    __zoxide_seed_dirs >$__ZOXIDE_SEED_CACHE
+    # Use cache to avoid rerunning `find`; always (re)seed zoxide from the list.
+    if not test -f $__ZOXIDE_SEED_CACHE
+        command mkdir -p (dirname $__ZOXIDE_SEED_CACHE)
+        __zoxide_seed_dirs >$__ZOXIDE_SEED_CACHE
+    end
 
     while read -l dir
         zoxide add $dir
