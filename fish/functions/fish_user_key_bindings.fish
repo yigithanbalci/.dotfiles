@@ -14,7 +14,7 @@ function fish_user_key_bindings
     # Bind Ctrl+F to tv projects with fallback to tmux-sessionizer
     function __tv_projects_or_sessionizer
         if command -v tv >/dev/null 2>&1
-            tv tmux-sessionizer
+            tv sesh-session
         else
             tmux-sessionizer
         end

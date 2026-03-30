@@ -11,7 +11,7 @@ _tv_projects_or_sessionizer() {
   RBUFFER=""
 
   if command -v tv &>/dev/null; then
-    zle -U "tv tmux-sessionizer
+    zle -U "tv sesh-session
 "
   else
     zle -U "tmux-sessionizer
