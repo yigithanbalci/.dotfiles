@@ -66,8 +66,3 @@ set-option -g status-position bottom
 set -g allow-passthrough on
 set -ga update-environment TERM
 set -ga update-environment TERM_PROGRAM
-
-bind-key x kill-pane # skip "kill-pane 1? (y/n)" prompt
-set -g detach-on-destroy off  # don't exit from tmux when closing a session
-
-bind-key C-f display-popup -E -w 80% -h 80% "tv sesh-session"

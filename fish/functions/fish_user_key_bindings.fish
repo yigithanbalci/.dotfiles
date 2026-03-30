@@ -7,10 +7,10 @@ function fish_user_key_bindings
     # --- Custom binds ---
 
     # Map Ctrl-P to select the previous menu item
-    bind \cp menu-select -1
+    bind \cp up-or-search
 
     # Map Ctrl-N to select the next menu item
-    bind \cn menu-select +1
+    bind \cn down-or-search
     # Bind Ctrl+F to tv projects with fallback to tmux-sessionizer
     function __tv_projects_or_sessionizer
         if command -v tv >/dev/null 2>&1
@@ -22,6 +22,14 @@ function fish_user_key_bindings
     end
     bind \cf __tv_projects_or_sessionizer
     bind -M insert \cf __tv_projects_or_sessionizer
+
+    # Bind Ctrl+B Ctrl+F to tv sesh-session (mirrors tmux prefix + f)
+    function __tv_sesh_session
+        tv sesh-session
+        commandline -f repaint
+    end
+    bind \cb\cf __tv_sesh_session
+    bind -M insert \cb\cf __tv_sesh_session
 
     # Bind Ctrl+R to tv fish-history with fallback to fzf history search
     function __tv_history_or_fzf
@@ -40,4 +48,8 @@ function fish_user_key_bindings
     end
     bind \cr __tv_history_or_fzf
     bind -M insert \cr __tv_history_or_fzf
+
+    # Open the current command in $EDITOR with Ctrl+X Ctrl+E
+    bind \cx\ce edit_command_buffer
+    bind -M insert \cx\ce edit_command_buffer
 end

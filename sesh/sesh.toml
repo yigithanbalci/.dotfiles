@@ -1,0 +1,61 @@
+#:schema https://github.com/joshmedeski/sesh/raw/main/sesh.schema.json
+# blacklist FloaX pop-up session
+blacklist = ["scratch"]
+
+cache = false
+
+sort_order = [
+  "tmux", # show first 
+  # "tmuxinator", #  don't use tmuxinator anyways
+  "config",
+  "zoxide", # show last
+]
+
+# open the file manager
+[[session]]
+name = "Downloads "
+path = "~/Downloads"
+startup_command = "yazi"
+
+[[session]]
+name = "Documents 󰈙"
+path = "~/Documents"
+startup_command = "yazi"
+
+[[window]]
+name = "nvim"
+startup_script = "nvim"
+
+[[window]]
+name = "shell"
+
+[[session]]
+name = "devenv "
+path = "~/devenv"
+startup_command = "tmux select-window -t nvim"
+windows = ["nvim", "shell"]
+
+[[session]]
+name = "dotfiles "
+path = "~/devenv/dotfiles"
+startup_command = "tmux select-window -t nvim"
+windows = ["nvim", "shell"]
+
+[[session]]
+name = "nvim config "
+path = "~/devenv/dotfiles/nvim"
+startup_command = "tmux select-window -t nvim"
+windows = ["nvim", "shell"]
+
+# wildcard doesn't support windows, using startup_command workaround
+[[wildcard]]
+pattern = "~/devenv/**"
+startup_command = "tmux new-window -n nvim 'nvim .' && tmux new-window -n shell && tmux select-window -t nvim"
+
+[[wildcard]]
+pattern = "~/work/**"
+startup_command = "tmux new-window -n nvim 'nvim .' && tmux new-window -n shell && tmux select-window -t nvim"
+
+[[wildcard]]
+pattern = "~/personal/**"
+startup_command = "tmux new-window -n nvim 'nvim .' && tmux new-window -n shell && tmux select-window -t nvim"
