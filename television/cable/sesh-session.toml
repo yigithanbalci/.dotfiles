@@ -1,6 +1,6 @@
 [metadata]
 name = "sesh-session"
-description = "Session manager integrating tmux sessions, zoxide directories, and config paths"
+description = "Session manager | ctrl-s: cycle [all → tmux → config → zoxide → find]"
 requirements = ["sesh", "fd"]
 
 [source]
