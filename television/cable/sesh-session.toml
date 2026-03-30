@@ -5,7 +5,7 @@ requirements = ["sesh", "fd"]
 
 [source]
 command = [
-  "sesh list --icons",
+  "sesh list --icons --hide-duplicates",
   "sesh list -t --icons",
   "sesh list -c --icons",
   "sesh list -z --icons",
