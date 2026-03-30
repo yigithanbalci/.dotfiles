@@ -28,7 +28,7 @@ __zoxide_seed_dirs() {
 
 zoxide-seed() {
   if ! command -v zoxide >/dev/null 2>&1; then
-    return 1
+    return 0
   fi
 
   # Use cache to avoid rerunning `find`; always (re)seed zoxide from the list.

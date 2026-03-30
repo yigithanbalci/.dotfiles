@@ -21,7 +21,7 @@ end
 
 function zoxide-seed
     if not type -q zoxide
-        return 1
+        return 0
     end
 
     # Use cache to avoid rerunning `find`; always (re)seed zoxide from the list.
