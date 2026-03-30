@@ -1,18 +1,33 @@
 [metadata]
 name = "sesh"
-description = "Connect to a tmux session via sesh"
+description = "Session manager integrating tmux sessions, zoxide directories, and config paths"
+requirements = ["sesh", "fd"]
 
 [source]
-command = "sesh list -t -z -c -d -H"
+command = [
+  "sesh list --icons",
+  "sesh list -t --icons",
+  "sesh list -c --icons",
+  "sesh list -z --icons",
+  "fd -H -d 2 -t d -E .Trash . ~",
+]
+ansi = true
+output = "{strip_ansi|split: :1..|join: }"
 
 [preview]
-command = "sesh preview '{0}'"
+command = "sesh preview '{strip_ansi|split: :1..|join: }'"
 
 [keybindings]
-enter = "actions:open"
+enter = "actions:connect"
+ctrl-d = ["actions:kill_session", "reload_source"]
 
-[actions.open]
-description = "Connect to session"
-command = "sesh connect '{0}'"
+[actions.connect]
+description = "Connect to selected session"
+command = "sesh connect '{strip_ansi|split: :1..|join: }'"
 mode = "execute"
+
+[actions.kill_session]
+description = "Kill selected tmux session (press Ctrl+r to reload)"
+command = "tmux kill-session -t '{strip_ansi|split: :1..|join: }'"
+mode = "fork"
 
