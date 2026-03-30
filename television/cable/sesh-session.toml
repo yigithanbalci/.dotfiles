@@ -1,7 +1,7 @@
 [metadata]
 name = "sesh-session"
 description = "Session manager | ctrl-s: cycle [all → tmux → config → zoxide → find]"
-requirements = ["sesh", "fd"]
+requirements = ["sesh", "fd", "tmux"]
 
 [source]
 command = [
