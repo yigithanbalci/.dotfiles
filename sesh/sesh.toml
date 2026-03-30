@@ -13,12 +13,12 @@ sort_order = [
 
 # open the file manager
 [[session]]
-name = "Downloads 📥"
+name = "Downloads "
 path = "~/Downloads"
 startup_command = "yazi"
 
 [[session]]
-name = "Documents 📥"
+name = "Documents 󰈙"
 path = "~/Documents"
 startup_command = "yazi"
 
@@ -30,19 +30,19 @@ startup_script = "nvim ."
 name = "shell"
 
 [[session]]
-name = "devenv"
+name = "devenv "
 path = "~/devenv"
 startup_command = "tmux select-window -t nvim"
 windows = ["nvim", "shell"]
 
 [[session]]
-name = "dotfiles"
+name = "dotfiles "
 path = "~/devenv/dotfiles"
 startup_command = "tmux select-window -t nvim"
 windows = ["nvim", "shell"]
 
 [[session]]
-name = "nvim config"
+name = "nvim config "
 path = "~/devenv/dotfiles/nvim"
 startup_command = "tmux select-window -t nvim"
 windows = ["nvim", "shell"]
