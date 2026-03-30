@@ -6,6 +6,7 @@ end
 
 type -q batman; and batman --export-env | source
 type -q zoxide; and zoxide init fish | source
+type -q zoxide; and zoxide-seed
 
 source $HOME/.config/fish/settings.fish
 source $HOME/.config/fish/env.vars.fish

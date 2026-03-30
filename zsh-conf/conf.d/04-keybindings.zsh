@@ -21,6 +21,16 @@ _tv_projects_or_sessionizer() {
 zle -N _tv_projects_or_sessionizer
 bindkey '^f' _tv_projects_or_sessionizer
 
+# Ctrl-B Ctrl-F: tv sesh-session (mirrors tmux prefix + f)
+_tv_sesh_session() {
+  LBUFFER=""
+  RBUFFER=""
+  zle -U "tv sesh-session
+"
+}
+zle -N _tv_sesh_session
+bindkey '^b^f' _tv_sesh_session
+
 # Ctrl-R: tv history or fzf
 _tv_history_or_fzf() {
   if command -v tv &>/dev/null; then

@@ -21,3 +21,6 @@ alias zln='zmv -L'  # Link with patterns
 
 alias emacs='emacsclient -c -a ""'
 alias jvim="nvim --cmd 'set runtimepath^=\$HOME/.config/jvim'"
+
+# Add dirs to zoxide
+alias zload='for d in */; do zoxide add "$d"; done'
