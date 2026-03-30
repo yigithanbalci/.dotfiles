@@ -5,10 +5,10 @@ blacklist = ["scratch"]
 cache = false
 
 sort_order = [
-  "tmuxinator", # show first
+  "tmux", # show first 
+  # "tmuxinator", #  don't use tmuxinator anyways
   "config",
-  "tmux",
-  "zoxide",     # show last
+  "zoxide", # show last
 ]
 
 # open the file manager
