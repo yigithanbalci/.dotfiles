@@ -1,5 +1,5 @@
 [metadata]
-name = "sesh-session"
+name = "sesh"
 description = "Session manager integrating tmux sessions, zoxide directories, and config paths"
 requirements = ["sesh", "fd"]
 
@@ -30,3 +30,4 @@ mode = "execute"
 description = "Kill selected tmux session (press Ctrl+r to reload)"
 command = "tmux kill-session -t '{strip_ansi|split: :1..|join: }'"
 mode = "fork"
+
