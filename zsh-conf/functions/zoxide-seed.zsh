@@ -1,5 +1,12 @@
 ## Zoxide seed — pre-load zoxide with project directories from tmux-sessionizer paths.
-## Cached for speed; cache invalidated by mkdir, rm, and git clone wrappers.
+## Cached for speed; cache refreshed by mkdir, rm, and git clone wrappers.
+##
+## NOTE: Load order — this file (zoxide-seed.zsh) must be sourced before
+## git.zsh, mkdir.zsh, rm.zsh which depend on __zoxide_seed_refresh.
+## Since .zsh_profile globs functions/*.zsh alphabetically, "z" sorts
+## after "g/m/r" — but that's fine because those files only *define*
+## functions at source time; __zoxide_seed_refresh is only *called*
+## at runtime, by which point all files have been sourced.
 
 __ZOXIDE_SEED_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zoxide-seed.list"
 
@@ -34,8 +41,9 @@ zoxide-seed() {
   done < "$__ZOXIDE_SEED_CACHE"
 }
 
-__zoxide_seed_invalidate() {
+__zoxide_seed_refresh() {
   command rm -f "$__ZOXIDE_SEED_CACHE"
+  zoxide-seed
 }
 
 # Auto-seed on shell startup

@@ -1,3 +1,3 @@
 rm() {
-  command rm "$@" && __zoxide_seed_invalidate
+  command rm "$@" && __zoxide_seed_refresh
 }
