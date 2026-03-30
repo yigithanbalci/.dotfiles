@@ -1,0 +1,18 @@
+[metadata]
+name = "sesh"
+description = "Connect to a tmux session via sesh"
+
+[source]
+command = "sesh list -t -z -c -d -H"
+
+[preview]
+command = "sesh preview '{0}'"
+
+[keybindings]
+enter = "actions:open"
+
+[actions.open]
+description = "Connect to session"
+command = "sesh connect '{0}'"
+mode = "execute"
+
