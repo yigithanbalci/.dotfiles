@@ -31,10 +31,11 @@ zoxide-seed() {
     return 1
   fi
 
-  if [[ ! -f "$__ZOXIDE_SEED_CACHE" ]]; then
-    command mkdir -p "${__ZOXIDE_SEED_CACHE:h}"
-    __zoxide_seed_dirs > "$__ZOXIDE_SEED_CACHE"
-  fi
+  # Cache hit — zoxide db already has these entries, nothing to do
+  [[ -f "$__ZOXIDE_SEED_CACHE" ]] && return 0
+
+  command mkdir -p "${__ZOXIDE_SEED_CACHE:h}"
+  __zoxide_seed_dirs > "$__ZOXIDE_SEED_CACHE"
 
   while IFS= read -r dir; do
     zoxide add "$dir"
