@@ -21,3 +21,41 @@ startup_command = "yazi"
 name = "Documents 📥"
 path = "~/Documents"
 startup_command = "yazi"
+
+[[window]]
+name = "nvim"
+startup_script = "nvim ."
+
+[[window]]
+name = "shell"
+
+[[session]]
+name = "devenv"
+path = "~/devenv"
+startup_command = "tmux select-window -t nvim"
+windows = ["nvim", "shell"]
+
+[[session]]
+name = "dotfiles"
+path = "~/devenv/dotfiles"
+startup_command = "tmux select-window -t nvim"
+windows = ["nvim", "shell"]
+
+[[session]]
+name = "nvim config"
+path = "~/devenv/dotfiles/nvim"
+startup_command = "tmux select-window -t nvim"
+windows = ["nvim", "shell"]
+
+# wildcard doesn't support windows, using startup_command workaround
+[[wildcard]]
+pattern = "~/devenv/**"
+startup_command = "tmux new-window -n nvim 'nvim .' && tmux new-window -n shell && tmux select-window -t nvim"
+
+[[wildcard]]
+pattern = "~/work/**"
+startup_command = "tmux new-window -n nvim 'nvim .' && tmux new-window -n shell && tmux select-window -t nvim"
+
+[[wildcard]]
+pattern = "~/personal/**"
+startup_command = "tmux new-window -n nvim 'nvim .' && tmux new-window -n shell && tmux select-window -t nvim"
