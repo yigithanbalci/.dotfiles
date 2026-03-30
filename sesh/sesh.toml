@@ -57,5 +57,9 @@ pattern = "~/work/**"
 startup_command = "tmux new-window -n nvim 'nvim .' && tmux new-window -n shell && tmux select-window -t nvim"
 
 [[wildcard]]
+pattern = "~/work/az-repos/**"
+startup_command = "tmux new-window -n nvim 'nvim .' && tmux new-window -n shell && tmux select-window -t nvim"
+
+[[wildcard]]
 pattern = "~/personal/**"
 startup_command = "tmux new-window -n nvim 'nvim .' && tmux new-window -n shell && tmux select-window -t nvim"
