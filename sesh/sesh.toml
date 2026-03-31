@@ -1,7 +1,6 @@
 #:schema https://github.com/joshmedeski/sesh/raw/main/sesh.schema.json
 # blacklist FloaX pop-up session
 blacklist = ["scratch"]
-#TODO: add all new submodules of dev for convenience
 cache = false
 
 sort_order = [
@@ -38,6 +37,12 @@ windows = ["nvim", "shell"]
 [[session]]
 name = "dotfiles "
 path = "~/devenv/dotfiles"
+startup_command = "tmux select-window -t nvim"
+windows = ["nvim", "shell"]
+
+[[session]]
+name = "install "
+path = "~/devenv/install"
 startup_command = "tmux select-window -t nvim"
 windows = ["nvim", "shell"]
 
