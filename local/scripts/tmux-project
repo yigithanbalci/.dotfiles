@@ -1,10 +1,28 @@
 #!/usr/bin/env bash
 
+# ==============================================================================
+# NOTE: The /dev/tty / [ -t 0 ] logic handles "Lost TTY" errors.
+# This occurs when TUI tools (like 'tv' or 'fzf') execute actions in a subshell.
+# These tools often disconnect stdin, causing interactive 'tmux' commands
+# (attach/switch-client) to fail because they can't find a terminal to talk to.
+# Re-attaching to /dev/tty restores that connection.
+# ==============================================================================
+
 switch_to() {
+  local target_session="$1"
+  local tty_dev=""
+
+  # If stdin (-t 0) is not a terminal, force redirection from /dev/tty
+  if [[ ! -t 0 && -c /dev/tty ]]; then
+    tty_dev="/dev/tty"
+  fi
+
   if [[ -z $TMUX ]]; then
-    tmux attach-session -t $1
+    # Use 'tmux attach' if we are outside a session
+    [[ -n $tty_dev ]] && tmux attach-session -t "$target_session" <"$tty_dev" || tmux attach-session -t "$target_session"
   else
-    tmux switch-client -t $1
+    # Use 'tmux switch-client' if we are already inside a session
+    [[ -n $tty_dev ]] && tmux switch-client -t "$target_session" <"$tty_dev" || tmux switch-client -t "$target_session"
   fi
 }
 
@@ -13,10 +31,10 @@ has_session() {
 }
 
 hydrate() {
-  if [ -f $2/.tmux-sessionizer ]; then
-    tmux send-keys -t $1 "source $2/.tmux-sessionizer" c-M
-  elif [ -f $HOME/.tmux-sessionizer ]; then
-    tmux send-keys -t $1 "source $HOME/.tmux-sessionizer" c-M
+  if [ -f "$2/.tmux-sessionizer" ]; then
+    tmux send-keys -t "$1" "source $2/.tmux-sessionizer" c-M
+  elif [ -f "$HOME/.tmux-sessionizer" ]; then
+    tmux send-keys -t "$1" "source $HOME/.tmux-sessionizer" c-M
   fi
 }
 
@@ -26,7 +44,6 @@ if [[ $# -ne 1 ]]; then
 fi
 
 selected=$1
-
 if [[ -z $selected ]]; then
   exit 0
 fi
@@ -34,15 +51,17 @@ fi
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
+# Initial launch: No tmux server running
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-  tmux new-session -s $selected_name -c $selected
-  hydrate $selected_name $selected
+  tmux new-session -s "$selected_name" -c "$selected"
+  hydrate "$selected_name" "$selected"
   exit 0
 fi
 
-if ! has_session $selected_name; then
-  tmux new-session -ds $selected_name -c $selected
-  hydrate $selected_name $selected
+# Create session if it doesn't exist (detached)
+if ! has_session "$selected_name"; then
+  tmux new-session -ds "$selected_name" -c "$selected"
+  hydrate "$selected_name" "$selected"
 fi
 
-switch_to $selected_name
+switch_to "$selected_name"
