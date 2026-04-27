@@ -1,33 +1,36 @@
 #!/usr/bin/env bash
 
 # ==============================================================================
-# NOTE: The /dev/tty / [ -t 0 ] logic handles "Lost TTY" errors.
-# This occurs when TUI tools (like 'tv' or 'fzf') execute actions in a subshell.
-# These tools often disconnect stdin, causing interactive 'tmux' commands
-# (attach/switch-client) to fail because they can't find a terminal to talk to.
-# Re-attaching to /dev/tty restores that connection.
+# NOTE: The "can't use /dev/tty" error occurs because the parent TUI (tv)
+# may hold an exclusive lock or hasn't fully relinquished the terminal state.
+#
+# FIX: Use 'script' to spawn a fresh PTY. This is the standard Unix way
+# to bypass "not a terminal" or "failed to open /dev/tty" errors without Python.
 # ==============================================================================
 
 switch_to() {
   local target_session="$1"
-  local tty_dev=""
 
-  # If stdin (-t 0) is not a terminal, force redirection from /dev/tty
-  if [[ ! -t 0 && -c /dev/tty ]]; then
-    tty_dev="/dev/tty"
-  fi
+  # Reset terminal state in case 'tv' left it in raw mode
+  stty sane 2>/dev/null
 
   if [[ -z $TMUX ]]; then
-    # Use 'tmux attach' if we are outside a session
-    [[ -n $tty_dev ]] && tmux attach-session -t "$target_session" <"$tty_dev" || tmux attach-session -t "$target_session"
+    # OUTSIDE TMUX: Force a new PTY using 'script'
+    # Syntax varies slightly between Linux and macOS
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      script -q /dev/null tmux attach-session -t "$target_session"
+    else
+      # -q: quiet, -e: return exit code of child, -c: command
+      script -qec "tmux attach-session -t \"$target_session\"" /dev/null
+    fi
   else
-    # Use 'tmux switch-client' if we are already inside a session
-    [[ -n $tty_dev ]] && tmux switch-client -t "$target_session" <"$tty_dev" || tmux switch-client -t "$target_session"
+    # INSIDE TMUX: switch-client is a simple socket command
+    tmux switch-client -t "$target_session"
   fi
 }
 
 has_session() {
-  tmux list-sessions | grep -q "^$1:"
+  tmux list-sessions 2>/dev/null | grep -q "^$1:"
 }
 
 hydrate() {
@@ -44,21 +47,17 @@ if [[ $# -ne 1 ]]; then
 fi
 
 selected=$1
-if [[ -z $selected ]]; then
-  exit 0
-fi
+[[ -z $selected ]] && exit 0
 
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
-# Initial launch: No tmux server running
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
   tmux new-session -s "$selected_name" -c "$selected"
   hydrate "$selected_name" "$selected"
   exit 0
 fi
 
-# Create session if it doesn't exist (detached)
 if ! has_session "$selected_name"; then
   tmux new-session -ds "$selected_name" -c "$selected"
   hydrate "$selected_name" "$selected"

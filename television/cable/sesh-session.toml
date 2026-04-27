@@ -4,7 +4,6 @@ description = "Session manager | ctrl-s: cycle [all → tmux → config → zoxi
 requirements = ["sesh", "fd", "tmux"]
 
 [source]
-# Notes: Uses ansi=true to support the icons from sesh list
 command = [
   "sesh list --icons --hide-duplicates",
   "sesh list -t --icons",
@@ -13,7 +12,6 @@ command = [
   "fd -H -d 2 -t d -E .Trash . ~ | sed 's/^/📁 /'",
 ]
 ansi = true
-# Cleanly strips the icon and leading space for the session name/path
 output = "{strip_ansi|split: :1..|join: }"
 
 [preview]
@@ -25,14 +23,12 @@ ctrl-d = ["actions:kill_session", "reload_source"]
 
 [actions.connect]
 description = "Connect to selected session"
-# ELEGANT FIX: 
-# 1. 'exec' replaces the subshell with sesh (better resource management).
-# 2. '< /dev/tty' reconnects the hijacked stdin to the actual terminal.
-# This prevents "Exit Code 1" or "not a terminal" errors in TUI wrappers.
-command = "exec sesh connect '{strip_ansi|split: :1..|join: }' < /dev/tty"
+# NOTE: BSD 'script' syntax (script -q [file] [command]). 
+# This bypasses the TTY hijacking by tv and provides a clean PTY for sesh/tmux.
+command = "script -q /dev/null sesh connect '{strip_ansi|split: :1..|join: }'"
 mode = "execute"
 
 [actions.kill_session]
-description = "Kill selected tmux session (press Ctrl+r to reload)"
+description = "Kill selected tmux session"
 command = "tmux kill-session -t '{strip_ansi|split: :1..|join: }'"
 mode = "fork"
