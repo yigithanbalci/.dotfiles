@@ -55,16 +55,16 @@ windows = ["nvim", "shell"]
 # wildcard doesn't support windows, using startup_command workaround
 [[wildcard]]
 pattern = "~/devenv/**"
-startup_command = "tmux new-window -n nvim 'nvim' && tmux new-window -n shell && tmux select-window -t nvim"
+startup_command = "tmux new-window -n nvim 'nvim' && tmux new-window -n shell && tmux select-window -t nvim && exec ${SHELL:-/bin/zsh} -l"
 
 [[wildcard]]
 pattern = "~/work/**"
-startup_command = "tmux new-window -n nvim 'nvim' && tmux new-window -n shell && tmux select-window -t nvim"
+startup_command = "tmux new-window -n nvim 'nvim' && tmux new-window -n shell && tmux select-window -t nvim && exec ${SHELL:-/bin/zsh} -l"
 
 [[wildcard]]
 pattern = "~/work/az-repos/**"
-startup_command = "tmux new-window -n nvim 'nvim' && tmux new-window -n shell && tmux select-window -t nvim"
+startup_command = "tmux new-window -n nvim 'nvim' && tmux new-window -n shell && tmux select-window -t nvim && exec ${SHELL:-/bin/zsh} -l"
 
 [[wildcard]]
 pattern = "~/personal/**"
-startup_command = "tmux new-window -n nvim 'nvim' && tmux new-window -n shell && tmux select-window -t nvim"
+startup_command = "tmux new-window -n nvim 'nvim' && tmux new-window -n shell && tmux select-window -t nvim && exec ${SHELL:-/bin/zsh} -l"
