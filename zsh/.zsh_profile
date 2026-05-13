@@ -5,3 +5,6 @@ for f in "$ZSH_CONF_DIR"/conf.d/*.zsh(N); do source "$f"; done
 
 # Function overrides (after conf.d so OMZ aliases can be overridden)
 for f in "$ZSH_CONF_DIR"/functions/*.zsh(N); do source "$f"; done
+
+# Machine-local overrides (not tracked)
+[[ -f "$HOME/.zprofile.local" ]] && source "$HOME/.zprofile.local"
