@@ -30,9 +30,6 @@ alias -s {py,rb,dart,ml,mli}='$EDITOR'
 # Lua
 alias -s lua='$EDITOR'
 
-# Shell
-alias -s {sh,bash,zsh,fish}='$EDITOR'
-
 # Config / Build
 alias -s {toml,cmake}='$EDITOR'
 

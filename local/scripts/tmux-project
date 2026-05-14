@@ -1,22 +1,43 @@
 #!/usr/bin/env bash
 
+# ==============================================================================
+# NOTE: The "can't use /dev/tty" error occurs because the parent TUI (tv)
+# may hold an exclusive lock or hasn't fully relinquished the terminal state.
+#
+# FIX: Use 'script' to spawn a fresh PTY. This is the standard Unix way
+# to bypass "not a terminal" or "failed to open /dev/tty" errors without Python.
+# ==============================================================================
+
 switch_to() {
+  local target_session="$1"
+
+  # Reset terminal state in case 'tv' left it in raw mode
+  stty sane 2>/dev/null
+
   if [[ -z $TMUX ]]; then
-    tmux attach-session -t $1
+    # OUTSIDE TMUX: Force a new PTY using 'script'
+    # Syntax varies slightly between Linux and macOS
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+      script -q /dev/null tmux attach-session -t "$target_session"
+    else
+      # -q: quiet, -e: return exit code of child, -c: command
+      script -qec "tmux attach-session -t \"$target_session\"" /dev/null
+    fi
   else
-    tmux switch-client -t $1
+    # INSIDE TMUX: switch-client is a simple socket command
+    tmux switch-client -t "$target_session"
   fi
 }
 
 has_session() {
-  tmux list-sessions | grep -q "^$1:"
+  tmux list-sessions 2>/dev/null | grep -q "^$1:"
 }
 
 hydrate() {
-  if [ -f $2/.tmux-sessionizer ]; then
-    tmux send-keys -t $1 "source $2/.tmux-sessionizer" c-M
-  elif [ -f $HOME/.tmux-sessionizer ]; then
-    tmux send-keys -t $1 "source $HOME/.tmux-sessionizer" c-M
+  if [ -f "$2/.tmux-sessionizer" ]; then
+    tmux send-keys -t "$1" "source $2/.tmux-sessionizer" c-M
+  elif [ -f "$HOME/.tmux-sessionizer" ]; then
+    tmux send-keys -t "$1" "source $HOME/.tmux-sessionizer" c-M
   fi
 }
 
@@ -26,23 +47,20 @@ if [[ $# -ne 1 ]]; then
 fi
 
 selected=$1
-
-if [[ -z $selected ]]; then
-  exit 0
-fi
+[[ -z $selected ]] && exit 0
 
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-  tmux new-session -s $selected_name -c $selected
-  hydrate $selected_name $selected
+  tmux new-session -s "$selected_name" -c "$selected"
+  hydrate "$selected_name" "$selected"
   exit 0
 fi
 
-if ! has_session $selected_name; then
-  tmux new-session -ds $selected_name -c $selected
-  hydrate $selected_name $selected
+if ! has_session "$selected_name"; then
+  tmux new-session -ds "$selected_name" -c "$selected"
+  hydrate "$selected_name" "$selected"
 fi
 
-switch_to $selected_name
+switch_to "$selected_name"

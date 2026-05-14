@@ -23,10 +23,12 @@ ctrl-d = ["actions:kill_session", "reload_source"]
 
 [actions.connect]
 description = "Connect to selected session"
-command = "sesh connect '{strip_ansi|split: :1..|join: }'"
+# NOTE: BSD 'script' syntax (script -q [file] [command]). 
+# This bypasses the TTY hijacking by tv and provides a clean PTY for sesh/tmux.
+command = "script -q /dev/null sesh connect '{strip_ansi|split: :1..|join: }'"
 mode = "execute"
 
 [actions.kill_session]
-description = "Kill selected tmux session (press Ctrl+r to reload)"
+description = "Kill selected tmux session"
 command = "tmux kill-session -t '{strip_ansi|split: :1..|join: }'"
 mode = "fork"
