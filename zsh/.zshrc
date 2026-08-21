@@ -1,3 +1,23 @@
+# Drop any stale FPATH entries a long-lived tmux/terminal session may have
+# inherited (e.g. a now-deleted dir left over from a `brew upgrade zsh`),
+# and make sure the currently running zsh's own function dir is present.
+# Must run before oh-my-zsh.sh below, otherwise its compinit call can't
+# find compdef/add-zsh-hook/is-at-least and silently fails to set up
+# completions. Full PATH/FPATH setup happens later in zsh-conf/02-path.zsh.
+typeset -U fpath
+_early_clean_fpath=()
+for _early_fp in $fpath; do
+  [[ -d "$_early_fp" ]] && _early_clean_fpath+=("$_early_fp")
+done
+fpath=($_early_clean_fpath)
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  _early_zsh_fns="/opt/homebrew/Cellar/zsh/${ZSH_VERSION}/share/zsh/functions"
+  [[ -d "$_early_zsh_fns" ]] && fpath=("$_early_zsh_fns" $fpath)
+  unset _early_zsh_fns
+fi
+unset _early_fp _early_clean_fpath
+typeset +x FPATH
+
 # Oh-My-Zsh
 export ZSH="$HOME/.oh-my-zsh"
 export COLORTERM=truecolor

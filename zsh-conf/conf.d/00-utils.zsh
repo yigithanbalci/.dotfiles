@@ -29,5 +29,9 @@ _cached_eval() {
     command mkdir -p "${cache:h}"
     eval "$cmd" > "$cache" 2>/dev/null
   fi
-  source "$cache"
+  # fzf's `--zsh` output snapshots/restores shell options via zsh/parameter's
+  # $options array, which always includes `zle`; zsh forbids setting that
+  # option directly, so it errors on every shell start regardless of cache
+  # content. Harmless (bindings/completion still work) - just silence it.
+  source "$cache" 2> >(grep -v "can't change option: zle" >&2)
 }
