@@ -8,7 +8,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
     local ret=$?
     case "$1" in
       upgrade|reinstall|install)
-        rm -rf "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/"
+        rm -rf "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/" && exec zsh
         ;;
     esac
     return $ret
@@ -24,3 +24,6 @@ alias jvim="nvim --cmd 'set runtimepath^=\$HOME/.config/jvim'"
 
 # Add dirs to zoxide
 alias zload='for d in */; do zoxide add "$d"; done'
+
+# Rebuild zsh init cache (clear + reload shell)
+alias zsh-cache-rebuild='rm -rf "${XDG_CACHE_HOME:-$HOME/.cache}/zsh/" && exec zsh'
